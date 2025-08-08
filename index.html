@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Starkville | Coming Soon</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Slow pulsing blob animation */
+    @keyframes pulse-slow {
+      0%,100% { opacity: .15; }
+      50%      { opacity: .30; }
+    }
+  </style>
+</head>
+<body class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gradient-to-br from-slate-800 via-slate-900 to-black px-4 text-center text-white">
+
+  <!-- Decorative blurred blobs -->
+  <div class="pointer-events-none absolute -top-32 -left-32 h-96 w-96 rounded-full bg-indigo-500 blur-3xl" style="animation:pulse-slow 6s ease-in-out infinite"></div>
+  <div class="pointer-events-none absolute -bottom-32 -right-32 h-96 w-96 rounded-full bg-pink-500 blur-3xl" style="animation:pulse-slow 6s ease-in-out infinite"></div>
+
+  <!-- Logo -->
+  <img src="img/logo.png" alt="Starkville logo" class="mb-12 w-[40rem] md:w-90 drop-shadow-xl" />
+  <!-- Heading & sub‑copy -->
+  <h1 class="mb-6 text-3xl font-bold tracking-tight md:text-4xl">
+    We're <span class="text-indigo-400">almost</span> ready
+  </h1>
+  <p class="mb-12 max-w-xl text-lg text-slate-300 md:text-xl">
+    Our new experience is on its way. Keep an eye on the countdown. When it hits zero, the adventure begins.
+  </p>
+
+  <!-- Countdown grid -->
+  <div id="countdown" class="grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
+    <!-- Days -->
+    <div class="flex flex-col items-center rounded-2xl bg-slate-700/40 px-4 py-6 shadow-lg backdrop-blur-sm">
+      <span id="days" class="text-4xl font-bold tabular-nums md:text-5xl">00</span>
+      <span class="mt-2 text-sm uppercase tracking-wider text-slate-300">Days</span>
+    </div>
+    <!-- Hours -->
+    <div class="flex flex-col items-center rounded-2xl bg-slate-700/40 px-4 py-6 shadow-lg backdrop-blur-sm">
+      <span id="hours" class="text-4xl font-bold tabular-nums md:text-5xl">00</span>
+      <span class="mt-2 text-sm uppercase tracking-wider text-slate-300">Hours</span>
+    </div>
+    <!-- Minutes -->
+    <div class="flex flex-col items-center rounded-2xl bg-slate-700/40 px-4 py-6 shadow-lg backdrop-blur-sm">
+      <span id="minutes" class="text-4xl font-bold tabular-nums md:text-5xl">00</span>
+      <span class="mt-2 text-sm uppercase tracking-wider text-slate-300">Minutes</span>
+    </div>
+    <!-- Seconds -->
+    <div class="flex flex-col items-center rounded-2xl bg-slate-700/40 px-4 py-6 shadow-lg backdrop-blur-sm">
+      <span id="seconds" class="text-4xl font-bold tabular-nums md:text-5xl">00</span>
+      <span class="mt-2 text-sm uppercase tracking-wider text-slate-300">Seconds</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="mt-16 text-xs text-slate-500">
+    © <span id="year"></span> Starkville Inc. All rights reserved.
+  </footer>
+
+  <!-- Countdown logic -->
+  <script>
+    // Launch date (YYYY‑MM‑DDTHH:MM:SS) — change to your real target
+    const targetDate = new Date('2025-08-30T00:00:00');
+
+    const $ = (id) => document.getElementById(id);
+    const pad = (n) => String(n).padStart(2, '0');
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+      if (diff <= 0) {
+        clearInterval(timer);
+        ['days','hours','minutes','seconds'].forEach(id => $(id).textContent = '00');
+        return;
+      }
+      const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours   = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      $('days').textContent    = pad(days);
+      $('hours').textContent   = pad(hours);
+      $('minutes').textContent = pad(minutes);
+      $('seconds').textContent = pad(seconds);
+    }
+
+    // Initialise & tick every second
+    const timer = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Set current year in footer
+    $('year').textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
