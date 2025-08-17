@@ -1,5 +1,5 @@
 import React from 'react';
-import './services.css'; // Assuming it's in the same folder
+import './Services.css'; // Assuming it's in the same folder
 import maskImage from '../src/assets/Mask group.png'; // Adjust path if necessary
 
 const Service = () => {
