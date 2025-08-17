@@ -1,12 +1,12 @@
 import React from 'react';
-import './services.css';
-import backgroundImage from '../src/assets/Mask group.png';
+import './services.css'; // Assuming it's in the same folder
+import maskImage from '../src/assets/Mask group.png'; // Adjust path if necessary
 
-const service = () => {
+const Service = () => {
   return (
     <div 
       className="service-container"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
+      style={{ maskImage: `url(${maskImage})`, WebkitMaskImage: `url(${maskImage})` }} // Apply mask-image for webkit support
     >
       {/* Overlay div */}
       <div className="overlays"></div>
@@ -16,15 +16,15 @@ const service = () => {
 
         <div className="service-cards">
           <div className="service-card">
-            <h3 className="cards-title">lorem</h3>
+            <h3 className="cards-title">Lorem</h3>
             <p className="cards-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, eaque.</p>
           </div>
           <div className="service-card">
-            <h3 className="cards-title">lorem</h3>
+            <h3 className="cards-title">Lorem</h3>
             <p className="cards-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, non.</p>
           </div>
           <div className="service-card">
-            <h3 className="cards-title">lorem</h3>
+            <h3 className="cards-title">Lorem</h3>
             <p className="cards-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, exercitationem.</p>
           </div>
         </div>
@@ -33,4 +33,4 @@ const service = () => {
   );
 };
 
-export default service;
+export default Service;
