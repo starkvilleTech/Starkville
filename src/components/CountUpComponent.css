@@ -1,0 +1,78 @@
+/* Base styles for the count-up section (Mobile-first) */
+.countup-container {
+    display: flex;
+    position: relative;
+    left:-10%;
+    width: 100vw;
+    flex-direction: row; 
+    justify-content: center;
+    align-items: center;
+    background-color: #e0e0e0;
+    padding: 0.8rem;
+  }
+  
+  .countup-box {
+    text-align: center;
+    margin: 0.4rem 0; 
+    font-weight: bold;
+    font-size: 1.2rem; 
+  }
+  
+  .countup-box p {
+    font-size: 0.7rem;
+    color: #333;
+  }
+  
+  .countup-box .react-countup {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .countup-box .react-countup span {
+    color: #4BC5E0;
+  }
+  
+  /* Separator line styling */
+  .separator {
+    font-size: 2rem;
+    color: #333;
+    margin: 0.7rem 1rem; /* Adjust margins for mobile */
+    font-weight: light;
+ /* Hide separator by default on mobile */
+  }
+  
+  /* Desktop and larger screen styles */
+  @media (min-width: 1024px) {
+    .countup-container {
+      flex-direction: row; 
+        display: flex;
+        position: relative;
+        left: -3%;
+        width: 100vw;
+        justify-content: center;
+        align-items: center;
+        background-color: #e0e0e0;
+        padding: 1rem;
+      }
+    
+  
+    .countup-box {
+      margin: 0 1rem; /* Horizontal spacing for larger screens */
+    }
+  
+    .separator {
+      display: inline-block; /* Show separator on larger screens */
+      margin: 0 1rem; /* Horizontal margin for separator */
+    }
+    .countup-box p {
+      font-size: 0.7rem;
+      font-weight: bold; /* Larger font size for desktop */
+    }
+    .countup-box {
+      font-size: 1.3rem; /* Larger font size for desktop */
+      font-weight: bolder;
+      color: #333;
+    }
+  }
+  
