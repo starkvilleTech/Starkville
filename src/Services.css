@@ -1,5 +1,5 @@
-/* Base styles for the About component (Mobile-first) */
-.about-container {
+/* Base styles for the service component (Mobile-first) */
+.service-container {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -13,18 +13,18 @@
 }
 
 /* Overlay effect */
-.about-container::before {
+.service-container::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color:rgba(0, 0, 0, 0.9); /* Dark overlay */
+  background-color:rgba(0, 0, 0, 0.8); /* Dark overlay */
   z-index: 1;
 }
 
-.about-content {
+.service-content {
   position: relative;
   z-index: 2;
   width: 100%;
@@ -32,7 +32,7 @@
   padding: 2rem;
 }
 
-.about-title {
+.service-title {
   font-size: 2rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
@@ -40,7 +40,7 @@
 }
 
 /* Cards container */
-.about-cards {
+.service-cards {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -49,8 +49,8 @@
 }
 
 /* Individual cards */
-.about-card {
-  background-color: none;
+.service-card {
+  background-color: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 2rem;
@@ -58,15 +58,15 @@
   min-width: 250px;
   max-width: 350px;
   transition: all 0.3s ease;
-  border: 1px solid #4BC5E0;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.about-card:hover {
+.service-card:hover {
   transform: translateY(-10px);
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
-.card-title {
+.cards-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #fff;
@@ -74,7 +74,7 @@
   padding-bottom: 0.5rem;
 }
 
-.card-title::after {
+.cards-title::after {
   content: '';
   position: absolute;
   bottom: 0;
@@ -85,7 +85,7 @@
   background-color: #4BC5E0;
 }
 
-.card-description {
+.cards-description {
   font-size: 1rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.8);
@@ -94,24 +94,24 @@
 
 /* Mobile styles */
 @media (max-width: 768px) {
-  .about-container {
+  .service-container {
     padding: 1rem;
   }
 
-  .about-content {
+  .service-content {
     padding: 1.5rem;
   }
 
-  .about-title {
+  .service-title {
     font-size: 1.75rem;
   }
 
-  .about-cards {
+  .service-cards {
     flex-direction: column;
     gap: 1.5rem;
   }
 
-  .about-card {
+  .service-card {
     min-width: 100%;
     padding: 1.5rem;
   }
@@ -119,20 +119,20 @@
 
 /* Desktop styles */
 @media (min-width: 1024px) {
-  .about-container {
+  .service-container {
     padding: 4rem 2rem;
   }
 
-  .about-title {
+  .service-title {
     font-size: 2.5rem;
     margin-bottom: 3rem;
   }
 
-  .card-title {
+  .cards-title {
     font-size: 1.75rem;
   }
 
-  .card-description {
+  .cards-description {
     font-size: 1.1rem;
   }
 }

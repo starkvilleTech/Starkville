@@ -37,9 +37,9 @@
   .separator {
     font-size: 2rem;
     color: #333;
-    margin: 0.7rem 1rem; /* Adjust margins for mobile */
+    margin: 0.7rem 1rem; 
     font-weight: light;
- /* Hide separator by default on mobile */
+ 
   }
   
   /* Desktop and larger screen styles */
@@ -58,19 +58,19 @@
     
   
     .countup-box {
-      margin: 0 1rem; /* Horizontal spacing for larger screens */
+      margin: 0 1rem;
     }
   
     .separator {
-      display: inline-block; /* Show separator on larger screens */
-      margin: 0 1rem; /* Horizontal margin for separator */
+      display: inline-block; 
+      margin: 0 1rem; 
     }
     .countup-box p {
       font-size: 0.7rem;
-      font-weight: bold; /* Larger font size for desktop */
+      font-weight: bold; 
     }
     .countup-box {
-      font-size: 1.3rem; /* Larger font size for desktop */
+      font-size: 1.3rem; 
       font-weight: bolder;
       color: #333;
     }

@@ -80,7 +80,7 @@
   /* Media Query for Tablets and Larger Screens */
   @media (min-width: 768px) {
     .header {
-      height: 350px; /* Height for tablet or larger */
+      height: 350px; 
     }
   
     .hero h1 {
