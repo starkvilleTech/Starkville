@@ -1,32 +1,61 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './About.css';
-import backgroundImage from '../assets/hauss-01 1.png';
+import backgroundImage from '../assets/Mask group4.png';
 
 const About = () => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  const toggleCard = (index) => {
+    setActiveIndex(activeIndex === index ? null : index);
+  };
+
+  const contentData = [
+    {
+      title: 'About Us',
+      content:
+        'We are a tech company helping governments and businesses achieve digital and business transformation through IT projects, AI, consulting, and continuity planning.',
+    },
+    {
+      title: 'Our Mission',
+      content:
+        'To deliver smart, secure, and reliable tech solutions that drive growth and resilience.',
+    },
+    {
+      title: 'Our Vision',
+      content:
+        'To be the leading partner in digital transformation for government and private enterprises.',
+    },
+  ];
+
   return (
-    <div 
+    <div
       className="about-container"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
-      {/* Overlay div */}
-      <div className="overlay"></div>
-      
       <div className="about-content">
         <h2 className="about-title">About Starkville</h2>
 
         <div className="about-cards">
-          <div className="about-card">
-            <h3 className="card-title">About Us</h3>
-            <p className="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, eaque.</p>
-          </div>
-          <div className="about-card">
-            <h3 className="card-title">Our Mission</h3>
-            <p className="card-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio, non.</p>
-          </div>
-          <div className="about-card">
-            <h3 className="card-title">Our Vision</h3>
-            <p className="card-description">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur, exercitationem.</p>
-          </div>
+          {contentData.map((item, index) => (
+            <div className="about-card" key={index}>
+              {/* The title is rendered inside the button */}
+              <button
+                className="card-toggle"
+                onClick={() => toggleCard(index)}
+              >
+                {item.title}
+              </button>
+
+              {/* The description wrapper */}
+              <div
+                className={`card-description-wrapper ${
+                  activeIndex === index ? 'active' : ''
+                }`}
+              >
+                <p className="card-description">{item.content}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </div>

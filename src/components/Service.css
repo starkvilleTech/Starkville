@@ -1,0 +1,225 @@
+/* Main Container */
+.services-container {
+  background-color: rgba(24, 25, 28, 0.99);
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.services-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  padding: 2rem;
+  background-color: transparent;
+  font-family: "Cascadia Code", monospace;
+}
+
+/* Title Styling */
+.services-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-family: "Cascadia Code", monospace;
+  color: #4BC5E0;
+  position: relative;
+}
+
+.services-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: #4BC5E0;
+}
+
+/* Slider Container */
+.slider-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+}
+
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  padding: 20px 0;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+  gap: 20px;
+}
+
+/* Services Card Styling */
+.services-card {
+  background-color: #202125;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #2E2F33;
+  transition: all 0.4s ease;
+  flex: 0 0 auto;
+  width: 300px;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+}
+
+.services-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: #4BC5E0;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Card Top Accent Bar */
+.services-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: #4BC5E0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.services-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* Title in Card */
+.card-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #4BC5E0;
+  font-family: "Cascadia Code", monospace;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.card-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 2px;
+  background: #4BC5E0;
+  transition: width 0.3s ease;
+}
+
+.services-card:hover .card-title::after {
+  width: 80px;
+}
+
+/* Description in Card */
+.card-description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+  font-family: "Cascadia Code", monospace;
+  margin: 0;
+}
+
+/* Arrows */
+.slider-arrow {
+  background-color: #4BC5E0;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+  color: #18191C;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  z-index: 3;
+  box-shadow: 0 4px 15px rgba(75, 197, 224, 0.3);
+}
+
+.slider-arrow.left-arrow {
+  left: -25px;
+}
+
+.slider-arrow.right-arrow {
+  right: -25px;
+}
+
+.slider-arrow:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.slider-arrow:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .services-container {
+    padding: 2rem 1rem;
+    min-height: auto;
+  }
+
+  .services-title {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .services-card {
+    width: 85%;
+    padding: 1.5rem;
+  }
+
+  .slider-arrow {
+    width: 40px;
+    height: 40px;
+  }
+
+  .slider-arrow.left-arrow {
+    left: -15px;
+  }
+
+  .slider-arrow.right-arrow {
+    right: -15px;
+  }
+}
+
+/* Desktop Enhancements */
+@media (min-width: 1024px) {
+  .services-container {
+    padding: 4rem 2rem;
+  }
+
+  .services-title {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .services-card {
+    width: 300px;
+    padding: 2rem;
+  }
+}

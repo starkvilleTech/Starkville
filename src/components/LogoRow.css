@@ -1,25 +1,35 @@
+/* Main container for the logo row */
+.logo-row-wrapper {
+  overflow: hidden;
+  width: 100%; 
+  background-color: #18191C; 
+}
 
+/* The row that holds all the logos */
 .logo-row {
   display: flex;
-  flex-direction: column; 
+  flex-direction: row; 
   align-items: center;
   padding: 5px;
-  background-color: black;
+  animation: scroll 10s linear infinite; 
 }
+
+/* Styling for each logo */
 .logo-row img {
-  max-width:100%;
-  height:85px; 
-  object-fit: contain; 
+  max-width: 100%;
+  height: 85px; 
+  object-fit: contain;
 }
 
-
+/* Class for individual logo */
 .logon {
   max-width: 100%; 
   height: auto; 
   object-fit: contain; 
+  margin-right: 30px; 
 }
 
-/* Larger screens: Layout logos horizontally */
+/* Larger screens: Layout logos horizontally with gap */
 @media (min-width: 768px) {
   .logo-row {
     flex-direction: row; 
@@ -28,9 +38,19 @@
   }
 }
 
-
+/* Even larger screens */
 @media (min-width: 1024px) {
   .logo-row {
     gap: 60px;
+  }
+}
+
+/* Animation to scroll the logos horizontally */
+@keyframes scroll {
+  0% {
+    transform: translateX(0); 
+  }
+  100% {
+    transform: translateX(-100%); 
   }
 }

@@ -4,8 +4,9 @@ import Header from './components/Header';
 import CountUpComponent from './components/CountUpComponent'; 
 import About from './components/About';
 import Logo from './components/Logo'; 
-import Services from './Services'; // Import the Services component
-
+import Service from './components/Service.jsx';
+import Testimonials from './components/Testimonials'; 
+import Footer from './components/Footer'; 
 
 function App() {
   return (
@@ -14,8 +15,9 @@ function App() {
       <CountUpComponent /> {/* Add the CountUpComponent here */}
       <About />
       <Logo /> 
-      <Services /> 
-      
+      <Service /> 
+      <Testimonials />
+      <Footer />
       
     </div>
   );

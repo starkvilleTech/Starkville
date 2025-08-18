@@ -10,33 +10,26 @@
   text-align: center;
   color: white;
   overflow: hidden;
-}
-
-/* Overlay effect */
-.about-container::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color:rgba(0, 0, 0, 0.9); /* Dark overlay */
-  z-index: 1;
+  background-size: cover;
+  background-position: center;
 }
 
 .about-content {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
   max-width: 1200px;
-  padding: 2rem;
+  padding: 1rem;
+  font-family: "Cascadia Code", monospace;
 }
 
 .about-title {
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  color: #4BC5E0;
+  font-family: "Cascadia Code", monospace;
 }
 
 /* Cards container */
@@ -50,7 +43,7 @@
 
 /* Individual cards */
 .about-card {
-  background-color: none;
+  background-color: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(8px);
   border-radius: 12px;
   padding: 2rem;
@@ -59,6 +52,7 @@
   max-width: 350px;
   transition: all 0.3s ease;
   border: 1px solid #4BC5E0;
+  text-align: left;
 }
 
 .about-card:hover {
@@ -66,12 +60,28 @@
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
+/* Accordion Toggle Button (Mobile Only) */
+.card-toggle {
+  width: 100%;
+  background-color: #202125;
+  color: #4BC5E0;
+  font-weight: bold;
+  font-family: "Cascadia Code", monospace;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem 1.5rem;
+  border: 1px solid #4BC5E0;
+  cursor: pointer;
+}
+
+/* Card title styles */
 .card-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
   color: #fff;
   position: relative;
   padding-bottom: 0.5rem;
+  display: block; /* Ensure it's visible on desktop */
 }
 
 .card-title::after {
@@ -85,6 +95,7 @@
   background-color: #4BC5E0;
 }
 
+/* Card description */
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
@@ -92,7 +103,14 @@
   margin-top: 1rem;
 }
 
-/* Mobile styles */
+/* Accordion Description Wrapper */
+.card-description-wrapper {
+  max-height: none;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+
+/* Mobile styles (Accordion active here) */
 @media (max-width: 768px) {
   .about-container {
     padding: 1rem;
@@ -112,27 +130,93 @@
   }
 
   .about-card {
-    min-width: 100%;
-    padding: 1.5rem;
+    padding: 0;
+    background-color: transparent;
+    border: 1px solid #4BC5E0;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .card-toggle {
+    display: block;
+    width: 100%;
+    background-color: #202125;
+    color: #4BC5E0;
+    font-weight: bold;
+    font-family: "Cascadia Code", monospace;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+    border: 1px solid #4BC5E0;
+    cursor: pointer;
+  }
+
+  .card-description-wrapper {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    padding: 0 1.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .card-description-wrapper.active {
+    max-height: 500px; /* Enough for full content */
+    padding: 1rem 1.5rem;
+  }
+
+  .card-description {
+    color: #ccc;
+    font-size: 0.95rem;
+  }
+
+  .card-title {
+    display: none; /* Title handled by toggle */
+  }
+
+  .card-title::after {
+    display: none;
   }
 }
 
 /* Desktop styles */
 @media (min-width: 1024px) {
   .about-container {
+    padding-top: 60px;
     padding: 4rem 2rem;
   }
 
   .about-title {
-    font-size: 2.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    color: #4BC5E0;
+    font-family: "Cascadia Code", monospace;
+    letter-spacing: 1.5px;
   }
 
   .card-title {
     font-size: 1.75rem;
+    display: block; 
   }
 
   .card-description {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    position: relative;
+    top:1rem;
   }
+  .card-toggle {
+    align-self: center;
+    display: block;
+    width: 50%;
+    border-radius: 20px;
+    background-color: #CDCCC9;
+    color: #18191C;
+    font-weight: bold;
+    font-family: "Cascadia Code", monospace;
+    font-size: 0.85rem;
+    text-align: center;
+    padding:0.5rem;
+    border: 1px solid #4BC5E0;
+    cursor: pointer;
+  }
+   
 }

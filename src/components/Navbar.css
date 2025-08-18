@@ -104,7 +104,7 @@
       padding: 1rem;
       background-color: #18191C;
       color: white;
-      position: fixed;
+      position:sticky;
       top: 0;
       left: 0;
       right: 0;
