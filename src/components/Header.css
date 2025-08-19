@@ -12,7 +12,8 @@
     justify-content: center; 
     left:-36px; 
     position:relative; 
-    overflow: hidden; 
+    overflow: hidden;
+    font-family: "Cascadia Code"; 
 } 
 
 
@@ -54,7 +55,7 @@
     top:42%; 
     left:40%; 
     display: inline-block;
-    width: 130px; 
+    width: 150px; 
     padding: 10px 30px; 
     background-color:transparent; 
     color: #3a9da8; 
@@ -64,6 +65,7 @@
     cursor: pointer; 
     border-radius: 5px; 
     transition: background-color 0.3s ease; 
+    font-family: "Cascadia Code";
 } 
 
 .cta-button:hover { 
@@ -112,7 +114,7 @@
             padding: 10px 30px; 
             background-color:transparent; 
             color: #3a9da8; 
-            font-size: 0.8rem; 
+            font-size: 0.66rem; 
             border: 1px solid #4BC5E0; 
             border-radius: 5px; 
             cursor: pointer; 

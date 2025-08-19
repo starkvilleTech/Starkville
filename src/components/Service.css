@@ -206,8 +206,9 @@
   }
 
   .services-title {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
+    font-weight:350;
   }
 
   .slider-container {
@@ -237,12 +238,14 @@
   .card-title {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
+    font-weight:350 ;
   }
 
   .card-description {
     font-size: 0.95rem;
     overflow: visible;
     white-space: normal;
+    font-weight: 300;
   }
 
   .slider-arrow {
@@ -272,6 +275,7 @@
   
   .card-title {
     font-size: 1.1rem;
+    display: block;
   }
   
   .card-description {
