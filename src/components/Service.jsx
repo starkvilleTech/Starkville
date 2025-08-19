@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import './Service.css';
 import backgroundImage from '../assets/Mask groupo.png';
@@ -21,17 +20,23 @@ const Service = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const visibleCount = isDesktop ? 3 : 1; // Changed to show 3 on desktop for better fit
+  const visibleCount = isDesktop ? 3 : 1;
 
   const handleNext = () => {
     if (currentIndex < services.length - visibleCount) {
-      setCurrentIndex(prev => Math.min(prev + 1, services.length - visibleCount));
+      setCurrentIndex(prev => prev + 1);
+    } else if (!isDesktop) {
+      // Loop back to the beginning on mobile
+      setCurrentIndex(0);
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => Math.max(prev - 1, 0));
+      setCurrentIndex(prev => prev - 1);
+    } else if (!isDesktop) {
+      // Loop to the end on mobile
+      setCurrentIndex(services.length - visibleCount);
     }
   };
 
@@ -43,7 +48,6 @@ const Service = () => {
           <button
             className="slider-arrow left-arrow"
             onClick={handlePrev}
-            disabled={currentIndex === 0}
             aria-label="Previous"
           >
             &#8592;
@@ -61,8 +65,8 @@ const Service = () => {
                   className="services-card"
                   key={index}
                   style={{ 
-                    width: `calc(${100 / visibleCount}% - ${20 / visibleCount}px)`,
-                    minWidth: isDesktop ? '320px' : 'calc(100vw - 60px)'
+                    width: `${100 / visibleCount}%`,
+                    minWidth: isDesktop ? '320px' : '100%'
                   }}
                 >
                   <h3 className="card-title">{service.title}</h3>
@@ -75,7 +79,6 @@ const Service = () => {
           <button
             className="slider-arrow right-arrow"
             onClick={handleNext}
-            disabled={currentIndex >= services.length - visibleCount}
             aria-label="Next"
           >
             &#8594;

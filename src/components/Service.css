@@ -34,15 +34,12 @@
   position: relative;
 }
 
-
-
 /* Slider Container */
 .slider-container {
   display: flex;
   align-items: center;
   width: 100%;
   position: relative;
-  
 }
 
 .slider-wrapper {
@@ -53,7 +50,7 @@
 
 .slider-track {
   display: flex;
-  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
   gap: 20px;
 }
@@ -66,7 +63,6 @@
   border: 1px solid #2E2F33;
   transition: all 0.4s ease;
   flex: 0 0 auto;
-  width: 320px;
   scroll-snap-align: start;
   position: relative;
   overflow: hidden;
@@ -74,6 +70,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 .services-card:hover {
@@ -184,14 +181,17 @@
   }
 
   .services-card {
-    width: 320px;
-    padding: 2.5rem;
+    width: calc(33.333% - 14px) !important;
     min-height: 300px;
+  }
+  
+  .slider-track {
+    gap: 20px;
   }
 }
 
-/* MOBILE FIXES ONLY BELOW THIS LINE */
-@media (max-width: 768px) {
+/* Responsive Adjustments */
+@media (max-width: 1023px) {
   .services-container {
     padding: 2rem 0.5rem;
     min-height: auto;
@@ -199,8 +199,8 @@
   }
 
   .services-content {
-    padding: 2.8rem;
-    
+    padding: 1rem;
+    overflow: hidden;
   }
 
   .services-title {
@@ -208,23 +208,28 @@
     margin-bottom: 1.5rem;
   }
 
+  .slider-container {
+    padding: 0 10px;
+  }
+
   .slider-wrapper {
-    overflow: visible;
+    overflow: hidden;
     padding: 10px 0;
+    width: 100%;
   }
 
   .slider-track {
-    gap: 15px;
-    padding: 0 30px;
+    gap: 0;
+    width: 100%;
   }
 
   .services-card {
-    width: calc(100vw - 60px) !important;
-    min-width: calc(100vw - 60px) !important;
-    min-height: auto;
+    width: 100% !important;
+    min-height: 300px;
     padding: 1.5rem;
-    margin: 0;
+    margin: 0 10px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    flex: 0 0 auto;
   }
 
   .card-title {
@@ -241,7 +246,7 @@
   .slider-arrow {
     width: 40px;
     height: 40px;
-    bottom: -35%;
+    top: 50%;
     transform: translateY(-50%);
   }
 
@@ -257,8 +262,9 @@
 /* Extra small devices */
 @media (max-width: 480px) {
   .services-card {
-    width: calc(100vw - 40px) !important;
-    min-width: calc(100vw - 40px) !important;
+    min-height: 200px;
+    padding: 1rem;
+    margin: 0 2px;
     padding: 1.2rem;
   }
   
@@ -268,5 +274,11 @@
   
   .card-description {
     font-size: 0.9rem;
+  }
+  
+  .slider-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
   }
 }

@@ -38,14 +38,14 @@
   }
 }
 
-/* Even larger screens */
+
 @media (min-width: 1024px) {
   .logo-row {
     gap: 60px;
   }
 }
 
-/* Animation to scroll the logos horizontally */
+
 @keyframes scroll {
   0% {
     transform: translateX(0); 

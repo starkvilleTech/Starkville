@@ -56,7 +56,7 @@
 }
 
 .about-card:hover {
-  transform: translateY(-10px);
+  
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -81,7 +81,7 @@
   color: #fff;
   position: relative;
   padding-bottom: 0.5rem;
-  display: block; /* Ensure it's visible on desktop */
+  display: block; 
 }
 
 .card-title::after {
@@ -161,7 +161,7 @@
   }
 
   .card-description-wrapper.active {
-    max-height: 500px; /* Enough for full content */
+    max-height: 500px; 
     padding: 1rem 1.5rem;
   }
 
@@ -171,7 +171,7 @@
   }
 
   .card-title {
-    display: none; /* Title handled by toggle */
+    display: none;
   }
 
   .card-title::after {

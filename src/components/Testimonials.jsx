@@ -50,7 +50,10 @@ const Testimonials = () => {
       <div className="testimonial-container mobile-slider">
         <div 
           className="testimonial-slider" 
-          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+          style={{ 
+            transform: `translateX(-${currentIndex * (100 / testimonials.length)}%)`,
+            width: `${testimonials.length * 100}%`
+          }}
         >
           {testimonials.map((testimonial, index) => (
             <div key={index} className="testimonial-card">
