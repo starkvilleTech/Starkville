@@ -8,7 +8,7 @@
   justify-content: center;
   padding: 1rem;
   text-align: center;
-  color: white;
+  color: #CDCCC9; /* Updated color for consistency */
   overflow: hidden; /* Prevent image overflow */
   background-size: cover; /* Cover the entire container */
   background-position: center; /* Center the background image */
@@ -27,7 +27,8 @@
 .about-title {
   font-size: 1.5rem;
   margin-bottom: 2rem;
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
+  font-weight: 350;
   color: #4BC5E0;
   font-family: "Cascadia Code", monospace;
 }
@@ -64,13 +65,13 @@
 .card-toggle {
   width: 100%;
   background-color: #202125;
-  color: #4BC5E0;
+  color: #CDCCC9;
   font-weight: bold;
   font-family: "Cascadia Code", monospace;
   font-size: 1.1rem;
   text-align: center;
   padding: 1rem 1.5rem;
-  border: 1px solid #4BC5E0;
+  border: 1px solid #202125;
   cursor: pointer;
 }
 
@@ -78,7 +79,7 @@
 .card-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: #fff;
+  color: #CDCCC9;
   position: relative;
   padding-bottom: 0.5rem;
   display: block; 
@@ -142,13 +143,13 @@
     display: block;
     width: 100%;
     background-color: #202125;
-    color: #4BC5E0;
+    color: #CDCCC9;
     font-weight: bold;
-    font-family: "Cascadia Code", monospace;
+    font-family: "Cascadia Code";
     font-size: 1.1rem;
     text-align: center;
     padding: 1rem 1.5rem;
-    border: 1px solid #4BC5E0;
+    border: 1px solid #CDCCC9;
     cursor: pointer;
   }
 

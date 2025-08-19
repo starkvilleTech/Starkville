@@ -92,14 +92,14 @@ const Testimonials = () => {
           className="slider-button prev-button"
           aria-label="Previous testimonial"
         >
-          Prev
+          &#8592; {/* Left arrow */}
         </button>
         <button 
           onClick={nextSlide} 
           className="slider-button next-button"
           aria-label="Next testimonial"
         >
-          Next
+          &#8594; {/* Right arrow */}
         </button>
       </div>
       

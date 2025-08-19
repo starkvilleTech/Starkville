@@ -4,6 +4,7 @@
   color: #4BC5E0;
   text-align: center;
   padding: 20px;
+  position: relative;
 }
 
 h2 {
@@ -87,25 +88,46 @@ h2 {
   background-color: #4BC5E0;
 }
 
-/* Slider Buttons */
+
 .slider-buttons {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  padding: 0 10px;
+  z-index: 10;
+  pointer-events: none;
 }
 
 .slider-button {
   background-color: #4BC5E0;
   color: #fff;
-  padding: 10px 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
   cursor: pointer;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  pointer-events: auto;
+  box-shadow: 0 4px 15px rgba(75, 197, 224, 0.3);
 }
 
 .slider-button:hover {
-  background-color: #008cba;
+  background-color: #3a9da8;
+  transform: scale(1.1);
+}
+
+.slider-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
 }
 
 /* Tablet and Larger Screens (Grid Layout for Desktop) */
@@ -188,6 +210,11 @@ h2 {
 
 /* Mobile Styles */
 @media (max-width: 767px) {
+  .testimonials {
+    position: relative;
+    padding: 20px 40px; 
+  }
+  
   .testimonial-container.mobile-slider {
     overflow: hidden;
     width: 100%;
@@ -202,9 +229,75 @@ h2 {
   }
   
   .testimonial-card {
-    width: calc(100vw - 40px); 
+    width: calc(100vw - 80px); 
     scroll-snap-align: center;
     flex: 0 0 auto;
     margin: 0 5px;
+  }
+
+  /* Position arrows on both sides */
+  .slider-buttons {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    padding: 0 15px;
+    z-index: 10;
+  }
+  
+  .slider-button {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
+  }
+  
+  .prev-button {
+    left: -5px;
+  }
+  
+  .next-button {
+    right: -5px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .testimonials {
+    padding: 20px 35px;
+  }
+  
+  .testimonial-card {
+    width: calc(100vw - 70px);
+    padding: 15px;
+    min-height: 260px;
+  }
+  
+  .user-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .user-name {
+    font-size: 0.95rem;
+  }
+  
+  .user-review {
+    font-size: 0.85rem;
+  }
+  
+  .slider-button {
+    width: 30px;
+    height: 30px;
+    font-size: 1rem;
+  }
+  
+  .prev-button {
+    left: -8px;
+  }
+  
+  .next-button {
+    right: -8px;
   }
 }

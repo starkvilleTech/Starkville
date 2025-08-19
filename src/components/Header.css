@@ -29,7 +29,7 @@
     justify-content: left; 
     align-items: left; 
     text-align: center; 
-    color: white; 
+    color: #CDCCC9; 
     font-weight: 200; 
 } 
 
@@ -44,7 +44,7 @@
     flex-direction: column; 
     justify-content: center; 
     align-items: center; 
-    color: white; 
+    color: #CDCCC9; 
     text-align: center; 
     padding: 1rem; 
 }
@@ -67,12 +67,12 @@
 } 
 
 .cta-button:hover { 
-    color: white; 
+    color:#CDCCC9; 
     background-color:#4BC5E0; 
 } 
 
 .hero h1 { 
-    font-size: 1.3rem; 
+    font-size: 1.43rem; 
     margin-top: 0.5rem; 
     font-weight: 300; 
     position: relative; 
