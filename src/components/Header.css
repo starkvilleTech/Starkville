@@ -1,7 +1,7 @@
 .header { 
     width: 110vw; 
     height:200px; 
-    background-image: url('src/assets/Mask group.png'); 
+    background-image: url('../assets/Mask group.png'); 
     background-size:contain; 
     background-repeat: no-repeat; 
     background-position:right; 
@@ -92,7 +92,7 @@
     
     @media (min-width: 1024px) { 
         .header { 
-            background-image: url('src/assets/Mask group.png'); 
+            background-image: url('../assets/Mask group.png'); 
             background-size: cover; 
             height: 300px; 
             width: 100vw; 
