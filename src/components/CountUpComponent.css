@@ -2,7 +2,6 @@
 .countup-container {
     display: flex;
     position: relative;
-    left:-10%;
     width: 100vw;
     flex-direction: row; 
     justify-content: center;

@@ -6,19 +6,18 @@ import About from './components/About';
 import Logo from './components/Logo'; 
 import Service from './components/Service.jsx';
 import Testimonials from './components/Testimonials'; 
-import Footer from './components/Footer'; 
+import Footer from './components/Footer';
 
 function App() {
   return (
     <div className="App">
       <Header />
-      <CountUpComponent /> {/* Add the CountUpComponent here */}
+      <CountUpComponent /> 
       <About />
       <Logo /> 
       <Service /> 
       <Testimonials />
-      <Footer />
-      
+      < Footer />
     </div>
   );
 }

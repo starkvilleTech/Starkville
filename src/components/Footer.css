@@ -1,52 +1,59 @@
+/* Base Footer Styles */
 .footer-wrapper { 
-    background-color: #18191C; /* outer dark background */
-     padding: 30px 0; 
-    }
- .footer-container {
-     background-color: #CDCCC9;
-      max-width: 1100px; 
-      margin: 0 auto; 
-      padding: 20px 40px; 
-      display: flex; 
-      justify-content: space-between;
-       align-items: center; 
-       border-radius: 5px; 
-       font-family: cascadia code;
-    }
-  .footer-logo img {
-     height: 50px;
-    } 
- .footer-links { 
-    list-style: none;
-     display: flex; 
-     gap: 25px; 
-     align-items: center; 
-     padding: 0; 
-     margin: 0; } 
-
- .footer-links li a { 
-    text-decoration: none;   
- color: #000000; 
- font-weight: 500; 
- transition: color 0.3s ease; 
+  background-color: #18191C; /* outer dark background */
+  padding: 30px 0; 
 }
 
-  .footer-links li a:hover { 
-    color: #4BC5E0;
- } 
+.footer-container {
+  background-color: #CDCCC9;
+  max-width: 1100px; 
+  margin: 0 auto; 
+  padding: 20px 40px; 
+  display: flex; 
+  justify-content: space-between;
+  align-items: center; 
+  border-radius: 5px; 
+  font-family: "Cascadia Code", monospace;
+}
 
-  .footer-links  .contact-button { 
-    background-color: #4BC5E0;
-     color: black; 
-     padding: 6px 12px;
-      border-radius: 8px;
-     font-weight: bold;
-     transition: background-color 0.3s ease;
-     } 
+.footer-logo img {
+  height: 50px;
+}
+
+.footer-links { 
+  list-style: none;
+  display: flex; 
+  gap: 25px; 
+  align-items: center; 
+  padding: 0; 
+  margin: 0; 
+}
+
+.footer-links li a { 
+  text-decoration: none;   
+  color: #000000; 
+  font-weight: 500; 
+  transition: color 0.3s ease; 
+}
+
+.footer-links li a:hover { 
+  color: #4BC5E0;
+}
+
+.footer-links  .contact-button { 
+  background-color: #4BC5E0;
+  color: black; 
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
 .footer-links .contact-button:hover { 
-    background-color: #39b0cb;
- }
- .footer-bottom {
+  background-color: #39b0cb;
+}
+
+.footer-bottom {
   background-color: #18191C; 
   padding: 10px 0;
   text-align: center;
@@ -56,27 +63,85 @@
   color: #fff; 
   font-size: 0.9rem;
   margin: 0;
-  font-family: cascadia code;
-
+  font-family: "Cascadia Code", monospace;
 }
 
-@media (max-width: 480px) {
+/* Mobile View Adjustments */
+@media (max-width: 768px) {
+
+  /* Footer Container */
   .footer-container {
+    flex-direction: column;
     padding: 20px 15px;
-     
   }
 
+  /* Footer Logo */
   .footer-logo img {
-    height: 30px; 
+    height: 40px;
+    margin-bottom: 1rem; /* Adds some space between logo and links */
+  }
+
+  /* Footer Links Styling */
+  .footer-links {
+    flex-direction: column; /* Stack the links vertically */
+    gap: 15px; /* Reduced gap between links */
+    text-align: center; /* Centers the links on mobile */
+  }
+
+  .footer-links li a {
+    font-size: 0.9rem; 
+    font-weight: 500;
+    display: block; /* Makes each link block level for better touch targets */
+    padding: 5px 0;
+  }
+
+  .footer-links .contact-button {
+    padding: 8px 20px; /* Adjusted padding for the button */
+    font-size: 0.9rem; /* Slightly smaller font on mobile */
+  }
+
+  .footer-bottom {
+    padding: 15px 0;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem; /* Adjusted font size for footer text */
+  }
+}
+
+/* Mobile Devices - Extra Small (Phones) */
+@media (max-width: 480px) {
+
+  /* Footer Container */
+  .footer-container {
+    padding: 15px 10px; 
+  }
+
+  /* Footer Links */
+  .footer-links {
+    gap: 10px; /* Less gap between the links on very small screens */
+  }
+
+  /* Footer Logo */
+  .footer-logo img {
+    height: 30px; /* Logo is smaller on very small screens */
   }
 
   .footer-links li a {
     font-size: 0.8rem; 
-    display:inline-flex;
     font-weight: 600;
   }
 
   .footer-links .contact-button {
-    padding: 8px 7px; 
+    padding: 6px 10px; /* Adjusted button size */
+    font-size: 0.85rem; /* Smaller font size */
+  }
+
+  .footer-bottom {
+    padding: 10px 0;
+  }
+
+  .footer-bottom p {
+    font-size: 0.75rem; /* Font size adjusted for smaller screens */
   }
 }

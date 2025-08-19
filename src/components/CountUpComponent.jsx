@@ -1,6 +1,6 @@
 import React from 'react';
 import CountUp from 'react-countup';
-import './CountUpComponent.css'; // If you want to add custom styles
+import './CountUpComponent.css'; 
 
 const CountUpComponent = () => {
   return (

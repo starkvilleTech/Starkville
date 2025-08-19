@@ -1,9 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import './Service.css';
 import backgroundImage from '../assets/Mask groupo.png';
 
 const Service = () => {
-  const service = [
+  const services = [
     { title: 'Digital Transformation Solutions', description: 'Modernizing legacy systems, automating workflows, and integrating new digital tools for efficiency.' },
     { title: 'AI & Data Analytics', description: 'Building AI-powered applications, predictive analytics, and data-driven insights for smarter decision-making.' },
     { title: 'IT Consulting & Strategy', description: 'Offering expert guidance on IT infrastructure, operations, and long-term technology planning.' },
@@ -20,29 +21,25 @@ const Service = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const visibleCount = isDesktop ? 4 : 1;
+  const visibleCount = isDesktop ? 3 : 1; // Changed to show 3 on desktop for better fit
 
   const handleNext = () => {
-    if (currentIndex < service.length - visibleCount) {
-      setCurrentIndex(currentIndex + 2);
+    if (currentIndex < services.length - visibleCount) {
+      setCurrentIndex(prev => Math.min(prev + 1, services.length - visibleCount));
     }
   };
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
+      setCurrentIndex(prev => Math.max(prev - 1, 0));
     }
   };
 
   return (
-    <div
-      className="services-container"
-      style={{ backgroundImage: `url(${backgroundImage})` }}
-    >
+    <div className="services-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="services-content">
         <h2 className="services-title">Our Services</h2>
         <div className="slider-container">
-          {/* Left Arrow */}
           <button
             className="slider-arrow left-arrow"
             onClick={handlePrev}
@@ -52,20 +49,21 @@ const Service = () => {
             &#8592;
           </button>
 
-          {/* Slider Content */}
           <div className="slider-wrapper">
             <div
               className="slider-track"
               style={{
-                transform: `translateX(-${(100 / visibleCount) * currentIndex}%)`,
-                width: `${(service.length / visibleCount) * 100}%`,
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
               }}
             >
-              {service.map((service, index) => (
+              {services.map((service, index) => (
                 <div
                   className="services-card"
                   key={index}
-                  style={{ width: `${100 / service.length}%` }}
+                  style={{ 
+                    width: `calc(${100 / visibleCount}% - ${20 / visibleCount}px)`,
+                    minWidth: isDesktop ? '320px' : 'calc(100vw - 60px)'
+                  }}
                 >
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.description}</p>
@@ -74,11 +72,10 @@ const Service = () => {
             </div>
           </div>
 
-          {/* Right Arrow */}
           <button
             className="slider-arrow right-arrow"
             onClick={handleNext}
-            disabled={currentIndex >= service.length - visibleCount}
+            disabled={currentIndex >= services.length - visibleCount}
             aria-label="Next"
           >
             &#8594;
