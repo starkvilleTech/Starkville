@@ -5,7 +5,7 @@
   text-align: center;
   padding: 20px;
   position: relative;
-   font-family: "Cascadia Code";
+  font-family: "Cascadia Code";
 }
 
 h2 {
@@ -13,7 +13,6 @@ h2 {
   font-size: 1.3rem;
   margin-bottom: 20px;
   font-weight: 350;
-  
 }
 
 /* Slider for Mobile */
@@ -50,6 +49,8 @@ h2 {
   touch-action: manipulation;
   box-sizing: border-box;
   margin: 0 10px;
+  min-height: 180px; /* Increased height for mobile */
+  height: auto;
 }
 
 .user-icon {
@@ -76,7 +77,7 @@ h2 {
 .user-review {
   font-size: 0.9rem;
   line-height: 1.4;
-  margin-top: 10px;
+  margin-top: 30px;
   font-weight: 300;
 }
 
@@ -91,7 +92,7 @@ h2 {
   font-size: 1rem;
   transition: background-color 0.3s ease;
   display: none;
-   font-family: "Cascadia Code";
+  font-family: "Cascadia Code";
 }
 
 .view-more:hover {
@@ -166,7 +167,6 @@ h2 {
 @media (min-width: 1024px) {
   .testimonial-container.desktop-grid {
     grid-template-columns: repeat(2, 1fr);
-    
     max-width: 75%;
   }
 
@@ -212,6 +212,8 @@ h2 {
     min-width: calc(100vw - 40px);
     max-width: calc(100vw - 40px);
     margin: 0 5px;
+    min-height: 180px; /* Increased height for mobile */
+    height: auto; /* Allows the card to grow if content exceeds */
   }
 
   .slider-buttons {
@@ -235,6 +237,8 @@ h2 {
     min-width: calc(100vw - 30px);
     max-width: calc(100vw - 30px);
     padding: 15px;
+    height: auto;
+    min-height: 250px; 
   }
 
   .user-icon {
@@ -258,10 +262,10 @@ h2 {
 
 @media (min-width: 768px) {
   .testimonial-card {
-    width: 100%;      
+    width: 100%;
     max-width: 100%;
     min-width: auto;
-    margin: 0;        
-    flex-shrink: 1;   
+    margin: 0;
+    flex-shrink: 1;
   }
 }
