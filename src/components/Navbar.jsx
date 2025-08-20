@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 import './Navbar.css';
-import logo from '../assets/SVT PNG-11 1.png'; // Correct import path
+import logo from '../assets/SVT PNG-11 1.png';
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -20,10 +21,46 @@ const Navbar = () => {
         <span className="hamburger"></span>
       </div>
       <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact Us</a></li>
+        <li>
+          <Link
+            to="home" // Set the target ID of the section to scroll to
+            smooth={true}
+            duration={500} // Scroll duration
+            offset={-70} // Optional offset for navbar height
+          >
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="services"
+            smooth={true}
+            duration={500}
+            offset={-70}
+          >
+            Services
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="about"
+            smooth={true}
+            duration={500}
+            offset={-70}
+          >
+            About
+          </Link>
+        </li>
+        <li>
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            offset={-70}
+          >
+            Contact Us
+          </Link>
+        </li>
       </ul>
     </nav>
   );

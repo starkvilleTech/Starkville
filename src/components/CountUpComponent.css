@@ -20,13 +20,13 @@
   
   .countup-box p {
     font-size: 0.7rem;
-    color: #333;
+    color: #18191C;
   }
   
   .countup-box .react-countup {
     font-size: 2.5rem;
     font-weight: bold;
-    color: #333;
+    color: #18191C;
   }
   
   .countup-box .react-countup span {
@@ -36,7 +36,7 @@
   /* Separator line styling */
   .separator {
     font-size: 2rem;
-    color: #333;
+    color: #18191C;
     margin: 0.7rem 1rem; 
     font-weight: light;
  
@@ -72,7 +72,7 @@
     .countup-box {
       font-size: 1.3rem; 
       font-weight: bolder;
-      color: #333;
+      color: #18191C;
     }
   }
   

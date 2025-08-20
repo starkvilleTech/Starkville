@@ -165,7 +165,7 @@ h2 {
 @media (min-width: 1024px) {
   .testimonial-container.desktop-grid {
     grid-template-columns: repeat(2, 1fr);
-    /* Removed: grid-template-rows: repeat(2, 1fr); */
+    
     max-width: 75%;
   }
 
@@ -257,10 +257,10 @@ h2 {
 
 @media (min-width: 768px) {
   .testimonial-card {
-    width: 100%;      /* Let grid handle width */
+    width: 100%;      
     max-width: 100%;
     min-width: auto;
-    margin: 0;        /* Remove horizontal margin */
-    flex-shrink: 1;   /* Optional: allow grid flexibility */
+    margin: 0;        
+    flex-shrink: 1;   
   }
 }

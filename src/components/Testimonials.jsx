@@ -1,12 +1,11 @@
 import React, { useState, useRef, useCallback } from 'react';
 import './Testimonials.css';
-// Import all images
 import testimonialImage1 from '../assets/Image_fx (40).jpg';
 import testimonialImage2 from '../assets/Image_fx (39).jpg';
 import testimonialImage3 from '../assets/Image_fx (38).jpg';
 import testimonialImage4 from '../assets/Image_fx (37).jpg';
 
-const Testimonials = () => {
+const Testimonials = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -74,7 +73,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="testimonials">
+    <section id={id} className="testimonials">
       <h2>What Users Say About Us</h2>
       
       {/* Mobile Slider with touch events */}

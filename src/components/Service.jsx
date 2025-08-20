@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Service.css';
 import backgroundImage from '../assets/Mask groupo.png';
 
-const Service = () => {
+const Service = ({ id }) => {
   const services = [
     { title: 'Digital Transformation Solutions', description: 'Modernizing legacy systems, automating workflows, and integrating new digital tools for efficiency.' },
     { title: 'AI & Data Analytics', description: 'Building AI-powered applications, predictive analytics, and data-driven insights for smarter decision-making.' },
@@ -41,7 +41,7 @@ const Service = () => {
   };
 
   return (
-    <div className="services-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
+    <div id={id} className="services-container" style={{ backgroundImage: `url(${backgroundImage})` }}>
       <div className="services-content">
         <h2 className="services-title">Our Services</h2>
         <div className="slider-container">
@@ -64,9 +64,9 @@ const Service = () => {
                 <div
                   className="services-card"
                   key={index}
-                  style={{ 
+                  style={{
                     width: `${100 / visibleCount}%`,
-                    minWidth: isDesktop ? '320px' : '100%'
+                    minWidth: isDesktop ? '320px' : '100%',
                   }}
                 >
                   <h3 className="card-title">{service.title}</h3>

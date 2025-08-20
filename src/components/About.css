@@ -1,18 +1,17 @@
-/* Base styles for the About component (Mobile-first) */
 .about-container {
   position: relative;
   width: 100%;
-  min-height: 60vh; /* Ensure the container doesn't collapse on smaller screens */
+  min-height: 60vh;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
   text-align: center;
-  color: #CDCCC9; /* Updated color for consistency */
-  overflow: hidden; /* Prevent image overflow */
-  background-size: cover; /* Cover the entire container */
-  background-position: center; /* Center the background image */
-  background-attachment: fixed; /* Optional: Makes the background fixed when scrolling */
+  color: #CDCCC9; 
+  overflow: hidden; 
+  background-size: cover; 
+  background-position: center; 
+  background-attachment: fixed; 
 }
 
 .about-content {
@@ -52,13 +51,8 @@
   min-width: 250px;
   max-width: 350px;
   transition: all 0.3s ease;
-  border: 1px solid #4BC5E0;
+  border: 1px solid transparent;
   text-align: left;
-}
-
-.about-card:hover {
-  
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
 
 /* Accordion Toggle Button (Mobile Only) */
@@ -134,9 +128,13 @@
   .about-card {
     padding: 0;
     background-color: transparent;
-    border: 1px solid #4BC5E0;
     border-radius: 8px;
     overflow: hidden;
+  }
+
+  .about-card:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid #4BC5E0;
   }
 
   .card-toggle {
@@ -144,12 +142,12 @@
     width: 100%;
     background-color: #202125;
     color: #CDCCC9;
-    font-weight:300;
+    font-weight: 300;
     font-family: "Cascadia Code";
     font-size: 1.1rem;
     text-align: center;
     padding: 1rem 1.5rem;
-    border: 1px solid #CDCCC9;
+    border: 1px thin transparent;
     cursor: pointer;
   }
 
@@ -220,5 +218,43 @@
     padding: 0.5rem;
     border: 1px solid #4BC5E0;
     cursor: pointer;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .about-container {
+    padding: 1rem 0.5rem;
+  }
+
+  .about-content {
+    padding: 1rem;
+  }
+
+  .about-title {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .about-card {
+    min-width: unset;
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
+  .card-toggle {
+    font-size: 1rem;
+    padding: 0.75rem 1rem;
+  }
+
+  .card-description-wrapper.active {
+    max-height: 600px;
+    padding: 1rem;
   }
 }

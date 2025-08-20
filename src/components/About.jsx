@@ -29,6 +29,7 @@ const About = () => {
 
   return (
     <div
+      id="about" // Adding id here for smooth scrolling
       className="about-container"
       style={{ backgroundImage: `url(${backgroundImage})` }}
     >
