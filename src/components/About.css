@@ -219,6 +219,13 @@
     border: 1px solid #4BC5E0;
     cursor: pointer;
   }
+  .card-toggle:hover {
+    background-color: #4BC5E0;
+    color: #18191C;
+    transition: all 0.4s ease;
+    transform: scale(1.05);
+
+  }
 }
 
 

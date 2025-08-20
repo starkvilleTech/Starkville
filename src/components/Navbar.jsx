@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-scroll'; // Import Link from react-scroll
+import { Link } from 'react-scroll'; 
 import './Navbar.css';
 import logo from '../assets/SVT PNG-11 1.png';
 
@@ -26,7 +26,7 @@ const Navbar = () => {
             to="home" // Set the target ID of the section to scroll to
             smooth={true}
             duration={500} // Scroll duration
-            offset={-70} // Optional offset for navbar height
+            offset={-70} 
           >
             Home
           </Link>

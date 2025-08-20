@@ -4,11 +4,11 @@ import backgroundImage from '../assets/Mask groupo.png';
 
 const Service = ({ id }) => {
   const services = [
-    { title: 'Digital Transformation Solutions', description: 'Modernizing legacy systems, automating workflows, and integrating new digital tools for efficiency.' },
-    { title: 'AI & Data Analytics', description: 'Building AI-powered applications, predictive analytics, and data-driven insights for smarter decision-making.' },
-    { title: 'IT Consulting & Strategy', description: 'Offering expert guidance on IT infrastructure, operations, and long-term technology planning.' },
-    { title: 'Business Continuity & Disaster Recovery', description: 'Designing strategies and systems to ensure uninterrupted operations during disruptions.' },
-    { title: 'IT Projects & Program Management', description: 'Planning, executing, and managing large-scale IT initiatives for governments and private organizations.' },
+    { title: 'Digital Transformation Solutions', description: 'Modernizing legacy systems, automating workflows, and integrating new digital tools for efficiency.', icon: 'fa-cogs' },
+    { title: 'AI & Data Analytics', description: 'Building AI-powered applications, predictive analytics, and data-driven insights for smarter decision-making.', icon: 'fa-robot' },
+    { title: 'IT Consulting & Strategy', description: 'Offering expert guidance on IT infrastructure, operations, and long-term technology planning.', icon: 'fa-laptop' },
+    { title: 'Business Continuity & Disaster Recovery', description: 'Designing strategies and systems to ensure uninterrupted operations during disruptions.', icon: 'fa-shield-alt' },
+    { title: 'IT Projects & Program Management', description: 'Planning, executing, and managing large-scale IT initiatives for governments and private organizations.', icon: 'fa-project-diagram' },
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -26,7 +26,6 @@ const Service = ({ id }) => {
     if (currentIndex < services.length - visibleCount) {
       setCurrentIndex(prev => prev + 1);
     } else if (!isDesktop) {
-      // Loop back to the beginning on mobile
       setCurrentIndex(0);
     }
   };
@@ -35,7 +34,6 @@ const Service = ({ id }) => {
     if (currentIndex > 0) {
       setCurrentIndex(prev => prev - 1);
     } else if (!isDesktop) {
-      // Loop to the end on mobile
       setCurrentIndex(services.length - visibleCount);
     }
   };
@@ -69,6 +67,9 @@ const Service = ({ id }) => {
                     minWidth: isDesktop ? '320px' : '100%',
                   }}
                 >
+                  <div className="service-icon">
+                    <i className={`fa ${service.icon}`}></i>
+                  </div>
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.description}</p>
                 </div>

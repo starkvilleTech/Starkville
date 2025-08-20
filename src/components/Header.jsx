@@ -9,6 +9,7 @@ const Header = () => {
       <div className="hero">
         <h1>Transformation <br />
         With Technology!</h1>
+        <p>Build Smarter, Grow Better!</p>
         <button className="cta-button">Get Started</button>
       </div>
     </header>

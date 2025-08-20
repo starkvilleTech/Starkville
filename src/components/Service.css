@@ -9,7 +9,7 @@
   justify-content: center;
   padding: 1rem;
   text-align: center;
-  color: white;
+  color: #CDCCC9;
   overflow: hidden;
   z-index: 1;
 }
@@ -28,7 +28,7 @@
 .services-title {
   text-align: center;
   font-weight: 350;
-  font-size: 1.rem;
+  font-size: 1.5rem;
   margin-bottom: 2rem;
   letter-spacing: 2px;
   font-family: "Cascadia Code", monospace;
@@ -133,6 +133,15 @@
   flex-grow: 1;
 }
 
+/* Icon Styling */
+.service-icon {
+  font-size: 27px;
+  color: #4BC5E0;
+  margin-bottom: 15px;
+  transition: all 0.3s ease;
+  align-self: center; /* Centers the icon horizontally */
+}
+
 /* Arrows */
 .slider-arrow {
   background-color: #4BC5E0;
@@ -208,7 +217,7 @@
   .services-title {
     font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    font-weight:350;
+    font-weight: 350;
   }
 
   .slider-container {
@@ -238,14 +247,15 @@
   .card-title {
     font-size: 1.3rem;
     margin-bottom: 0.8rem;
-    font-weight:350 ;
+    font-weight: 350;
   }
 
   .card-description {
     font-size: 0.95rem;
     overflow: visible;
     white-space: normal;
-    font-weight: 300;
+    
+    
   }
 
   .slider-arrow {

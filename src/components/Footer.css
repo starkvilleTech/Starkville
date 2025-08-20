@@ -40,17 +40,18 @@
   color: #4BC5E0;
 }
 
-.footer-links  .contact-button { 
+.footer-links .faq-button {
   background-color: #4BC5E0;
-  color: black; 
+  color: #18191C; 
   padding: 6px 12px;
   border-radius: 8px;
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
 
-.footer-links .contact-button:hover { 
-  background-color: #39b0cb;
+.footer-links .faq-button:hover { 
+  background-color:#18191C;
+  color: #4BC5E0;
 }
 
 .footer-bottom {
@@ -60,44 +61,61 @@
 }
 
 .footer-bottom p {
-  color: #fff; 
+  color: #CDCCC9; 
   font-size: 0.9rem;
   margin: 0;
   font-family: "Cascadia Code", monospace;
 }
 
+/* Social Media Icons Styles */
+.social-media {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+}
+
+.social-icon {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #4BC5E0; /* Change color on hover */
+}
+
 /* Mobile View Adjustments */
 @media (max-width: 768px) {
-
-  /* Footer Container */
   .footer-container {
     flex-direction: column;
     padding: 20px 15px;
   }
 
-  /* Footer Logo */
   .footer-logo img {
     height: 40px;
-    margin-bottom: 1rem; /* Adds some space between logo and links */
+    margin-bottom: 1rem;
   }
 
-  /* Footer Links Styling */
   .footer-links {
-    flex-direction: column; /* Stack the links vertically */
-    gap: 15px; /* Reduced gap between links */
-    text-align: center; /* Centers the links on mobile */
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
   }
 
   .footer-links li a {
-    font-size: 0.9rem; 
-    font-weight: 500;
-    display: block; /* Makes each link block level for better touch targets */
+    font-size: 0.9rem;
+    display: block;
     padding: 5px 0;
   }
 
-  .footer-links .contact-button {
-    padding: 8px 20px; /* Adjusted padding for the button */
-    font-size: 0.9rem; /* Slightly smaller font on mobile */
+  .footer-links .faq-button {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+  }
+
+  .social-media {
+    gap: 10px;
   }
 
   .footer-bottom {
@@ -105,36 +123,32 @@
   }
 
   .footer-bottom p {
-    font-size: 0.8rem; /* Adjusted font size for footer text */
+    font-size: 0.8rem;
   }
 }
 
-/* Mobile Devices - Extra Small (Phones) */
+/* Extra Small Mobile View */
 @media (max-width: 480px) {
-
-  /* Footer Container */
   .footer-container {
-    padding: 15px 10px; 
+    padding: 15px 10px;
   }
 
-  /* Footer Links */
   .footer-links {
-    gap: 10px; /* Less gap between the links on very small screens */
+    gap:0.5rem;
   }
 
-  /* Footer Logo */
   .footer-logo img {
-    height: 30px; /* Logo is smaller on very small screens */
+    height: 30px;
   }
 
   .footer-links li a {
-    font-size: 0.8rem; 
+    font-size: 0.8rem;
     font-weight: 600;
   }
 
-  .footer-links .contact-button {
-    padding: 6px 10px; /* Adjusted button size */
-    font-size: 0.85rem; /* Smaller font size */
+  .footer-links .faq-button {
+    padding: 6px 10px;
+    font-size: 0.85rem;
   }
 
   .footer-bottom {
@@ -142,6 +156,6 @@
   }
 
   .footer-bottom p {
-    font-size: 0.75rem; /* Font size adjusted for smaller screens */
+    font-size: 0.75rem;
   }
 }

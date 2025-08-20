@@ -299,7 +299,9 @@
     .nav-links a {
         position: relative;
         top: -35%;
-      font-size: 0.7rem; 
+      font-size: 1rem; 
+      color: #CDCCC9;
+      transition: color 0.3s ease;
     }
     .nav-links a:hover {
         border: 1px solid #4BC5E0; 
@@ -307,7 +309,7 @@
         padding: 5px 10px; 
         background-color: #4BC5E0; 
         transition: background-color 0.3s ease;
-      color: white; 
+      color:#18191C; 
     }
       .logo img {
     max-height: 180px;

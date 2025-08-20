@@ -7,6 +7,8 @@ import Logo from './components/Logo';
 import Service from './components/Service';  // Ensure this is correctly imported
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
+import 'font-awesome/css/font-awesome.min.css';
+
 
 function App() {
   return (

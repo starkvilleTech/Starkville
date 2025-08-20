@@ -1,6 +1,7 @@
+/* Header Styling */
 .header { 
     width: 110vw; 
-    height:200px; 
+    height: 200px; 
     background-image: url('../assets/Mask group.png'); 
     background-size: contain; 
     background-repeat: no-repeat; 
@@ -8,7 +9,6 @@
     display: flex; 
     background-color: #18191C; 
     flex-direction: column; 
-    background-repeat: no-repeat; 
     justify-content: center; 
     left: -36px; 
     position: relative; 
@@ -16,6 +16,7 @@
     font-family: "Cascadia Code"; 
 } 
 
+/* Hero Styling */
 .hero { 
     position: relative; 
     left: 18%; 
@@ -33,6 +34,7 @@
     font-weight: 200; 
 } 
 
+/* Overlay Styling */
 .overlay { 
     position: absolute; 
     top: 0; 
@@ -49,6 +51,7 @@
     padding: 1rem; 
 }
 
+/* CTA Button Styling */
 .cta-button { 
     position: relative; 
     top: 42%; 
@@ -67,16 +70,35 @@
 } 
 
 .cta-button:hover { 
-    color: #CDCCC9; 
+    color: #18191C; 
     background-color: #4BC5E0; 
 } 
 
 .hero h1 { 
     font-size: 1.43rem; 
+    color: #CDCCC9;
     margin-top: 0.5rem; 
     font-weight: 300; 
     position: relative; 
-    left: 20%;
+    left: 0; 
+    top: -10%; 
+}
+
+/* Typing Animation */
+@keyframes typing {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+/* Blinking Cursor */
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
 }
 
 /* Tablet and Desktop */
@@ -87,6 +109,9 @@
     
     .hero h1 { 
         font-size: 2.5rem; 
+        position: relative;
+        top: -10%;
+        left: 0;
     } 
     
     .hero p { 
@@ -97,7 +122,7 @@
         .header { 
             background-image: url('../assets/Mask group.png'); 
             background-size: cover; 
-            height: 300px; 
+            height: 70vh; 
             width: 100vw; 
             z-index: 1; 
         } 
@@ -106,39 +131,55 @@
             position: relative; 
             top: 45%; 
             left: -18%; 
-            width: 130px; 
+            width: 150px; 
             padding: 10px 30px; 
             background-color: transparent; 
-            color: #3a9da8; 
-            font-size: 0.66rem; 
+            color: #4BC5E0; 
+            font-size: 0.8rem; 
             border: 1px solid #4BC5E0; 
             border-radius: 5px; 
             cursor: pointer; 
             transition: background-color 0.3s ease; 
         } 
-        
+        .cta-button:hover { 
+            color: #18191C; 
+            background-color: #4BC5E0;
+            font-weight: 900;
+        }
+
         .hero h1 { 
-            font-size: 3.1rem; 
+            font-size: 3.6rem; 
             position: relative; 
             left: -18%; 
             top: -8px; 
-            font-weight: 300; 
+            font-weight: 400; 
             text-align: left; 
             font-family: 'Cascadia Code'; 
         } 
         
-        .hero p { 
+        .hero p {
             font-size: 1.4rem; 
-        } 
+            text-align: left;
+            position: relative;
+            left: -18%;
+            top: 15px;
+            color: #4BC5E0;
+            white-space: nowrap; 
+            overflow: hidden; 
+            width: 0;
+            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; 
+        }
+
     } 
 }
 
-/* 📱 Mobile Styles */
+/* Mobile Styling */
 @media (max-width: 768px) {
     .header {
         width: 100vw;
-        height: auto;
-        background-size: cover;
+        height: 50vh; 
+        background-image: url('../assets/Mask groupo.png'); 
+        background-size: contain;
         background-position: center;
         left: 0;
         padding: 1rem;
@@ -156,10 +197,16 @@
         padding: 1rem;
     }
 
+  
     .hero h1 {
-        position: static;
-        font-size: 1.3rem;
+        position:relative;
+        font-size: 10vh; 
         margin-bottom: 0.5rem;
+        line-height: 1.1; 
+        font-weight: 500; 
+        color: #CDCCC9; 
+        left: 0; 
+        top: -10%; 
     }
 
     .cta-button {
@@ -172,21 +219,56 @@
         left: 0;
         top: 0;
     }
+
+    /* Mobile */
+    .hero p {
+        font-size: 1rem;
+        text-align: left;
+        position: relative;
+        text-align: center;
+        left: 0;
+        top:5%;
+        color: #4BC5E0;
+        white-space: nowrap; 
+        overflow: hidden; 
+        width: 100%; 
+        animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; 
+    }
 }
 
-/* Extra Small Devices */
+
 @media (max-width: 480px) {
+        .header {
+        width: 100vw;
+        height: 50vh; 
+        background-image: url('../assets/Mask groupo.png'); 
+        background-size: cover;
+        background-position: center;
+        left: 0;
+        padding: 1rem;
+    }
+
     .hero {
         font-size: 0.75rem;
         padding: 0.5rem;
     }
 
     .hero h1 {
-        font-size: 1.1rem;
+        font-size: 1.8rem;
+        font-weight: 300;
+        top: -30%;
+        text-align: center;
     }
 
     .cta-button {
         width: 100%;
-        font-size: 0.8rem;
+        font-size: 0.85rem;
+    }
+
+    .hero p {
+        display: block; 
+        position: relative;
+        text-align: center;
+        top: -20%;
     }
 }
