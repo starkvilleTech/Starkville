@@ -127,9 +127,10 @@
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.8);
+  color:#CDCCC9;
   font-family: "Cascadia Code", monospace;
   margin: 0;
+  font-weight: 300;
   flex-grow: 1;
 }
 
