@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-scroll'; 
+import { Link } from 'react-scroll';
 import './Navbar.css';
 import logo from '../assets/SVT PNG-11 1.png';
 
@@ -17,47 +17,31 @@ const Navbar = () => {
           <img src={logo} alt="Logo" />
         </a>
       </div>
-      <div className={`menu-icon ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-        <span className="hamburger"></span>
+
+      {/* Hamburger Menu Icon */}
+      <div className="menu-icon" onClick={toggleMenu}>
+        <span className={`hamburger ${menuOpen ? 'active' : ''}`}></span>
       </div>
+
+      {/* Navigation Links */}
       <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
         <li>
-          <Link
-            to="home" // Set the target ID of the section to scroll to
-            smooth={true}
-            duration={500} // Scroll duration
-            offset={-70} 
-          >
+          <Link to="home" smooth={true} duration={500} offset={-70} onClick={toggleMenu}>
             Home
           </Link>
         </li>
         <li>
-          <Link
-            to="services"
-            smooth={true}
-            duration={500}
-            offset={-70}
-          >
+          <Link to="services" smooth={true} duration={500} offset={-70} onClick={toggleMenu}>
             Services
           </Link>
         </li>
         <li>
-          <Link
-            to="about"
-            smooth={true}
-            duration={500}
-            offset={-70}
-          >
+          <Link to="about" smooth={true} duration={500} offset={-70} onClick={toggleMenu}>
             About
           </Link>
         </li>
         <li>
-          <Link
-            to="contact"
-            smooth={true}
-            duration={500}
-            offset={-70}
-          >
+          <Link to="contact" smooth={true} duration={500} offset={-70} onClick={toggleMenu}>
             Contact Us
           </Link>
         </li>
