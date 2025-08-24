@@ -32,6 +32,8 @@
     text-align: center; 
     color: #CDCCC9; 
     font-weight: 200; 
+    max-width: 100%; /* Ensure it doesn't exceed the header width */
+    padding: 0 15px; /* Adds some padding for better readability */
 } 
 
 /* Overlay Styling */
@@ -113,9 +115,12 @@
         top: -10%;
         left: 0;
     } 
-    
+
     .hero p { 
         font-size: 1.2rem; 
+        max-width: 800px; /* Limit the paragraph width */
+        margin: 0 auto; /* Center align */
+        word-wrap: break-word; /* Ensure long words break properly */
     } 
 
     @media (min-width: 1024px) { 
@@ -164,12 +169,12 @@
             left: -18%;
             top: 15px;
             color: #4BC5E0;
-            white-space: nowrap; 
-            overflow: hidden; 
-            width: 0;
-            animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; 
+            white-space: normal; /* Allow text wrapping */
+            word-wrap: break-word; /* Handle long words */
+            width: 100%; 
+            white-space: normal;
+            overflow-wrap: break-word; /* Handle breaking long words */
         }
-
     } 
 }
 
@@ -197,7 +202,6 @@
         padding: 1rem;
     }
 
-  
     .hero h1 {
         position:relative;
         font-size: 10vh; 
@@ -223,14 +227,12 @@
     /* Mobile */
     .hero p {
         font-size: 1rem;
-        text-align: left;
-        position: relative;
         text-align: center;
-        left: 0;
-        top:5%;
+        position: relative;
+        top: 5%;
         color: #4BC5E0;
-        white-space: nowrap; 
-        overflow: hidden; 
+        white-space: normal; 
+        word-wrap: break-word; /* Allow wrapping of long words */
         width: 100%; 
         animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; 
     }
@@ -238,7 +240,7 @@
 
 
 @media (max-width: 480px) {
-        .header {
+    .header {
         width: 100vw;
         height: 50vh; 
         background-image: url('../assets/Mask groupo.png'); 
@@ -270,5 +272,8 @@
         position: relative;
         text-align: center;
         top: -20%;
+        width: 100%;
+        word-wrap: break-word;
+        white-space: normal;
     }
-}
+} 

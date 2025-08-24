@@ -12,17 +12,19 @@ import ServiceDetail from './components/ServiceDetail';
 import 'font-awesome/css/font-awesome.min.css';
 
 const services = [
-  { id: 1, title: 'Digital Transformation Solutions' },
-  { id: 2, title: 'AI & Data Analytics' },
-  { id: 3, title: 'IT Consulting & Strategy' },
-  { id: 4, title: 'Business Continuity & Disaster Recovery' },
-  { id: 5, title: 'IT Projects & Program Management' },
+  { id: 1, title: 'IT Consulting', p: 'Practical, vendor‑neutral advice that turns  technology into measurable outcomes.' },
+  { id: 2, title: 'Digital & Business Transformation', p: 'Human‑centered change that delivers measurable, enterprise‑wide impact.' },
+  { id: 3, title: 'Cloud Management', p: 'Architecture, migration, and day-2 operations for major cloud platforms.' },
+  { id: 4, title: 'IT Operations', p: 'ITIL‑aligned processes, modern tooling, and a customer‑first service desk.' },
+  { id: 5, title: 'Project & Program Management', p: 'Governance, methods, and leadership to deliver complex initiatives on time and on budget' },
+  { id: 6, title: 'AI & Process Automation', p: 'From quick‑win automations to enterprise AI platforms with governance.' },
+  { id: 7, title: 'Business Continuity', p: 'Design, testing, and execution to keep critical services running through disruption.' }
 ];
 
 function HomePage() {
   return (
     <>
-      <Header />
+      <Header /> 
       <CountUpComponent />
       <About />
       <Logo />
@@ -33,16 +35,17 @@ function HomePage() {
   );
 }
 
-// Wrapper for service detail page to pass pageTitle to Header
+
 function ServiceDetailPage() {
   const { serviceId } = useParams();
   const service = services.find(s => s.id === parseInt(serviceId));
   const pageTitle = service ? service.title : 'Service Detail';
+  const pageDescription = service ? service.p : ''; // Get description here
 
   return (
     <>
-      <Header pageTitle={pageTitle} />
-      <ServiceDetail />
+      <Header pageTitle={pageTitle} pageDescription={pageDescription} /> 
+      <ServiceDetail /> 
       <Footer />
     </>
   );
