@@ -40,7 +40,7 @@ function ServiceDetailPage() {
   const { serviceId } = useParams();
   const service = services.find(s => s.id === parseInt(serviceId));
   const pageTitle = service ? service.title : 'Service Detail';
-  const pageDescription = service ? service.p : ''; // Get description here
+  const pageDescription = service ? service.p : ''; 
 
   return (
     <>

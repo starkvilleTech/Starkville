@@ -97,6 +97,7 @@ body {
     text-decoration: none;
     font-size: 1.2rem;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .nav-links a:hover {

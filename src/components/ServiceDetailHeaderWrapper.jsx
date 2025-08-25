@@ -21,8 +21,8 @@ function ServiceDetailHeaderWrapper() {
   const pageTitle = service ? service.title : 'Service Detail';
   const pageDescription = service ? service.p : '';
 
-  console.log("pageTitle: ", pageTitle);  // Add this log
-  console.log("pageDescription: ", pageDescription);  // Add this log
+  console.log("pageTitle: ", pageTitle);  
+  console.log("pageDescription: ", pageDescription);  
 
   return (
     <>
