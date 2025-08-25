@@ -6,11 +6,10 @@ import 'font-awesome/css/font-awesome.min.css';
 const services = [
   {
     id: 1,
-    title: 'IT Consulting',
     icon: 'fa-cogs',
     subheading: 'Practical, vendor‑neutral advice that turns technology into measurable outcomes.',
     overview:
-      'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies...',
+      'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies.',
     outcomes: [
       'A fit-for-purpose technology roadmap aligned to business objectives and budgets',
       'Rationalized application and vendor portfolios with cost/benefit analysis',
@@ -19,6 +18,85 @@ const services = [
     ],
     cta: 'Book a strategy session →',
   },
+  {
+    id: 2,
+    icon: 'fa-robot',
+    subheading: 'Human‑centered change that delivers measurable, enterprise‑wide impact.',
+    overview:
+      'Transformation succeeds when strategy, process, people, and technology move together. We help you redesign services.',
+    outcomes: [
+      'Transformation roadmap and benefits case',
+      'Target operating model (TOM) and change plan',
+      'Experience blueprints and process maps',
+      'KPI dashboard and runbook',
+    ],
+    cta: 'Start your transformation assessment →',
+  },
+  {
+    id: 3,
+    icon: 'fa-laptop',
+    subheading: 'Architecture, migration, and day-2 operations for major cloud platforms.',
+    overview:
+      'We design, deploy, and operate cloud environments tailored to your security, compliance, performance, and budget.',
+    outcomes: [
+      'Architecture and security design docs',
+      'Migration runbooks and cutover plan',
+      'Ops handbook, SLAs/SLOs, and cost dashboard',
+    ],
+    cta: 'Request a cloud readiness review →',
+  },
+  {
+    id: 4,
+    icon: 'fa-shield-alt',
+    subheading: 'ITIL‑aligned processes, modern tooling, and a customer‑first service desk.',
+    overview:
+      'We build and run scalable IT operations that keep your organization productive and protected.',
+    outcomes: [
+      'ITSM playbooks and runbooks',
+      'Service catalog and SLA/XLA pack',
+      'Operations dashboard and quarterly review cadence',
+    ],
+    cta: 'Talk to us about your IT operations goals →',
+  },
+  {
+    id: 5,
+    icon: 'fa-project-diagram',
+    subheading: 'Governance, methods, and leadership to deliver complex initiatives on time and on budget.',
+    overview:
+      'We provide hands‑on delivery leadership across projects and portfolios.',
+    outcomes: [
+      'Charter, plan, budget, and risk register',
+      'Status dashboards and stakeholder comms pack',
+      'Benefits register and lessons learned',
+    ],
+    cta: 'Get delivery leadership for your next initiative →',
+  },
+  {
+    id: 6,
+    icon: 'fa-brain',
+    subheading: 'From quick‑win automations to enterprise AI platforms with governance.',
+    overview:
+      'We help organizations automate manual work, improve decisions, and unlock new value with AI—safely and pragmatically.',
+    outcomes: [
+      'Use‑case portfolio and value model',
+      'Working prototypes/pilots with measured KPIs',
+      'Production runbooks, dashboards, and governance artifacts',
+    ],
+    cta: 'Explore your first three automation candidates →',
+  },
+  {
+    id: 7,
+    icon: 'fa-sync-alt',
+    subheading: 'Design, testing, and execution to keep critical services running through disruption.',
+    overview:
+      'From cyber incidents to severe weather, disruptions are inevitable. We make sure you’re ready.',
+    outcomes: [
+      'BIA report and prioritized recovery portfolio',
+      'Continuity plans and DR runbooks',
+      'Exercise playbooks and after‑action reports',
+    ],
+    cta: 'Schedule a continuity and DR readiness review →',
+  }
 ];
 
 const ServiceDetail = () => {
@@ -32,9 +110,7 @@ const ServiceDetail = () => {
 
   return (
     <div className="service-detail-container">
-      <button className="back-button" onClick={() => navigate(-1)}>
-        &#8592; Back
-      </button>
+      <button className="back-button" onClick={() => navigate(-1)}>&#8592; Back</button>
 
       <div className="service-header">
         <i className={`fa ${service.icon} service-icon`}></i>
