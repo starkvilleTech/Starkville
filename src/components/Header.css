@@ -1,4 +1,4 @@
-/* Header Styling */
+
 .header { 
     width: 110vw; 
     height: 200px; 
@@ -32,8 +32,8 @@
     text-align: center; 
     color: #CDCCC9; 
     font-weight: 200; 
-    max-width: 100%; /* Ensure it doesn't exceed the header width */
-    padding: 0 15px; /* Adds some padding for better readability */
+    max-width: 100%; 
+    padding: 0 15px; 
 } 
 
 /* Overlay Styling */
@@ -118,9 +118,9 @@
 
     .hero p { 
         font-size: 1.2rem; 
-        max-width: 800px; /* Limit the paragraph width */
-        margin: 0 auto; /* Center align */
-        word-wrap: break-word; /* Ensure long words break properly */
+        max-width: 800px; 
+        margin: 0 auto; 
+        word-wrap: break-word; 
     } 
 
     @media (min-width: 1024px) { 
@@ -169,11 +169,11 @@
             left: -18%;
             top: 15px;
             color: #4BC5E0;
-            white-space: normal; /* Allow text wrapping */
-            word-wrap: break-word; /* Handle long words */
+            white-space: normal; 
+            word-wrap: break-word; 
             width: 100%; 
             white-space: normal;
-            overflow-wrap: break-word; /* Handle breaking long words */
+            overflow-wrap: break-word; 
         }
     } 
 }

@@ -138,3 +138,59 @@
   from { opacity: 0; transform: translateY(15px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+@media (max-width:480){
+  .service-icon {
+  font-size: 50px;
+  color: #4BC5E0;
+}
+
+.service-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.service-subheading {
+  font-size: 1.3rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+
+}
+
+.service-overview {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  
+}
+
+.service-outcomes {
+  list-style-type: none;
+  padding-left: 0;
+  margin-bottom: 30px;
+}
+
+.service-outcomes li {
+  margin-bottom: 10px;
+  font-size: 1rem;
+   color: #CDCCC9;
+}
+
+.cta-button {
+  background-color: #202125;
+  color: #4BC5E0;
+  padding: 10px 22px;
+  border: 1px solid #4BC5E0;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: Cascadia Code;
+  margin-bottom: 20px;
+  border-right: none;
+  border-top: none;
+}
+
+.cta-button:hover {
+  background-color: #4BC5E0;
+  color: #202125;
+}
+}
