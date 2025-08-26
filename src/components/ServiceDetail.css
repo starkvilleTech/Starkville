@@ -24,7 +24,7 @@
 
 .back-button:hover {
   background-color:transparent;
-  color: #202125;
+  color:#CDCCC9;
   border: 2.5px solid #4BC5E0;
 }
 
@@ -36,8 +36,11 @@
 }
 
 .service-icon {
-  font-size: 60px;
+  font-size: 40px;
   color: #4BC5E0;
+  position: relative;
+  
+
 }
 
 .service-title {
@@ -56,6 +59,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 20px;
+  text-align: justify;
   
 }
 
@@ -69,6 +73,7 @@
   margin-bottom: 10px;
   font-size: 1.2rem;
    color: #CDCCC9;
+   text-align: justify;
 }
 
 .cta-button {
@@ -139,7 +144,7 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width:480){
+@media (max-width:480px){
   .service-icon {
   font-size: 50px;
   color: #4BC5E0;
@@ -147,19 +152,20 @@
 
 .service-title {
   font-size: 28px;
-  font-weight: bold;
 }
 
 .service-subheading {
   font-size: 1.3rem;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-weight: 400;
+  margin-bottom: 27px;
 
 }
 
 .service-overview {
+  text-align: justify;
   font-size: 1rem;
-  line-height: 1.6;
+  line-height: 1.4;
+  font-weight: 300;
   margin-bottom: 20px;
   
 }
@@ -171,9 +177,11 @@
 }
 
 .service-outcomes li {
-  margin-bottom: 10px;
-  font-size: 1rem;
+  margin-bottom: 13px;
+  font-size: 0.8rem;
    color: #CDCCC9;
+   font-weight: 300;
+   text-align: justify;
 }
 
 .cta-button {
@@ -193,4 +201,5 @@
   background-color: #4BC5E0;
   color: #202125;
 }
+
 }
