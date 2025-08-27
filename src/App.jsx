@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
@@ -35,12 +35,15 @@ function HomePage() {
   );
 }
 
-
 function ServiceDetailPage() {
   const { serviceId } = useParams();
   const service = services.find(s => s.id === parseInt(serviceId));
   const pageTitle = service ? service.title : 'Service Detail';
   const pageDescription = service ? service.p : ''; 
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Fix: Scroll to top on load
+  }, []);
 
   return (
     <>
