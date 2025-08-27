@@ -6,7 +6,7 @@ import backgroundImage from '../assets/Mask groupo.png';
 const Service = ({ id }) => {
   const services = [
     { 
-      id: 1, // Add unique ids for each service
+      id: 1, 
       title: 'IT Consulting', 
       description: 'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies. From current-state assessments to multi-year roadmaps...',
       icon: 'fa-briefcase', 

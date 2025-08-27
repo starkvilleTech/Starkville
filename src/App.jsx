@@ -42,7 +42,7 @@ function ServiceDetailPage() {
   const pageDescription = service ? service.p : ''; 
 
   useEffect(() => {
-    window.scrollTo(0, 0); // Fix: Scroll to top on load
+    window.scrollTo(0, 0); 
   }, []);
 
   return (

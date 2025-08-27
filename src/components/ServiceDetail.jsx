@@ -110,12 +110,12 @@ const ServiceDetail = () => {
 
   return (
     <div className="service-detail-container">
-      <button className="back-button" onClick={() => navigate(-1)}>&#8592; Back</button>
-
-      <div className="service-header">
+      <div className="top-bar">
+        <button className="back-button" onClick={() => navigate(-1)}>&#8592; Back</button>
         <i className={`fa ${service.icon} service-icon`}></i>
-        <h1 className="service-title">{service.title}</h1>
       </div>
+
+      <h1 className="service-title">{service.title}</h1>
 
       <p className="service-subheading">{service.subheading}</p>
       <div className="service-overview">{service.overview}</div>
