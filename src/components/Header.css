@@ -178,7 +178,7 @@
     } 
 }
 
-/* Mobile Styling */
+
 @media (max-width: 768px) {
     .header {
         width: 100vw;
@@ -232,9 +232,9 @@
         top: 5%;
         color: #4BC5E0;
         white-space: normal; 
-        word-wrap: break-word; /* Allow wrapping of long words */
+        word-wrap: break-word;
         width: 100%; 
-        animation: typing 3s steps(30) 1s forwards, blink 0.75s step-end infinite; 
+        
     }
 }
 
