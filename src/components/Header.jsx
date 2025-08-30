@@ -2,27 +2,37 @@ import React from 'react';
 import Navbar from './Navbar';
 import './Header.css';
 
-const Header = ({ pageTitle, pageDescription }) => {
+const Header = ({ pageTitle, pageDescription, boxedDescription }) => {
+  const scrollToServices = () => {
+    const servicesSection = document.getElementById('services');
+    if (servicesSection) {
+      servicesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <header className="header">
       <Navbar />
-
       <div className="hero">
         {pageTitle ? (
           <>
-            
             <h1>{pageTitle}</h1>
-            {pageDescription && <p>{pageDescription}</p>} 
+            {pageDescription && (
+              <p className={boxedDescription ? 'header-description-boxed' : 'header-description'}>
+                {pageDescription}
+              </p>
+            )}
           </>
         ) : (
           <>
-            
             <h1>
               Transformation <br />
               With Technology!
             </h1>
-            <p>Build Smarter, Grow Better!</p>
-            <button className="ctas-button">Get Started</button>
+            <p className="header-description">Build Smarter, Grow Better!</p>
+            <button className="ctas-button" onClick={scrollToServices}>
+              Get Started
+            </button>
           </>
         )}
       </div>
