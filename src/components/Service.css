@@ -73,6 +73,11 @@
   flex-direction: column;
   justify-content: space-between;
   box-sizing: border-box;
+
+  /* Slide-down animation */
+  animation: slideDownFade 0.8s ease forwards;
+  animation-delay: var(--delay, 0s);
+  opacity: 0;
 }
 
 .services-card:hover {
@@ -255,8 +260,6 @@
     font-size: 0.95rem;
     overflow: visible;
     white-space: normal;
-    
-    
   }
 
   .slider-arrow {
@@ -313,3 +316,23 @@
   color: #2D9C9C;
   text-decoration: underline;
 }
+
+
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-down {
+  animation-name: slideDown;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
+}
+
