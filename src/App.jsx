@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
 import 'font-awesome/css/font-awesome.min.css';
 
+
 const services = [
   { id: 1, title: 'IT Consulting', p: 'Practical, vendor‑neutral advice that turns  technology into measurable outcomes.' },
   { id: 2, title: 'Digital & Business Transformation', p: 'Human‑centered change that delivers measurable, enterprise‑wide impact.' },

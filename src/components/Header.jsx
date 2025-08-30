@@ -10,19 +10,19 @@ const Header = ({ pageTitle, pageDescription }) => {
       <div className="hero">
         {pageTitle ? (
           <>
-            {/* Render title and description dynamically */}
+            
             <h1>{pageTitle}</h1>
-            {pageDescription && <p>{pageDescription}</p>} {/* Conditionally render <p> */}
+            {pageDescription && <p>{pageDescription}</p>} 
           </>
         ) : (
           <>
-            {/* Default content for Home page */}
+            
             <h1>
               Transformation <br />
               With Technology!
             </h1>
             <p>Build Smarter, Grow Better!</p>
-            <button className="cta-button">Get Started</button>
+            <button className="ctas-button">Get Started</button>
           </>
         )}
       </div>
