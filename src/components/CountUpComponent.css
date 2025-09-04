@@ -2,7 +2,7 @@
   color: #18191C;
   display: flex;
   position: relative;
-  z-index: 1; /* Add this line to ensure it stays below navbar */
+  z-index: 1; 
   width: 100vw;
   flex-direction: row; 
   justify-content: center;
@@ -10,6 +10,8 @@
   background-color: #CDCCC9;
   padding: 0.8rem;
   font-family: "Cascadia Code";
+  box-sizing: border-box;
+  left: 0;
 }
 
 .countup-box {
@@ -22,12 +24,14 @@
 .countup-box p {
   font-size: 0.7rem;
   color: #18191C;
+  margin: 0.5rem 0 0 0; 
 }
 
 .countup-box .react-countup {
   font-size: 2.5rem;
   font-weight: bold;
   color: #18191C;
+  
 }
 
 .countup-box .react-countup span {
@@ -48,8 +52,7 @@
     flex-direction: row; 
     display: flex;
     position: relative;
-    z-index: 1; /* Also add it here for desktop */
-    left: -3%;
+    z-index: 1; 
     width: 100vw;
     justify-content: center;
     align-items: center;
@@ -65,10 +68,12 @@
     display: inline-block; 
     margin: 0 1rem; 
   }
+  
   .countup-box p {
     font-size: 0.7rem;
     font-weight: bold; 
   }
+  
   .countup-box {
     font-size: 1.3rem; 
     font-weight: bolder;

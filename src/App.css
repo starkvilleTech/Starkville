@@ -1,4 +1,14 @@
 html {
   scroll-behavior: smooth; 
 }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  font-family: "Cascadia Code", sans-serif;
+  padding-top: 60px;
+   background-color:#18191C;
+}

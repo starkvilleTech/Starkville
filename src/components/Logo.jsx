@@ -21,6 +21,16 @@ const LogoRow = () => {
         <img src={guiltbin} alt="guiltbin" className="logon" />
         <img src={marvaty} alt="marvaty" className="logon" />
         <img src={orblo} alt="orblo" className="logon" />
+         <img src={comresk} alt="comresk" className="logon" />
+        <img src={spielonic} alt="spielonic" className="logon" />
+        <img src={guiltbin} alt="guiltbin" className="logon" />
+        <img src={marvaty} alt="marvaty" className="logon" />
+        <img src={orblo} alt="orblo" className="logon" />
+        <img src={comresk} alt="comresk" className="logon" />
+        <img src={spielonic} alt="spielonic" className="logon" />
+        <img src={guiltbin} alt="guiltbin" className="logon" />
+        <img src={marvaty} alt="marvaty" className="logon" />
+        <img src={orblo} alt="orblo" className="logon" />
       </div>
     </div>
   );

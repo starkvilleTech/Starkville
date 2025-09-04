@@ -5,13 +5,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1rem;
+  padding: 5rem 1rem 1rem;
   text-align: center;
   color: #CDCCC9; 
   overflow: hidden; 
   background-size: cover; 
   background-position: center; 
-  background-attachment: fixed; 
+  background-attachment: fixed;
+  z-index: 1;
+  margin-top: 0;
+  box-sizing: border-box; 
+  max-width: 100vw; 
+  left: 0;
+  right: 0;
 }
 
 .about-content {
@@ -21,6 +27,8 @@
   max-width: 1200px;
   padding: 1rem;
   font-family: "Cascadia Code", monospace;
+  box-sizing: border-box; 
+  overflow: hidden;
 }
 
 .about-title {
@@ -30,6 +38,8 @@
   font-weight: 350;
   color: #4BC5E0;
   font-family: "Cascadia Code", monospace;
+  max-width: 100%; 
+  overflow-wrap: break-word; 
 }
 
 /* Cards container */
@@ -37,8 +47,10 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 2rem;
+  width: 100%;
+  box-sizing: border-box; 
 }
 
 /* Individual cards */
@@ -53,9 +65,14 @@
   transition: all 0.3s ease;
   border: 1px solid transparent;
   text-align: left;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 100%; 
 }
-
-
+.about-card:hover{
+  border: 1px solid #4BC5E0;
+}
 .card-toggle {
   width: 100%;
   background-color: #202125;
@@ -67,6 +84,9 @@
   padding: 1rem 1.5rem;
   border: 1px solid #202125;
   cursor: pointer;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box; 
 }
 
 .card-title {
@@ -75,7 +95,9 @@
   color: #CDCCC9;
   position: relative;
   padding-bottom: 0.5rem;
-  display: block; 
+  display: block;
+  max-width: 100%; 
+  overflow-wrap: break-word; 
 }
 
 .card-title::after {
@@ -89,29 +111,35 @@
   background-color: #4BC5E0;
 }
 
-
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
   color:#CDCCC9;
   margin-top: 1rem;
+  max-width: 100%; 
+  overflow-wrap: break-word; 
 }
-
 
 .card-description-wrapper {
   max-height: none;
   overflow: visible;
   transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box; 
+  width: 100%; 
 }
-
-
 @media (max-width: 768px) {
   .about-container {
-    padding: 1rem;
+    padding: 5rem 1rem 1rem;
+    width: 100vw; 
+    left: 0;
+    right: 0;
   }
 
   .about-content {
     padding: 1.5rem;
+    width: 100%;
   }
 
   .about-title {
@@ -122,6 +150,7 @@
   .about-cards {
     flex-direction: column;
     gap: 1.5rem;
+    width: 100%;
   }
 
   .about-card {
@@ -129,6 +158,8 @@
     background-color: transparent;
     border-radius: 8px;
     overflow: hidden;
+    width: 100%;
+    max-width: 100%; 
   }
 
   .about-card:hover {
@@ -156,6 +187,7 @@
     transition: max-height 0.4s ease, padding 0.4s ease;
     padding: 0 1.5rem;
     background-color: rgba(255, 255, 255, 0.05);
+    width: 100%;
   }
 
   .card-description-wrapper.active {
@@ -180,8 +212,10 @@
 /* Desktop styles */
 @media (min-width: 1024px) {
   .about-container {
-    padding-top: 60px;
-    padding: 4rem 2rem;
+    padding: 5rem 2rem 2rem;
+    width: 100vw; 
+    left: 0;
+    right: 0;
   }
 
   .about-title {
@@ -189,7 +223,7 @@
     margin-bottom: 4rem;
     color: #4BC5E0;
     font-family: "Cascadia Code", monospace;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
   }
 
   .card-title {
@@ -217,24 +251,28 @@
     padding: 0.5rem;
     border: 1px solid #4BC5E0;
     cursor: pointer;
+    max-width: 200px; 
   }
+  
   .card-toggle:hover {
     background-color: #4BC5E0;
     color: #202125;
     transition: all 0.4s ease;
     transform: scale(1.05);
-
   }
 }
 
-
 @media (max-width: 480px) {
   .about-container {
-    padding: 1rem 0.5rem;
+    padding: 5rem 0.5rem 1rem;
+    width: 100vw; 
+    left: 0;
+    right: 0;
   }
 
   .about-content {
     padding: 1rem;
+    width: 100%;
   }
 
   .about-title {
@@ -257,10 +295,31 @@
   .card-toggle {
     font-size: 1rem;
     padding: 0.75rem 1rem;
+    width: 100%;
+    max-width: 100%; 
   }
 
   .card-description-wrapper.active {
     max-height: 600px;
     padding: 1rem;
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .about-container,
+  .about-content,
+  .about-cards,
+  .about-card,
+  .card-description-wrapper {
+    max-width: 100vw !important;
+    overflow-x: hidden !important;
+  }
+  
+  
+  body {
+    overflow-x: hidden;
+    width: 100%;
   }
 }

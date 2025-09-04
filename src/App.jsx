@@ -24,14 +24,14 @@ const services = [
 function HomePage() {
   return (
     <>
-      {/* Header uses default background */}
+      
       <Header />
       <CountUpComponent />
       <About />
       <Logo />
-      <Service id="services" />
+      {/*<Service id="services" />
       <Testimonials />
-      <Footer />
+      <Footer />*/}
     </>
   );
 }
@@ -46,18 +46,18 @@ function ServiceDetailPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  {/*return (
     <>
-      {/* Always uses default header background */}
+      
       <Header
         pageTitle={pageTitle}
         pageDescription={pageDescription}
-        boxedDescription={true} // keeps the description in a box
+        boxedDescription={true} 
       />
       <ServiceDetail />
       <Footer />
     </>
-  );
+  );*/}
 }
 
 function App() {

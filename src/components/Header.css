@@ -158,7 +158,9 @@
             background-image: url('../assets/Mask group.png'); 
             background-size: cover; 
             height: 70vh; 
-            width: 100vw; 
+            position: relative;
+            left:-0.9%;
+            width:100%; 
             z-index: 1; 
         } 
 
