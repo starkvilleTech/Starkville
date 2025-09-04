@@ -55,7 +55,7 @@
   text-align: left;
 }
 
-/* Accordion Toggle Button (Mobile Only) */
+
 .card-toggle {
   width: 100%;
   background-color: #202125;
@@ -69,7 +69,6 @@
   cursor: pointer;
 }
 
-/* Card title styles */
 .card-title {
   font-size: 1.5rem;
   margin-bottom: 1rem;
@@ -90,7 +89,7 @@
   background-color: #4BC5E0;
 }
 
-/* Card description */
+
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
@@ -98,14 +97,14 @@
   margin-top: 1rem;
 }
 
-/* Accordion Description Wrapper */
+
 .card-description-wrapper {
   max-height: none;
   overflow: visible;
   transition: all 0.3s ease;
 }
 
-/* Mobile styles (Accordion active here) */
+
 @media (max-width: 768px) {
   .about-container {
     padding: 1rem;

@@ -31,7 +31,7 @@ const Header = ({ pageTitle, pageDescription, boxedDescription }) => {
             </h1>
             <p className="header-description">Build Smarter, Grow Better!</p>
             <button className="ctas-button" onClick={scrollToServices}>
-              Get Started
+              Explore Our Services
             </button>
           </>
         )}

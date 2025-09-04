@@ -164,7 +164,7 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  z-index: 3;
+  z-index: 1;
   box-shadow: 0 4px 15px rgba(75, 197, 224, 0.3);
 }
 

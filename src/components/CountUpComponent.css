@@ -1,78 +1,77 @@
-/* Mobile-first */
 .countup-container {
+  color: #18191C;
+  display: flex;
+  position: relative;
+  z-index: 1; /* Add this line to ensure it stays below navbar */
+  width: 100vw;
+  flex-direction: row; 
+  justify-content: center;
+  align-items: center;
+  background-color: #CDCCC9;
+  padding: 0.8rem;
+  font-family: "Cascadia Code";
+}
+
+.countup-box {
+  text-align: center;
+  margin: 0.4rem 0; 
+  font-weight: bold;
+  font-size: 1.2rem; 
+}
+
+.countup-box p {
+  font-size: 0.7rem;
+  color: #18191C;
+}
+
+.countup-box .react-countup {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #18191C;
+}
+
+.countup-box .react-countup span {
+  color: #4BC5E0;
+}
+
+/* Separator line styling */
+.separator {
+  font-size: 2rem;
+  color: #18191C;
+  margin: 0.7rem 1rem; 
+  font-weight: light;
+}
+
+/* Desktop and larger screen styles */
+@media (min-width: 1024px) {
+  .countup-container {
+    flex-direction: row; 
     display: flex;
     position: relative;
+    z-index: 1; /* Also add it here for desktop */
+    left: -3%;
     width: 100vw;
-    flex-direction: row; 
     justify-content: center;
     align-items: center;
     background-color: #CDCCC9;
-    padding: 0.8rem;
-    font-family: "Cascadia Code";
+    padding: 1rem;
   }
-  
+
   .countup-box {
-    text-align: center;
-    margin: 0.4rem 0; 
-    font-weight: bold;
-    font-size: 1.2rem; 
+    margin: 0 1rem;
   }
-  
+
+  .separator {
+    display: inline-block; 
+    margin: 0 1rem; 
+  }
   .countup-box p {
     font-size: 0.7rem;
+    font-weight: bold; 
+  }
+  .countup-box {
+    font-size: 1.3rem; 
+    font-weight: bolder;
     color: #18191C;
   }
-  
-  .countup-box .react-countup {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #18191C;
-  }
-  
-  .countup-box .react-countup span {
-    color: #4BC5E0;
-  }
-  
-  /* Separator line styling */
-  .separator {
-    font-size: 2rem;
-    color: #18191C;
-    margin: 0.7rem 1rem; 
-    font-weight: light;
- 
-  }
-  
-  /* Desktop and larger screen styles */
-  @media (min-width: 1024px) {
-    .countup-container {
-      flex-direction: row; 
-        display: flex;
-        position: relative;
-        left: -3%;
-        width: 100vw;
-        justify-content: center;
-        align-items: center;
-        background-color: #CDCCC9;
-        padding: 1rem;
-      }
-    
-  
-    .countup-box {
-      margin: 0 1rem;
-    }
-  
-    .separator {
-      display: inline-block; 
-      margin: 0 1rem; 
-    }
-    .countup-box p {
-      font-size: 0.7rem;
-      font-weight: bold; 
-    }
-    .countup-box {
-      font-size: 1.3rem; 
-      font-weight: bolder;
-      color: #18191C;
-    }
-  }
-  
+}
