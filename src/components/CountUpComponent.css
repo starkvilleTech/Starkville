@@ -1,82 +1,71 @@
+
 .countup-container {
-  color: #18191C;
   display: flex;
-  position: relative;
-  z-index: 1; 
-  width: 100vw;
-  flex-direction: row; 
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1rem;
   background-color: #CDCCC9;
-  padding: 0.8rem;
-  font-family: "Cascadia Code";
+  font-family: "Cascadia Code", monospace;
   box-sizing: border-box;
-  left: 0;
+  position: relative;
+  z-index: auto;
+  color: #18191C;
+  margin-top: 60px;
 }
+
 
 .countup-box {
   text-align: center;
-  margin: 0.4rem 0; 
+  margin: 0.5rem 1rem;
+  font-size: 1rem;
   font-weight: bold;
-  font-size: 1.2rem; 
 }
 
-.countup-box p {
-  font-size: 0.7rem;
-  color: #18191C;
-  margin: 0.5rem 0 0 0; 
-}
 
-.countup-box .react-countup {
-  font-size: 2.5rem;
+.countup-number {
+  font-size: 2rem;
   font-weight: bold;
   color: #18191C;
-  
 }
 
-.countup-box .react-countup span {
+.countup-number span {
   color: #4BC5E0;
 }
 
-/* Separator line styling */
+.countup-label {
+  font-size: 1rem;
+  color: #18191C;
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+
 .separator {
   font-size: 2rem;
   color: #18191C;
-  margin: 0.7rem 1rem; 
-  font-weight: light;
+  margin: 0 1rem;
+  font-weight: 300;
 }
 
-/* Desktop and larger screen styles */
+
 @media (min-width: 1024px) {
   .countup-container {
-    flex-direction: row; 
-    display: flex;
-    position: relative;
-    z-index: 1; 
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    background-color: #CDCCC9;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
   }
 
   .countup-box {
-    margin: 0 1rem;
+    font-size: 0.5rem;
+    margin: 0 1.5rem;
   }
 
-  .separator {
-    display: inline-block; 
-    margin: 0 1rem; 
+  .countup-number {
+    font-size: 1.2rem;
   }
-  
-  .countup-box p {
-    font-size: 0.7rem;
-    font-weight: bold; 
-  }
-  
-  .countup-box {
-    font-size: 1.3rem; 
-    font-weight: bolder;
-    color: #18191C;
+
+  .countup-label {
+    font-size: 0.8rem;
+    font-weight: bold;
   }
 }

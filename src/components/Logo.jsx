@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import './LogoRow.css';
+
 // Import all images
 import comresk from '../assets/Image_fx (9) 1.png';
 import spielonic from '../assets/Image_fx (36) 1.png';
@@ -8,31 +9,43 @@ import marvaty from '../assets/Image_fx (34) 1.png';
 import orblo from '../assets/Image_fx (33) 1.png';
 
 const LogoRow = () => {
+  // Create an array of logo objects for better maintainability
+  const logos = useMemo(() => [
+    { src: comresk, alt: 'Comresk', key: 'comresk' },
+    { src: spielonic, alt: 'Spielonic', key: 'spielonic' },
+    { src: guiltbin, alt: 'Guiltbin', key: 'guiltbin' },
+    { src: marvaty, alt: 'Marvaty', key: 'marvaty' },
+    { src: orblo, alt: 'Orblo', key: 'orblo' }
+  ], []);
+
+  // Generate multiple instances for seamless animation
+  const logoInstances = useMemo(() => {
+    // Create 4 instances of the logo set for smooth infinite scrolling
+    return Array(4).fill().flatMap((_, instance) => 
+      logos.map(logo => ({
+        ...logo,
+        key: `${logo.key}-instance-${instance}`
+      }))
+    );
+  }, [logos]);
+
   return (
-    <div className="logo-row-wrapper">
+    <section 
+      className="logo-row-wrapper" 
+      aria-label="Trusted by companies"
+    >
       <div className="logo-row">
-        <img src={comresk} alt="comresk" className="logon" />
-        <img src={spielonic} alt="spielonic" className="logon" />
-        <img src={guiltbin} alt="guiltbin" className="logon" />
-        <img src={marvaty} alt="marvaty" className="logon" />
-        <img src={orblo} alt="orblo" className="logon" />
-        <img src={comresk} alt="comresk" className="logon" />
-        <img src={spielonic} alt="spielonic" className="logon" />
-        <img src={guiltbin} alt="guiltbin" className="logon" />
-        <img src={marvaty} alt="marvaty" className="logon" />
-        <img src={orblo} alt="orblo" className="logon" />
-         <img src={comresk} alt="comresk" className="logon" />
-        <img src={spielonic} alt="spielonic" className="logon" />
-        <img src={guiltbin} alt="guiltbin" className="logon" />
-        <img src={marvaty} alt="marvaty" className="logon" />
-        <img src={orblo} alt="orblo" className="logon" />
-        <img src={comresk} alt="comresk" className="logon" />
-        <img src={spielonic} alt="spielonic" className="logon" />
-        <img src={guiltbin} alt="guiltbin" className="logon" />
-        <img src={marvaty} alt="marvaty" className="logon" />
-        <img src={orblo} alt="orblo" className="logon" />
+        {logoInstances.map((logo) => (
+          <img
+            key={logo.key}
+            src={logo.src}
+            alt={logo.alt}
+            className="logo-row__image"
+            loading="lazy" // Lazy load images for better performance
+          />
+        ))}
       </div>
-    </div>
+    </section>
   );
 };
 

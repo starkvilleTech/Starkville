@@ -29,9 +29,9 @@ function HomePage() {
       <CountUpComponent />
       <About />
       <Logo />
-      {/*<Service id="services" />
+      <Service id="services" />
       <Testimonials />
-      <Footer />*/}
+      <Footer />
     </>
   );
 }
@@ -46,7 +46,7 @@ function ServiceDetailPage() {
     window.scrollTo(0, 0);
   }, []);
 
-  {/*return (
+  return (
     <>
       
       <Header
@@ -57,7 +57,7 @@ function ServiceDetailPage() {
       <ServiceDetail />
       <Footer />
     </>
-  );*/}
+  );
 }
 
 function App() {
