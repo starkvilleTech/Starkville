@@ -1,7 +1,5 @@
-
 .services-container {
   background-color: rgba(24, 25, 28, 0.99);
-  position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
@@ -11,31 +9,26 @@
   text-align: center;
   color: #CDCCC9;
   overflow: hidden;
-  z-index: auto;
+  position: relative;
+  z-index: 0;
 }
 
 .services-content {
-  position: relative;
-  z-index: auto;
   width: 100%;
   max-width: 1200px;
   padding: 2rem;
-  background-color: transparent;
   font-family: "Cascadia Code", monospace;
+  position: relative;
+  z-index: 1;
 }
 
-
 .services-title {
-  text-align: center;
   font-weight: 350;
   font-size: 1.5rem;
   margin-bottom: 2rem;
   letter-spacing: 2px;
-  font-family: "Cascadia Code", monospace;
   color: #4BC5E0;
-  position: relative;
 }
-
 
 .slider-container {
   display: flex;
@@ -45,8 +38,8 @@
 }
 
 .slider-wrapper {
-  width: 100%;
   overflow: hidden;
+  width: 100%;
   padding: 20px 0;
 }
 
@@ -55,29 +48,29 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
   gap: 20px;
+  flex-wrap: wrap; 
+  justify-content: center;
 }
 
 
 .services-card {
   background-color: #202125;
   border-radius: 12px;
-  padding: 2rem;
   border: 1px solid #2E2F33;
-  transition: all 0.4s ease;
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  position: relative;
-  overflow: hidden;
+  padding: 2rem;
+  box-sizing: border-box;
   min-height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-sizing: border-box;
-
-  
+  opacity: 0;
   animation: slideDownFade 0.8s ease forwards;
   animation-delay: var(--delay, 0s);
-  opacity: 0;
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 .services-card:hover {
@@ -85,7 +78,6 @@
   border-color: #4BC5E0;
   box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
 }
-
 
 .services-card::before {
   content: '';
@@ -103,14 +95,13 @@
   transform: scaleX(1);
 }
 
-/* Title in Card */
+/* === Card Title === */
 .card-title {
   font-size: 1.2rem;
-  margin-bottom: 1rem;
   color: #4BC5E0;
-  font-family: "Cascadia Code", monospace;
-  position: relative;
+  margin-bottom: 1rem;
   padding-bottom: 10px;
+  position: relative;
 }
 
 .card-title::after {
@@ -128,43 +119,40 @@
   width: 80px;
 }
 
-
+/* === Description === */
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
-  color:#CDCCC9;
-  font-family: "Cascadia Code", monospace;
-  margin: 0;
+  color: #CDCCC9;
   font-weight: 300;
   flex-grow: 1;
 }
 
-
+/* === Icon === */
 .service-icon {
   font-size: 27px;
   color: #4BC5E0;
   margin-bottom: 15px;
+  align-self: center;
   transition: all 0.3s ease;
-  align-self: center; 
 }
 
-/* Arrows */
+/* === Arrows === */
 .slider-arrow {
+  display: none; 
   background-color: #4BC5E0;
-  border: none;
+  color: #18191C;
   border-radius: 50%;
+  border: none;
   width: 50px;
   height: 50px;
+  font-size: 1.5rem;
   cursor: pointer;
   opacity: 0.9;
-  transition: all 0.3s ease;
-  color: #18191C;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   position: absolute;
-  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
   box-shadow: 0 4px 15px rgba(75, 197, 224, 0.3);
 }
 
@@ -177,8 +165,8 @@
 }
 
 .slider-arrow:hover {
-  opacity: 1;
   transform: scale(1.1);
+  opacity: 1;
 }
 
 .slider-arrow:disabled {
@@ -186,122 +174,6 @@
   cursor: not-allowed;
 }
 
-
-@media (min-width: 1024px) {
-  .services-container {
-    padding: 4rem 2rem;
-  }
-
-  .services-title {
-    font-size: 2.2rem;
-    margin-bottom: 3rem;
-  }
-
-  .services-card {
-    width: calc(33.333% - 14px) !important;
-    min-height: 300px;
-  }
-  
-  .slider-track {
-    gap: 20px;
-  }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 1023px) {
-  .services-container {
-    padding: 2rem 0.5rem;
-    min-height: auto;
-    width: 100%;
-  }
-
-  .services-content {
-    padding: 1rem;
-    overflow: hidden;
-  }
-
-  .services-title {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    font-weight: 350;
-  }
-
-  .slider-container {
-    padding: 0 10px;
-  }
-
-  .slider-wrapper {
-    overflow: hidden;
-    padding: 10px 0;
-    width: 100%;
-  }
-
-  .slider-track {
-    gap: 0;
-    width: 100%;
-  }
-
-  .services-card {
-    width: 100% !important;
-    min-height: 300px;
-    padding: 1.5rem;
-    margin: 0 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-    flex: 0 0 auto;
-  }
-
-  .card-title {
-    font-size: 1.3rem;
-    margin-bottom: 0.8rem;
-    font-weight: 350;
-  }
-
-  .card-description {
-    font-size: 0.95rem;
-    overflow: visible;
-    white-space: normal;
-  }
-
-  .slider-arrow {
-    width: 40px;
-    height: 40px;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
-  .slider-arrow.left-arrow {
-    left: -10px;
-  }
-
-  .slider-arrow.right-arrow {
-    right: -10px;
-  }
-}
-
-
-@media (max-width: 480px) {
-  .services-card {
-    min-height: 200px;
-    padding: 1rem;
-    margin: 0 2px;
-    padding: 1.2rem;
-  }
-  
-  .card-title {
-    font-size: 1.1rem;
-    display: block;
-  }
-  
-  .card-description {
-    font-size: 0.9rem;
-  }
-  
-  .slider-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
-  }
-}
 
 .read-more-link {
   font-size: 1rem;
@@ -318,7 +190,26 @@
 }
 
 
-@keyframes slideDown {
+.see-more-btn {
+  margin-top: 2rem;
+  background-color: transparent;
+  color: #4BC5E0;
+  border: 1px solid #4BC5E0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-family: "Cascadia Code", monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+  background-color: #4BC5E0;
+  color: #18191C;
+}
+
+/* === Animation Keyframes === */
+@keyframes slideDownFade {
   0% {
     opacity: 0;
     transform: translateY(-30px);
@@ -330,9 +221,70 @@
 }
 
 .animate-slide-down {
-  animation-name: slideDown;
+  animation-name: slideDownFade;
   animation-duration: 0.9s;
   animation-timing-function: ease-out;
   animation-fill-mode: both;
 }
 
+/* === Responsive === */
+@media (min-width: 1024px) {
+  .services-container {
+    padding: 4rem 2rem;
+  }
+
+  .services-title {
+    font-size: 2.2rem;
+  }
+
+  .services-card {
+    width: calc(25% - 20px) !important;
+    min-height: 320px;
+     
+    padding: 1rem;
+    
+  }
+}
+
+@media (max-width: 1023px) {
+  .slider-arrow {
+    display: flex; 
+  }
+
+  .services-card {
+    width: 100% !important;
+    min-height: 300px;
+    margin: 0 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .card-title {
+    font-size: 1.3rem;
+  }
+
+  .card-description {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-card {
+    min-height: 240px;
+    padding: 1.2rem;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+  }
+
+  .card-description {
+    font-size: 0.9rem;
+  }
+
+  .slider-arrow {
+    width: 35px;
+    height: 35px;
+    font-size: 1.2rem;
+  }
+}

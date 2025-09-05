@@ -1,0 +1,127 @@
+.all-services-container {
+  padding: 4rem 2rem;
+  background-color: #18191C;
+  color: #CDCCC9;
+  font-family: "Cascadia Code", monospace;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeIn 0.8s ease-in;
+}
+
+.all-services-title {
+  font-size: 2.2rem;
+  color: #4BC5E0;
+  text-align: center;
+  margin-bottom: 3rem;
+  letter-spacing: 2px;
+}
+
+.all-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.all-service-box {
+  background-color: #202125;
+  border-radius: 12px;
+  padding: 2rem;
+  border: 1px solid #2E2F33;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.all-service-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(75, 197, 224, 0.2), transparent 70%);
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.all-service-box:hover::before {
+  opacity: 1;
+}
+
+.all-service-box:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  border-color: #4BC5E0;
+}
+
+.all-service-box i {
+  font-size: 2.2rem;
+  color: #4BC5E0;
+  margin-bottom: 1.2rem;
+  z-index: 1;
+}
+
+.all-service-box h2 {
+  font-size: 1.3rem;
+  color: #4BC5E0;
+  margin-bottom: 1rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.all-service-box p {
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  color: #CDCCC9;
+  text-align: center;
+  z-index: 1;
+}
+
+/* Center the 7th card on large screens */
+@media (min-width: 1024px) {
+  .all-services-grid > .all-service-box:nth-child(7) {
+    grid-column: 2 / span 1;
+  }
+}
+
+/* Optional for ultra-wide screens */
+@media (min-width: 1400px) {
+  .all-services-grid > .all-service-box:nth-child(7) {
+    grid-column: 3 / span 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .all-service-box {
+    padding: 1.5rem;
+  }
+
+  .all-service-box h2 {
+    font-size: 1.1rem;
+  }
+
+  .all-service-box p {
+    font-size: 0.95rem;
+  }
+}

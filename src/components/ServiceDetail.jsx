@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import './ServiceDetail.css';
 import 'font-awesome/css/font-awesome.min.css';
@@ -244,73 +244,176 @@ const ServiceDetail = () => {
   const { serviceId } = useParams();
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
+  const [isVisible, setIsVisible] = useState(false);
 
   const service = services.find((s) => s.id === parseInt(serviceId));
+
+  useEffect(() => {
+    // Trigger animations after component mounts
+    setIsVisible(true);
+    
+    // Scroll to top when component mounts
+    window.scrollTo(0, 0);
+  }, []);
 
   if (!service) return <div className="service-not-found">Service not found!</div>;
 
   return (
-    <div className="service-detail-container">
-      <div className="top-bar">
-        <button className="back-button" onClick={() => navigate(-1)}>&#8592; Back</button>
-        <i className={`fa ${service.icon} service-icon`}></i>
+    <div className={`service-detail-wrapper ${isVisible ? 'visible' : ''}`}>
+      <div className="glass-card">
+        <div className="service-top-bar">
+          <button className="back-button" onClick={() => navigate(-1)}>
+            <i className="fa fa-arrow-left"></i> Back to Services
+          </button>
+          <div className="icon-container">
+            <i className={`fa ${service.icon} service-icon`}></i>
+          </div>
+        </div>
+
+        <div className="service-header">
+          <h1 className="service-title">{service.title}</h1>
+          <p className="service-subheading">{service.subheading}</p>
+          <div className="accent-line"></div>
+        </div>
+
+        <div className="info-sections">
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-eye"></i>
+              <h3>Overview</h3>
+            </div>
+            <p>{service.overview}</p>
+          </div>
+
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-users"></i>
+              <h3>Who We Serve</h3>
+            </div>
+            <p>{service.whoWeServe}</p>
+          </div>
+
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-chart-line"></i>
+              <h3>Typical Outcomes</h3>
+            </div>
+            <ul>
+              {service.outcomes.map((item, i) => (
+                <li key={i}>{item}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-star"></i>
+              <h3>Core Capabilities</h3>
+            </div>
+            <ul>
+              {service.coreCapabilities.map((cap, i) => (
+                <li key={i}>{cap}</li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-road"></i>
+              <h3>Our Approach</h3>
+            </div>
+            <ol>
+              {service.approach.map((step, i) => (
+                <li key={i}>{step}</li>
+              ))}
+            </ol>
+          </div>
+
+          <div className="info-section fade-in">
+            <div className="section-header">
+              <i className="fa fa-delivery"></i>
+              <h3>Deliverables</h3>
+            </div>
+            <ul>
+              {service.deliverables.map((d, i) => (
+                <li key={i}>{d}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <button 
+          className="cta-button pulse" 
+          onClick={() => setShowForm(!showForm)}
+        >
+          {service.cta}
+        </button>
+
+        {showForm && (
+          <form className="consultation-form slide-in">
+            <h2>
+              <i className="fa fa-calendar"></i>
+              Schedule a Consultation
+            </h2>
+            
+            <div className="form-grid">
+              <div className="form-group">
+                <label>First Name*</label>
+                <input type="text" required />
+              </div>
+              
+              <div className="form-group">
+                <label>Last Name*</label>
+                <input type="text" required />
+              </div>
+              
+              <div className="form-group">
+                <label>Company Name</label>
+                <input type="text" />
+              </div>
+              
+              <div className="form-group">
+                <label>Company Email*</label>
+                <input type="email" required />
+              </div>
+              
+              <div className="form-group">
+                <label>Company Website</label>
+                <input type="url" />
+              </div>
+              
+              <div className="form-group">
+                <label>Date Available for Consultation</label>
+                <input type="date" />
+              </div>
+              
+              <div className="form-group full-width">
+                <label>Address</label>
+                <input type="text" />
+              </div>
+              
+              <div className="form-group full-width">
+                <label>Consultation Details</label>
+                <textarea rows="4" />
+              </div>
+              
+              <div className="form-group full-width">
+                <label>Other Details</label>
+                <textarea rows="3" />
+              </div>
+            </div>
+            
+            <div className="form-actions">
+              <button type="button" onClick={() => setShowForm(false)}>
+                Cancel
+              </button>
+              <button type="submit" className="submit-btn">
+                Submit Request
+              </button>
+            </div>
+          </form>
+        )}
       </div>
-
-      <h1 className="service-title">{service.title}</h1>
-
-      <p className="service-subheading">{service.subheading}</p>
-      <div className="service-overview">{service.overview}</div>
-
-      <h3>Who We Serve</h3>
-      <p>{service.whoWeServe}</p>
-
-      <h3>Typical Outcomes</h3>
-      <ul className="service-outcomes">
-        {service.outcomes.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-
-      <h3>Core Capabilities</h3>
-      <ul className="service-list">
-        {service.coreCapabilities.map((cap, i) => (
-          <li key={i}>{cap}</li>
-        ))}
-      </ul>
-
-      <h3>Approach</h3>
-      <ol className="service-list">
-        {service.approach.map((step, i) => (
-          <li key={i}>{step}</li>
-        ))}
-      </ol>
-
-      <h3>Deliverables</h3>
-      <ul className="service-list">
-        {service.deliverables.map((d, i) => (
-          <li key={i}>{d}</li>
-        ))}
-      </ul>
-
-      <button className="cta-button" onClick={() => setShowForm(!showForm)}>
-        {service.cta}
-      </button>
-
-      {showForm && (
-        <form className="consultation-form">
-          <h2>Schedule a Consultation</h2>
-          <label>First Name*<input type="text" required /></label>
-          <label>Last Name*<input type="text" required /></label>
-          <label>Company Name<input type="text" /></label>
-          <label>Company Email*<input type="email" required /></label>
-          <label>Company Website<input type="url" /></label>
-          <label>Address<input type="text" /></label>
-          <label>Date Available for Consultation<input type="date" /></label>
-          <label>Consultation Details<textarea rows="4" /></label>
-          <label>Other Details<textarea rows="3" /></label>
-          <button type="submit">Submit</button>
-        </form>
-      )}
     </div>
   );
 };

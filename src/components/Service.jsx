@@ -3,7 +3,11 @@ import { Link } from 'react-router-dom';
 import './Service.css';
 import backgroundImage from '../assets/Mask groupo.png';
 
+import { useNavigate } from 'react-router-dom';
+
 const Service = ({ id }) => {
+  const navigate = useNavigate();
+
   const services = [
     {
       id: 1,
@@ -33,7 +37,7 @@ const Service = ({ id }) => {
       icon: 'fa-cogs',
       detailPage: '/service-details/4'
     },
-    {
+    /*{
       id: 5,
       title: 'Project & Program Management',
       description: 'We provide hands‑on delivery leadership across projects and portfolios...',
@@ -53,7 +57,7 @@ const Service = ({ id }) => {
       description: 'From cyber incidents to severe weather, disruptions are inevitable...',
       icon: 'fa-shield-alt',
       detailPage: '/service-details/7'
-    }
+    }*/
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -98,6 +102,7 @@ const Service = ({ id }) => {
     }
   };
 
+
   return (
     <div
       id={id}
@@ -107,23 +112,28 @@ const Service = ({ id }) => {
     >
       <div className="services-content">
         <h2 className="services-title">Our Services</h2>
-        <div className="slider-container">
-          <button className="slider-arrow left-arrow" onClick={handlePrev} aria-label="Previous">
-            &#8592;
-          </button>
+
+        <div className={`slider-container ${isDesktop ? 'no-slider' : ''}`}>
+          {!isDesktop && (
+            <button className="slider-arrow left-arrow" onClick={handlePrev} aria-label="Previous">
+              &#8592;
+            </button>
+          )}
 
           <div className="slider-wrapper">
             <div
               className="slider-track"
-              style={{ transform: `translateX(-${currentIndex * (100 / visibleCount)}%)` }}
+              style={{
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`
+              }}
             >
               {services.map((service, index) => (
                 <div
                   className={`services-card ${inView ? 'animate-slide-down' : ''}`}
                   key={service.id}
                   style={{
-                    width: `${100 / visibleCount}%`,
-                    minWidth: isDesktop ? '320px' : '100%',
+                    width: `${100 / (isDesktop ? 4 : visibleCount)}%`,
+                    minWidth: isDesktop ? '250px' : '100%',
                     animationDelay: `${index * 0.15}s`
                   }}
                 >
@@ -132,21 +142,35 @@ const Service = ({ id }) => {
                   </div>
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.description}</p>
-                  <Link to={service.detailPage} className="read-more-link">
+                  {/*<Link to={service.detailPage} className="read-more-link">
                     Read More
-                  </Link>
+                  </Link>*/}
                 </div>
               ))}
             </div>
           </div>
 
-          <button className="slider-arrow right-arrow" onClick={handleNext} aria-label="Next">
-            &#8594;
-          </button>
+          {!isDesktop && (
+            <button className="slider-arrow right-arrow" onClick={handleNext} aria-label="Next">
+              &#8594;
+            </button>
+          )}
         </div>
+
+        {isDesktop && (
+          <button className="see-more-btn" onClick={() => navigate('/services')}>
+            See More Services →
+          </button>
+        )}
       </div>
     </div>
   );
 };
 
 export default Service;
+
+
+
+
+
+

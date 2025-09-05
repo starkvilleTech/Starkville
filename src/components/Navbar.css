@@ -4,7 +4,7 @@
   align-items: center;
   padding: 1rem;
   height: 60px;
-  background-color: #409cb1;
+  background-color: #4BC5E0;
   color: #CDCCC9;
   position: fixed;
   top: 0;
@@ -152,6 +152,7 @@
 @media (min-width: 1024px) {
   .navbar {
     padding: 0.5rem 1rem;
+    background-color:#202125;;
   }
 
   .logo img {

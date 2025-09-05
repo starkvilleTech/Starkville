@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useParams, useLocation } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import CountUpComponent from './components/CountUpComponent';
@@ -9,8 +9,10 @@ import Service from './components/Service';
 import Testimonials from './components/Testimonials';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
+import AllServices from './components/AllServices'; // New full-service grid page
 import 'font-awesome/css/font-awesome.min.css';
 
+// ======= Static Service Data =======
 const services = [
   { id: 1, title: 'IT Consulting', p: 'Practical, vendor‑neutral advice that turns technology into measurable outcomes.' },
   { id: 2, title: 'Digital & Business Transformation', p: 'Human‑centered change that delivers measurable, enterprise‑wide impact.' },
@@ -21,51 +23,68 @@ const services = [
   { id: 7, title: 'Business Continuity', p: 'Design, testing, and execution to keep critical services running through disruption.' },
 ];
 
+// ======= Scroll to Top on Route Change =======
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
+
+// ======= Homepage =======
 function HomePage() {
   return (
     <>
-      
       <Header />
       <CountUpComponent />
       <About />
       <Logo />
-      <Service id="services" />
+      <Service id="services" services={services} /> {/* Pass services */}
       <Testimonials />
       <Footer />
     </>
   );
 }
 
+// ======= Service Detail Page =======
 function ServiceDetailPage() {
   const { serviceId } = useParams();
   const service = services.find((s) => s.id === parseInt(serviceId));
   const pageTitle = service ? service.title : 'Service Detail';
   const pageDescription = service ? service.p : '';
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <>
-      
-      <Header
-        pageTitle={pageTitle}
-        pageDescription={pageDescription}
-        boxedDescription={true} 
-      />
+      <Header pageTitle={pageTitle} pageDescription={pageDescription} boxedDescription={true} />
       <ServiceDetail />
       <Footer />
     </>
   );
 }
 
+// ======= All Services Grid Page =======
+function AllServicesPage() {
+  return (
+    <>
+      <Header pageTitle="All Services" pageDescription="Explore everything we offer in one place." boxedDescription={true} />
+      <AllServices services={services} /> {/* Grid view */}
+      <Footer />
+    </>
+  );
+}
+
+// ======= App Router =======
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/service-details/:serviceId" element={<ServiceDetailPage />} />
+        <Route path="/services" element={<AllServicesPage />} /> 
+        <Route path="/services" element={<AllServices />} />
+
       </Routes>
     </Router>
   );
