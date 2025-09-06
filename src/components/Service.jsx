@@ -1,12 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Service.css';
 import backgroundImage from '../assets/Mask groupo.png';
 
-import { useNavigate } from 'react-router-dom';
-
 const Service = ({ id }) => {
   const navigate = useNavigate();
+  const sectionRef = useRef(null);
 
   const services = [
     {
@@ -14,55 +13,61 @@ const Service = ({ id }) => {
       title: 'IT Consulting',
       description: 'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies...',
       icon: 'fa-briefcase',
-      detailPage: '/service-details/1'
+      detailPage: '/service-details/1',
+      image: '/images/IT Ops.jpg'
     },
     {
       id: 2,
       title: 'Digital & Business Transformation',
       description: 'Transformation succeeds when strategy, process, people, and technology move together...',
       icon: 'fa-exchange-alt',
-      detailPage: '/service-details/2'
+      detailPage: '/service-details/2',
+      image: '/images/Image_fx (55).jpg'
     },
     {
       id: 3,
       title: 'Cloud Management',
       description: 'We design, deploy, and operate cloud environments tailored to your security, compliance, performance...',
       icon: 'fa-cloud',
-      detailPage: '/service-details/3'
+      detailPage: '/service-details/3',
+      image: '/images/cloud management II).jpg'
     },
     {
       id: 4,
       title: 'IT Operations',
       description: 'We build and run scalable IT operations that keep your organization productive and protected...',
       icon: 'fa-cogs',
-      detailPage: '/service-details/4'
+      detailPage: '/service-details/4',
+      image: '/images/IT Ops.jpg'
     },
     /*{
       id: 5,
       title: 'Project & Program Management',
       description: 'We provide hands‑on delivery leadership across projects and portfolios...',
       icon: 'fa-tasks',
-      detailPage: '/service-details/5'
+      detailPage: '/service-details/5',
+      image: '/images/Project Mgt).jpg'
     },
     {
       id: 6,
       title: 'AI & Process Automation',
       description: 'We help organizations automate manual work, improve decisions, and unlock new value with AI...',
       icon: 'fa-robot',
-      detailPage: '/service-details/6'
+      detailPage: '/service-details/6',
+      image: '/images/AI & Process.jpg'
     },
     {
       id: 7,
       title: 'Business Continuity',
       description: 'From cyber incidents to severe weather, disruptions are inevitable...',
       icon: 'fa-shield-alt',
-      detailPage: '/service-details/7'
+      detailPage: '/service-details/7',
+      image: '/images/Business Continuity.jpg'
     }*/
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
-  const sectionRef = useRef(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {
@@ -72,14 +77,13 @@ const Service = ({ id }) => {
   }, []);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setInView(entry.isIntersecting);
-      },
-      { threshold: 0.2 }
-    );
+    const observer = new IntersectionObserver(([entry]) => {
+      setInView(entry.isIntersecting);
+    }, { threshold: 0.2 });
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
 
     return () => observer.disconnect();
   }, []);
@@ -88,7 +92,7 @@ const Service = ({ id }) => {
 
   const handleNext = () => {
     if (currentIndex < services.length - visibleCount) {
-      setCurrentIndex(prev => prev + 1);
+      setCurrentIndex((prev) => prev + 1);
     } else if (!isDesktop) {
       setCurrentIndex(0);
     }
@@ -96,12 +100,11 @@ const Service = ({ id }) => {
 
   const handlePrev = () => {
     if (currentIndex > 0) {
-      setCurrentIndex(prev => prev - 1);
+      setCurrentIndex((prev) => prev - 1);
     } else if (!isDesktop) {
       setCurrentIndex(services.length - visibleCount);
     }
   };
-
 
   return (
     <div
@@ -124,7 +127,7 @@ const Service = ({ id }) => {
             <div
               className="slider-track"
               style={{
-                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`
+                transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
               }}
             >
               {services.map((service, index) => (
@@ -142,9 +145,9 @@ const Service = ({ id }) => {
                   </div>
                   <h3 className="card-title">{service.title}</h3>
                   <p className="card-description">{service.description}</p>
-                  {/*<Link to={service.detailPage} className="read-more-link">
+                  <Link to={service.detailPage} className="read-more-link">
                     Read More
-                  </Link>*/}
+                  </Link>
                 </div>
               ))}
             </div>
@@ -168,9 +171,3 @@ const Service = ({ id }) => {
 };
 
 export default Service;
-
-
-
-
-
-

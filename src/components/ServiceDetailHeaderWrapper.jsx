@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom'; // ✅ Add this line!
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
@@ -42,7 +43,7 @@ const services = [
 ];
 
 function ServiceDetailHeaderWrapper() {
-  const { serviceId } = useParams();
+  const { serviceId } = useParams(); // ✅ Now it works!
   const service = services.find((s) => s.id === parseInt(serviceId));
   const pageTitle = service ? service.title : 'Service Detail';
   const pageDescription = service ? service.p : '';
@@ -56,7 +57,7 @@ function ServiceDetailHeaderWrapper() {
       <Header
         pageTitle={pageTitle}
         pageDescription={pageDescription}
-        boxedDescription={true} // keeps the paragraph in a box
+        boxedDescription={true}
       />
       <ServiceDetail />
       <Footer />

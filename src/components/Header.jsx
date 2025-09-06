@@ -1,8 +1,8 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './Navbar'; 
 import './Header.css';
 
-const Header = ({ pageTitle, pageDescription, boxedDescription }) => {
+const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage }) => {
   const scrollToServices = () => {
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
@@ -10,8 +10,17 @@ const Header = ({ pageTitle, pageDescription, boxedDescription }) => {
     }
   };
 
+  const headerStyle = backgroundImage
+    ? {
+        backgroundImage: `url(${process.env.PUBLIC_URL + backgroundImage})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'right',
+        backgroundRepeat: 'no-repeat',
+      }
+    : {};
+
   return (
-    <header className="header">
+    <header className="header" style={headerStyle}>
       <Navbar />
       <div className="hero">
         {pageTitle ? (

@@ -191,12 +191,12 @@
   margin-left: -1em;
 }
 
-.info-section ol li {
-  counter-increment: step-counter;
-}
+/*.info-section ol li {
+  
+}*/
 
 .info-section ol li::before {
-  content: counter(step-counter);
+  
   color: #4BC5E0;
   font-weight: bold;
   margin-right: 0.5rem;

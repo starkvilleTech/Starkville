@@ -249,10 +249,10 @@ const ServiceDetail = () => {
   const service = services.find((s) => s.id === parseInt(serviceId));
 
   useEffect(() => {
-    // Trigger animations after component mounts
+    
     setIsVisible(true);
     
-    // Scroll to top when component mounts
+    
     window.scrollTo(0, 0);
   }, []);
 
@@ -331,7 +331,7 @@ const ServiceDetail = () => {
 
           <div className="info-section fade-in">
             <div className="section-header">
-              <i className="fa fa-delivery"></i>
+              <i className="fa fa-truck"></i>
               <h3>Deliverables</h3>
             </div>
             <ul>

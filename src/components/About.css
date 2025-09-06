@@ -92,7 +92,7 @@ border: 1px solid #4BC5E0;
   background-color: #4BC5E0;
 }
 
-/* Card description */
+
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
@@ -100,14 +100,14 @@ border: 1px solid #4BC5E0;
   margin-top: 1rem;
 }
 
-/* Accordion Description Wrapper */
+
 .card-description-wrapper {
   max-height: none;
   overflow: visible;
   transition: all 0.3s ease;
 }
 
-/* Mobile styles (Accordion active here) */
+
 @media (max-width: 768px) {
   .about-container {
     padding: 1rem;
