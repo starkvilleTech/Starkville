@@ -1,11 +1,9 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import './ServiceDetail.css';
-import 'font-awesome/css/font-awesome.min.css';
+// src/data/servicesData.js
 
 const services = [
   {
     id: 1,
+    title: 'IT Consulting',
     icon: 'fa-cogs',
     subheading: 'Practical, vendor‑neutral advice that turns technology into measurable outcomes.',
     overview:
@@ -40,9 +38,11 @@ const services = [
       'Operating model, RACI, and KPI pack'
     ],
     cta: 'Book a strategy session →',
+    image: '/images/IT Ops.jpg',
   },
   {
     id: 2,
+    title: 'Digital & Business Transformation',
     icon: 'fa-robot',
     subheading: 'Human‑centered change that delivers measurable, enterprise‑wide impact.',
     overview:
@@ -75,9 +75,11 @@ const services = [
       'KPI dashboard and runbook'
     ],
     cta: 'Start your transformation assessment →',
+    image: '/images/Image_fx (58).jpg',
   },
   {
     id: 3,
+    title: 'Cloud Management',
     icon: 'fa-laptop',
     subheading: 'Architecture, migration, and day‑2 operations for major cloud platforms.',
     overview:
@@ -107,9 +109,11 @@ const services = [
       'Operations handbook, SLAs/SLOs, cost dashboard'
     ],
     cta: 'Request a cloud readiness review →',
+    image: '/images/Cloud Management.jpg',
   },
   {
     id: 4,
+    title: 'IT Operations',
     icon: 'fa-shield-alt',
     subheading: 'ITIL‑aligned processes, modern tooling, and a customer‑first service desk.',
     overview:
@@ -140,9 +144,11 @@ const services = [
       'Operations dashboard and review cadence'
     ],
     cta: 'Talk to us about your IT operations goals →',
+    image: '/images/IT Ops.jpg',
   },
   {
     id: 5,
+    title: 'Project & Program Management',
     icon: 'fa-project-diagram',
     subheading: 'Governance, methods, and leadership to deliver complex initiatives on time and on budget.',
     overview:
@@ -172,9 +178,11 @@ const services = [
       'Benefits register and lessons learned toolkit'
     ],
     cta: 'Get delivery leadership for your next initiative →',
+    image: '/images/Project Mgt).jpg',
   },
   {
     id: 6,
+    title: 'AI & Process Automation',
     icon: 'fa-brain',
     subheading: 'From quick‑win automations to enterprise AI platforms with governance.',
     overview:
@@ -203,9 +211,11 @@ const services = [
       'Production runbooks, dashboards, governance artifacts'
     ],
     cta: 'Explore your first three automation candidates →',
+    image: '/images/AI & Process.jpg',
   },
   {
     id: 7,
+    title: 'Business Continuity',
     icon: 'fa-sync-alt',
     subheading: 'Design, testing, and execution to keep critical services running through disruption.',
     overview:
@@ -237,191 +247,8 @@ const services = [
       'Resilience dashboard with RTO/RPO tracking'
     ],
     cta: 'Schedule a continuity and DR readiness review →',
-  }
+    image: '/images/Business Continuity.jpg',
+  },
 ];
 
-const ServiceDetail = () => {
-  const { serviceId } = useParams();
-  const navigate = useNavigate();
-  const [showForm, setShowForm] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
-
-  const service = services.find((s) => s.id === parseInt(serviceId));
-
-  useEffect(() => {
-    
-    setIsVisible(true);
-    
-    
-    window.scrollTo(0, 0);
-  }, []);
-
-  if (!service) return <div className="service-not-found">Service not found!</div>;
-
-  return (
-    <div className={`service-detail-wrapper ${isVisible ? 'visible' : ''}`}>
-      <div className="glass-card">
-        <div className="service-top-bar">
-          <button className="back-button" onClick={() => navigate(-1)}>
-            <i className="fa fa-arrow-left"></i> Back to Services
-          </button>
-          <div className="icon-container">
-            <i className={`fa ${service.icon} service-icon`}></i>
-          </div>
-        </div>
-
-        <div className="service-header">
-          <h1 className="service-title">{service.title}</h1>
-          <p className="service-subheading">{service.subheading}</p>
-          <div className="accent-line"></div>
-        </div>
-
-        <div className="info-sections">
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-eye"></i>
-              <h3>Overview</h3>
-            </div>
-            <p>{service.overview}</p>
-          </div>
-
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-users"></i>
-              <h3>Who We Serve</h3>
-            </div>
-            <p>{service.whoWeServe}</p>
-          </div>
-
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-chart-line"></i>
-              <h3>Typical Outcomes</h3>
-            </div>
-            <ul>
-              {service.outcomes.map((item, i) => (
-                <li key={i}>{item}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-star"></i>
-              <h3>Core Capabilities</h3>
-            </div>
-            <ul>
-              {service.coreCapabilities.map((cap, i) => (
-                <li key={i}>{cap}</li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-road"></i>
-              <h3>Our Approach</h3>
-            </div>
-            <ol>
-              {service.approach.map((step, i) => (
-                <li key={i}>{step}</li>
-              ))}
-            </ol>
-          </div>
-
-          <div className="info-section fade-in">
-            <div className="section-header">
-              <i className="fa fa-truck"></i>
-              <h3>Deliverables</h3>
-            </div>
-            <ul>
-              {service.deliverables.map((d, i) => (
-                <li key={i}>{d}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        <button 
-          className="cta-button pulse" 
-          onClick={() => setShowForm(!showForm)}
-        >
-          {service.cta}
-        </button>
-
-        {showForm && (
-          <form className="consultation-form slide-in">
-            <h2>
-              <i className="fa fa-calendar"></i>
-              Schedule a Consultation
-            </h2>
-            
-            <div className="form-grid">
-              <div className="form-group">
-                <label>First Name*</label>
-                <input type="text" required />
-              </div>
-              
-              <div className="form-group">
-                <label>Last Name*</label>
-                <input type="text" required />
-              </div>
-              
-              <div className="form-group">
-                <label>Company Name</label>
-                <input type="text" />
-              </div>
-              
-              <div className="form-group">
-                <label>Company Email*</label>
-                <input type="email" required />
-              </div>
-              
-              <div className="form-group">
-                <label>Company Website</label>
-                <input type="url" />
-              </div>
-              
-              <div className="form-group">
-                <label>Date Available for Consultation</label>
-                <input type="date" />
-              </div>
-              
-              <div className="form-group full-width">
-                <label>Address</label>
-                <input type="text" />
-              </div>
-              
-              <div className="form-group full-width">
-                <label>Consultation Details</label>
-                <textarea rows="4" />
-              </div>
-              
-              <div className="form-group full-width">
-                <label>Other Details</label>
-                <textarea rows="3" />
-              </div>
-            </div>
-            
-            <div className="form-actions">
-              <button type="button" onClick={() => setShowForm(false)}>
-                Cancel
-              </button>
-              <button type="submit" className="submit-btn">
-                Submit Request
-              </button>
-            </div>
-          </form>
-        )}
-      </div>
-    </div>
-  );
-};
-
-export default ServiceDetail;
-
-
-
-
-
-
+export default services;

@@ -1,8 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './AllServices.css';
+import services from "../data/ServicesData";
 
-const services = [
+
+/*const services = [
   {
     id: 1,
     title: 'IT Consulting',
@@ -46,7 +48,7 @@ const services = [
     icon: 'fa-shield-alt',
   },
 ];
-
+*/
 const AllServices = () => {
   return (
     <div className="all-services-container">

@@ -20,7 +20,7 @@ import AllServices from './components/AllServices';
 
 import 'font-awesome/css/font-awesome.min.css';
 
-// ======= Static Service Data with Background Images =======
+// Static Service Data with Background Images 
 const services = [
   {
     id: 1,
@@ -66,7 +66,7 @@ const services = [
   },
 ];
 
-// ======= Scroll to Top on Route Change =======
+//  Scroll to Top on Route Change 
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -75,7 +75,7 @@ function ScrollToTop() {
   return null;
 }
 
-// ======= Homepage =======
+// Homepage 
 function HomePage() {
   return (
     <>
@@ -90,7 +90,7 @@ function HomePage() {
   );
 }
 
-// ======= Service Detail Page Wrapper =======
+// Service Detail Page Wrapper 
 function ServiceDetailPageWrapper() {
   const { serviceId } = useParams();
   const service = services.find((s) => s.id === parseInt(serviceId));
@@ -112,7 +112,7 @@ function ServiceDetailPageWrapper() {
   );
 }
 
-// ======= All Services Grid Page =======
+// All Services Grid Page 
 function AllServicesPage() {
   return (
     <>
@@ -127,7 +127,7 @@ function AllServicesPage() {
   );
 }
 
-// ======= App Router =======
+// App Router
 function App() {
   return (
     <Router>

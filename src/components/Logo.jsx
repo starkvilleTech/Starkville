@@ -2,11 +2,12 @@ import React, { useMemo } from 'react';
 import './LogoRow.css';
 
 // Import all images
-import comresk from '../assets/Image_fx (9) 1.png';
-import spielonic from '../assets/Image_fx (36) 1.png';
-import guiltbin from '../assets/Image_fx (35) 1.png';
-import marvaty from '../assets/Image_fx (34) 1.png';
-import orblo from '../assets/Image_fx (33) 1.png';
+import comresk from '../assets/DFA png-02.png';
+import spielonic from '../assets/fussion9.png';
+import guiltbin from '../assets/Pelago All White Logo.png';
+import marvaty from '../assets/Slate pNG3-02.png';
+import orblo from '../assets/To Size Deepslate-01.png';
+
 
 const LogoRow = () => {
   // Create an array of logo objects for better maintainability

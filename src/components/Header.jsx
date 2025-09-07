@@ -10,9 +10,10 @@ const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage 
     }
   };
 
+  
   const headerStyle = backgroundImage
     ? {
-        backgroundImage: `url(${process.env.PUBLIC_URL + backgroundImage})`,
+        backgroundImage: `url(${backgroundImage})`,
         backgroundSize: 'cover',
         backgroundPosition: 'right',
         backgroundRepeat: 'no-repeat',
