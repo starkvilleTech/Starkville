@@ -30,28 +30,11 @@
   color: #4BC5E0;
 }
 
-.slider-container {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  position: relative;
-}
-
-.slider-wrapper {
-  overflow: hidden;
-  width: 100%;
-  padding: 20px 0;
-}
-
-.slider-track {
-  display: flex;
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform;
+.services-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* default mobile */
   gap: 20px;
-  flex-wrap: wrap; 
-  justify-content: center;
 }
-
 
 .services-card {
   background-color: #202125;
@@ -66,11 +49,8 @@
   opacity: 0;
   animation: slideDownFade 0.8s ease forwards;
   animation-delay: var(--delay, 0s);
-  flex: 0 0 auto;
-  scroll-snap-align: start;
   position: relative;
   overflow: hidden;
-  width: 100%;
 }
 
 .services-card:hover {
@@ -95,7 +75,6 @@
   transform: scaleX(1);
 }
 
-/* Card Title */
 .card-title {
   font-size: 1.2rem;
   color: #4BC5E0;
@@ -119,7 +98,6 @@
   width: 80px;
 }
 
-/* === Description === */
 .card-description {
   font-size: 1rem;
   line-height: 1.6;
@@ -128,7 +106,6 @@
   flex-grow: 1;
 }
 
-/* === Icon === */
 .service-icon {
   font-size: 27px;
   color: #4BC5E0;
@@ -136,44 +113,6 @@
   align-self: center;
   transition: all 0.3s ease;
 }
-
-/* === Arrows === */
-.slider-arrow {
-  display: none; 
-  background-color: #4BC5E0;
-  color: #18191C;
-  border-radius: 50%;
-  border: none;
-  width: 50px;
-  height: 50px;
-  font-size: 1.5rem;
-  cursor: pointer;
-  opacity: 0.9;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-  box-shadow: 0 4px 15px rgba(75, 197, 224, 0.3);
-}
-
-.slider-arrow.left-arrow {
-  left: -25px;
-}
-
-.slider-arrow.right-arrow {
-  right: -25px;
-}
-
-.slider-arrow:hover {
-  transform: scale(1.1);
-  opacity: 1;
-}
-
-.slider-arrow:disabled {
-  opacity: 0.3;
-  cursor: not-allowed;
-}
-
 
 .read-more-link {
   font-size: 1rem;
@@ -188,7 +127,6 @@
   color: #2D9C9C;
   text-decoration: underline;
 }
-
 
 .see-more-btn {
   margin-top: 2rem;
@@ -227,7 +165,7 @@
   animation-fill-mode: both;
 }
 
-/* === Responsive === */
+/* === Desktop Horizontal Layout === */
 @media (min-width: 1024px) {
   .services-container {
     padding: 4rem 2rem;
@@ -237,28 +175,24 @@
     font-size: 2.2rem;
   }
 
+  .services-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 1rem;
+  }
+
   .services-card {
-    width: calc(25% - 19px) !important;
+    flex: 0 0 23%; /* 4 cards per row */
     min-height: 320px;
-     
-    padding: 0.8rem;
-    
+    padding: 1.5rem;
   }
 }
 
+/* === Mobile (unchanged) === */
 @media (max-width: 1023px) {
-  .slider-arrow {
-    display: flex; 
-  }
-
-  .services-card {
-    width: 100% !important;
-    min-height: 300px;
-    margin: 0 10px;
-    padding: 1.5rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  }
-
   .card-title {
     font-size: 1.3rem;
   }
@@ -284,28 +218,25 @@
     font-size: 0.9rem;
   }
 
-  .slider-arrow {
-    display: none;
-  }
   .see-more-btn {
-  align-self: center;
-  display:flex;
-  margin-top: 2rem;
-  background-color: transparent;
-  color: #4BC5E0;
-  border: 1px solid #4BC5E0;
-  padding: 0.6rem 1.2rem;
-  border-radius: 6px;
-  font-family: "Cascadia Code", monospace;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-  left: 10%;
-}
+    align-self: center;
+    display: flex;
+    margin-top: 2rem;
+    background-color: transparent;
+    color: #4BC5E0;
+    border: 1px solid #4BC5E0;
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-family: "Cascadia Code", monospace;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 10%;
+  }
 
-.see-more-btn:hover {
-  background-color: #4BC5E0;
-  color: #18191C;
-}
+  .see-more-btn:hover {
+    background-color: #4BC5E0;
+    color: #18191C;
+  }
 }

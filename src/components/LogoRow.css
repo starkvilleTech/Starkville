@@ -1,44 +1,43 @@
-/* Main container for the logo row */
+/* Main container */
 .logo-row-wrapper {
   overflow: hidden;
-  width: 100%; 
-  background-color: #18191C; 
+  width: 100%;
+  background-color: #18191C;
+  padding: 10px 0;
 }
 
-/* The row that holds all the logos */
+/* The row that holds all logos */
 .logo-row {
   display: flex;
-  flex-direction: row; 
+  flex-direction: row;
   align-items: center;
-  padding: 5px;
-  animation: scroll 20s linear infinite; 
+  gap: 30px;
+  animation: scroll 20s linear infinite;
 }
 
-/* Styling for each logo */
-.logo-row img {
-  max-width: 100%;
-  height: 50px;
+/* Individual logo box for consistent sizing */
+.logo-box {
+  width: 120px;        /* fixed width for all logos */
+  height: 50px;        /* fixed height for all logos */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
 
+/* The logo image itself */
+.logo-box img {
+  max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
 }
 
-/* Class for individual logo */
-.logon {
-  max-width: 100%; 
-  height: auto; 
-  object-fit: contain; 
-  margin-right: 30px; 
-}
-
-/* Larger screens: Layout logos horizontally with gap */
+/* Larger screens: more spacing between logos */
 @media (min-width: 768px) {
   .logo-row {
-    flex-direction: row; 
-    justify-content: space-between; 
     gap: 40px;
   }
 }
-
 
 @media (min-width: 1024px) {
   .logo-row {
@@ -46,28 +45,23 @@
   }
 }
 
-
+/* Animation keyframes */
 @keyframes scroll {
   0% {
-    transform: translateX(0); 
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(-100%); 
+    transform: translateX(-100%);
   }
 }
+
+/* Mobile adjustments */
 @media (max-width: 480px) {
   .logo-row {
-  display: flex;
-  flex-direction: row; 
-  align-items: center;
-  padding: 5px;
-  animation: scroll 20s linear infinite; 
-  gap: 30px;
-}
-.logo-row img {
-  max-width: 100%;
-  height: 45px;
-  object-fit: contain;
-}
-
+    gap: 20px;
+  }
+  .logo-box {
+    width: 90px;
+    height: 40px;
+  }
 }
