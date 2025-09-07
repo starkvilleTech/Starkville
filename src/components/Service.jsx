@@ -32,15 +32,15 @@ const Service = ({ id }) => {
       detailPage: '/service-details/3',
       image: '/images/Cloud Management.jpg'
     },
-    {
-      id: 4,
+    
+     /*{ id: 4,
       title: 'IT Operations',
       description: 'We build and run scalable IT operations that keep your organization productive and protected...',
       icon: 'fa-cogs',
       detailPage: '/service-details/4',
       image: '/images/IT Ops.jpg'
     },
-    /*{
+    
       id: 5,
       title: 'Project & Program Management',
       description: 'We provide hands‑on delivery leadership across projects and portfolios...',
