@@ -48,7 +48,41 @@
   margin: 0 1rem;
   font-weight: 300;
 }
+@media (max-width: 480px) {
+  .countup-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #18191C;
+}
+.countup-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 0.4rem;
+  background-color: #CDCCC9;
+  font-family: "Cascadia Code", monospace;
+  box-sizing: border-box;
+  position: relative;
+  z-index: auto;
+  color: #18191C;
+  margin-top: 60px;
+}
+.countup-box {
+  text-align: center;
+  margin: 0.2rem 0.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+.countup-label {
+  font-size: 0.7rem;
+  color: #18191C;
+  margin-top: 0.5rem;
+  font-weight: 800;
+}
 
+}
 
 @media (min-width: 1024px) {
   .countup-container {

@@ -178,7 +178,7 @@ const services = [
       'Benefits register and lessons learned toolkit'
     ],
     cta: 'Get delivery leadership for your next initiative →',
-    image: '/images/Project Mgt).jpg',
+    image: '/images/Project Mgt.jpg',
   },
   {
     id: 6,

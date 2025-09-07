@@ -30,7 +30,7 @@ const Service = ({ id }) => {
       description: 'We design, deploy, and operate cloud environments tailored to your security, compliance, performance...',
       icon: 'fa-cloud',
       detailPage: '/service-details/3',
-      image: '/images/cloud management II).jpg'
+      image: '/images/Cloud Management.jpg'
     },
     {
       id: 4,

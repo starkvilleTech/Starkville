@@ -164,23 +164,22 @@
             z-index: 1; 
         } 
 
-        .ctas-button { 
-            position: relative; 
-            top: 25px;
-            left: -18%; 
-            width: 36%; 
-            padding: 10px 30px; 
-            background-color: transparent; 
-            color: #4BC5E0; 
-            font-size: 0.85rem; 
-            border: 1px solid #4BC5E0; 
-            border-radius: 5px; 
-            cursor: pointer; 
+        .ctas-button {
+            position: relative;
+            display: inline-block;
+            margin-top: 1rem;
+            left:-18%;
+            top: 10%;
+            width: 50%;
+            padding: 10px 30px;
+            background-color: transparent;
+            color: #3a9da8;
+            font-size: 1rem;
+            border: 1px solid #4BC5E0;
+            border-radius: 5px;
+            cursor: pointer;
             transition: background-color 0.3s ease;
-            text-align: left;
-            opacity: 0;
-            animation: slideUpFade 1.2s ease-out forwards;
-            animation-delay: 0.6s;
+            font-family: "Cascadia Code";
         }
 
         .ctas-button:hover { 

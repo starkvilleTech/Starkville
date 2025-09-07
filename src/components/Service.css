@@ -283,8 +283,24 @@
   }
 
   .slider-arrow {
-    width: 35px;
-    height: 35px;
-    font-size: 1.2rem;
+    display: none;
   }
+  .see-more-btn {
+    display:flex;
+  margin-top: 2rem;
+  background-color: transparent;
+  color: #4BC5E0;
+  border: 1px solid #4BC5E0;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  font-family: "Cascadia Code", monospace;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.see-more-btn:hover {
+  background-color: #4BC5E0;
+  color: #18191C;
+}
 }

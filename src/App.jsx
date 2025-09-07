@@ -1,3 +1,5 @@
+// src/App.jsx
+
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -8,6 +10,7 @@ import {
 } from 'react-router-dom';
 
 import './App.css';
+
 import Header from './components/Header';
 import CountUpComponent from './components/CountUpComponent';
 import About from './components/About';
@@ -18,55 +21,10 @@ import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
 import AllServices from './components/AllServices';
 
+import services from './data/ServicesData'; // ✅ Use shared data
 import 'font-awesome/css/font-awesome.min.css';
 
-// Static Service Data with Background Images 
-const services = [
-  {
-    id: 1,
-    title: 'IT Consulting',
-    p: 'Practical, vendor‑neutral advice that turns technology into measurable outcomes.',
-    image: '/images/IT Ops.jpg',
-  },
-  {
-    id: 2,
-    title: 'Digital & Business Transformation',
-    p: 'Human‑centered change that delivers measurable, enterprise‑wide impact.',
-    image: '/images/Image_fx (58).jpg',
-  },
-  {
-    id: 3,
-    title: 'Cloud Management',
-    p: 'Architecture, migration, and day-2 operations for major cloud platforms.',
-    image: '/images/Cloud Management.jpg',
-  },
-  {
-    id: 4,
-    title: 'IT Operations',
-    p: 'ITIL‑aligned processes, modern tooling, and a customer‑first service desk.',
-    image: '/images/IT Ops.jpg',
-  },
-  {
-    id: 5,
-    title: 'Project & Program Management',
-    p: 'Governance, methods, and leadership to deliver complex initiatives on time and on budget.',
-    image: '/images/Project Mgt).jpg',
-  },
-  {
-    id: 6,
-    title: 'AI & Process Automation',
-    p: 'From quick‑win automations to enterprise AI platforms with governance.',
-    image: '/images/AI & Process.jpg',
-  },
-  {
-    id: 7,
-    title: 'Business Continuity',
-    p: 'Design, testing, and execution to keep critical services running through disruption.',
-    image: '/images/Business Continuity.jpg',
-  },
-];
-
-//  Scroll to Top on Route Change 
+// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -75,7 +33,7 @@ function ScrollToTop() {
   return null;
 }
 
-// Homepage 
+// Home page
 function HomePage() {
   return (
     <>
@@ -90,12 +48,13 @@ function HomePage() {
   );
 }
 
-// Service Detail Page Wrapper 
+// Service detail page
 function ServiceDetailPageWrapper() {
   const { serviceId } = useParams();
   const service = services.find((s) => s.id === parseInt(serviceId));
+
   const pageTitle = service?.title || 'Service Detail';
-  const pageDescription = service?.p || '';
+  const pageDescription = service?.subheading || '';
   const backgroundImage = service?.image || '/images/default-service-bg.png';
 
   return (
@@ -112,7 +71,7 @@ function ServiceDetailPageWrapper() {
   );
 }
 
-// All Services Grid Page 
+// All services grid
 function AllServicesPage() {
   return (
     <>
@@ -127,7 +86,7 @@ function AllServicesPage() {
   );
 }
 
-// App Router
+// Main app
 function App() {
   return (
     <Router>
