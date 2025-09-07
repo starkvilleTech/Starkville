@@ -197,7 +197,6 @@
   }
 }
 
-/* === Contact Popup Box === */
 .contact-popup {
   background: linear-gradient(135deg, #202125 0%, #18191C 100%);
   color: #fff;
@@ -232,7 +231,7 @@
   }
 }
 
-/* === Close Button === */
+
 .close-popup {
   position: absolute;
   top: 1.2rem;
@@ -257,7 +256,7 @@
   transform: rotate(90deg);
 }
 
-/* === Popup Header === */
+
 .popup-header {
   text-align: center;
   margin-bottom: 2rem;
@@ -288,7 +287,7 @@
   line-height: 1.5;
 }
 
-/* === Contact Methods === */
+
 .contact-methods {
   display: grid;
   grid-template-columns: 1fr;
@@ -309,7 +308,7 @@
   font-weight: 600;
 }
 
-/* === Contact Items === */
+
 .contact-item {
   display: flex;
   align-items: center;
@@ -358,7 +357,7 @@
   text-decoration: underline;
 }
 
-/* === Divider === */
+
 .divider {
   display: flex;
   align-items: center;
@@ -396,7 +395,7 @@
   }
 }
 
-/* === Contact Form === */
+
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -434,7 +433,7 @@
   opacity: 0.7;
 }
 
-/* === Buttons === */
+
 .btn-primary {
   background: linear-gradient(135deg, #4BC5E0 0%, #3aa5c0 100%);
   color: #fff;
@@ -460,7 +459,7 @@
   cursor: not-allowed;
 }
 
-/* === Spinner === */
+
 .spinner {
   width: 16px;
   height: 16px;
@@ -474,7 +473,7 @@
   to { transform: rotate(360deg); }
 }
 
-/* === Success Message === */
+
 .success-message {
   text-align: center;
   padding: 2rem 0;
@@ -496,7 +495,7 @@
   margin-bottom: 2rem;
 }
 
-/* === Responsive Design === */
+/* Responsive Design */
 @media (max-width: 767px) {
   .contact-popup {
     padding: 1.8rem;

@@ -121,7 +121,7 @@ const Navbar = () => {
 
             {submitStatus === 'success' ? (
               <div className="success-message">
-                <h4>✅ Message Sent!</h4>
+                <h4> Message Sent!</h4>
                 <p>We’ll get back to you shortly.</p>
                 <button className="btn-primary" onClick={closePopup}>Close</button>
               </div>
