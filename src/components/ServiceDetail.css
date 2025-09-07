@@ -1,4 +1,4 @@
-/* ServiceDetail.css */
+
 .service-detail-wrapper {
   min-height: 100vh;
  
@@ -191,9 +191,7 @@
   margin-left: -1em;
 }
 
-/*.info-section ol li {
-  
-}*/
+
 
 .info-section ol li::before {
   

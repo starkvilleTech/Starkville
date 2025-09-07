@@ -31,7 +31,7 @@ const Footer = () => {
         </ul>
       </div>
 
-      {/* Social Media Icons */}
+      
       <div className="social-media">
         <a href="#" className="social-icon">
           <i className="fa fa-facebook"></i>

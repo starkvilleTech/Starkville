@@ -1,7 +1,5 @@
 import React, { useMemo } from 'react';
 import './LogoRow.css';
-
-// Import all images
 import comresk from '../assets/DFA png-02.png';
 import spielonic from '../assets/fussion9.png';
 import guiltbin from '../assets/Pelago All White Logo.png';
@@ -10,7 +8,7 @@ import orblo from '../assets/To Size Deepslate-01.png';
 
 
 const LogoRow = () => {
-  // Create an array of logo objects for better maintainability
+  
   const logos = useMemo(() => [
     { src: comresk, alt: 'Comresk', key: 'comresk' },
     { src: spielonic, alt: 'Spielonic', key: 'spielonic' },
@@ -21,7 +19,7 @@ const LogoRow = () => {
 
   // Generate multiple instances for seamless animation
   const logoInstances = useMemo(() => {
-    // Create 4 instances of the logo set for smooth infinite scrolling
+    
     return Array(4).fill().flatMap((_, instance) => 
       logos.map(logo => ({
         ...logo,

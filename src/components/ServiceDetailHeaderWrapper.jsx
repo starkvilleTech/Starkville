@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
-import services from '../data/ServicesData'; // ✅ make sure this file actually exists and exports the array
+import services from '../data/ServicesData'; 
 
 function ServiceDetailHeaderWrapper() {
   const { serviceId } = useParams();
@@ -22,7 +22,7 @@ function ServiceDetailHeaderWrapper() {
         pageTitle={pageTitle}
         pageDescription={pageDescription}
         boxedDescription={true}
-        backgroundImage={backgroundImage} // ✅ this is crucial
+        backgroundImage={backgroundImage} 
       />
       <ServiceDetail />
       <Footer />
