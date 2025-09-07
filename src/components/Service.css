@@ -238,10 +238,10 @@
   }
 
   .services-card {
-    width: calc(25% - 20px) !important;
+    width: calc(25% - 19px) !important;
     min-height: 320px;
      
-    padding: 1rem;
+    padding: 0.8rem;
     
   }
 }
