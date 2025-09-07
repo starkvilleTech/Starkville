@@ -33,7 +33,7 @@ const Service = ({ id }) => {
       image: '/images/Cloud Management.jpg'
     },
     
-     { id: 4,
+     /*{ id: 4,
       title: 'IT Operations',
       description: 'We build and run scalable IT operations that keep your organization productive and protected...',
       icon: 'fa-cogs',
@@ -41,7 +41,7 @@ const Service = ({ id }) => {
       image: '/images/IT Ops.jpg'
     },
     
-     /* id: 5,
+      id: 5,
       title: 'Project & Program Management',
       description: 'We provide hands‑on delivery leadership across projects and portfolios...',
       icon: 'fa-tasks',
