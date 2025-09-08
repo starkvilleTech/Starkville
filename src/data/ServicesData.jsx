@@ -36,7 +36,7 @@ const services = [
       'Operating model, RACI, and KPI pack'
     ],
     cta: 'Book a strategy session →',
-    image: '/images/IT Ops.jpg',
+    image: '',
   },
   {
     id: 2,
@@ -73,7 +73,7 @@ const services = [
       'KPI dashboard and runbook'
     ],
     cta: 'Start your transformation assessment →',
-    image: '/images/Image_fx (58).jpg',
+    image: '/images/nextimg.jpg',
   },
   {
     id: 3,
@@ -107,7 +107,7 @@ const services = [
       'Operations handbook, SLAs/SLOs, cost dashboard'
     ],
     cta: 'Request a cloud readiness review →',
-    image: '/images/Cloud Management.jpg',
+    image: '/images/CloudManagement.jpg',
   },
   {
     id: 4,
@@ -142,7 +142,7 @@ const services = [
       'Operations dashboard and review cadence'
     ],
     cta: 'Talk to us about your IT operations goals →',
-    image: '/images/IT Ops.jpg',
+    image: '/images/itoperations.jpg',
   },
   {
     id: 5,
@@ -176,7 +176,7 @@ const services = [
       'Benefits register and lessons learned toolkit'
     ],
     cta: 'Get delivery leadership for your next initiative →',
-    image: '/images/Project Mgt.jpg',
+    image: '/images/ProjectMgt.jpg',
   },
   {
     id: 6,
@@ -209,7 +209,7 @@ const services = [
       'Production runbooks, dashboards, governance artifacts'
     ],
     cta: 'Explore your first three automation candidates →',
-    image: '/images/AI & Process.jpg',
+    image: '/images/AIProcess.jpg',
   },
   {
     id: 7,
@@ -245,7 +245,7 @@ const services = [
       'Resilience dashboard with RTO/RPO tracking'
     ],
     cta: 'Schedule a continuity and DR readiness review →',
-    image: '/images/Business Continuity.jpg',
+    image: '/images/BusinessContinuity.jpg',
   },
 ];
 

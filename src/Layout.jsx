@@ -3,11 +3,11 @@ import Navbar from './Navbar';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ children, showHeader = true, headerProps = {} }) => {
   return (
     <>
       <Navbar />
-      <Header />
+      {showHeader && <Header {...headerProps} />}
       <main>{children}</main>
       <Footer />
     </>

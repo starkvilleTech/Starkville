@@ -1,5 +1,3 @@
-// src/App.jsx
-
 import React, { useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -21,10 +19,9 @@ import Footer from './components/Footer';
 import ServiceDetail from './components/ServiceDetail';
 import AllServices from './components/AllServices';
 
-import services from './data/ServicesData'; // ✅ Use shared data
+import services from './data/ServicesData';
 import 'font-awesome/css/font-awesome.min.css';
 
-// Scroll to top on route change
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -33,7 +30,7 @@ function ScrollToTop() {
   return null;
 }
 
-// Home page
+
 function HomePage() {
   return (
     <>
