@@ -80,7 +80,7 @@ const Footer = () => {
               )}
             </li>
             <li><a href="#contact" onClick={handleContactClick}>Contact Us</a></li>
-            <li><Link to="/faq" className="faq-button">FAQ</Link></li>
+           
           </ul>
         </div>
 

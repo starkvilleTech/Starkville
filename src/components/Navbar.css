@@ -152,6 +152,8 @@
   align-items: center;
   z-index: 10000;
   animation: fadeIn 0.3s ease-in-out;
+  overflow-y: auto; /* ✅ SCROLLABLE ON DESKTOP */
+  -webkit-overflow-scrolling: touch; /* ✅ SMOOTH SCROLLING ON MOBILE */
 }
 
 @keyframes fadeIn {
@@ -350,8 +352,6 @@
     min-height: 100vh;
     align-items: flex-start;
     padding: 20px 0;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
   }
 
   .contact-popup {
@@ -371,31 +371,19 @@
 }
 
 @media (max-width: 480px) {
-
-  .contact-popup-overlay {
-    padding: 10px 0;
-  }
-
+  .contact-popup-overlay { padding: 10px 0; }
   .contact-popup {
     margin: 10px;
     width: calc(100% - 20px);
     padding: 1.5rem;
   }
-
-  .contact-methods {
-    grid-template-columns: 1fr;
-  }
-  
-  .divider {
-    margin: 1rem 0;
-  }
-  
+  .contact-methods { grid-template-columns: 1fr; }
+  .divider { margin: 1rem 0; }
   .contact-item {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
-  
   .flag, .contact-icon {
     margin-right: 0;
     margin-bottom: 0.5rem;

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import './LogoRow.css';
-import comresk from '../assets/resized_DFA png-02.png';
+import comresk from '../assets/DFA22-01.png';
 import spielonic from '../assets/fussion9.png';
 import guiltbin from '../assets/Pelago All White Logo.png';
 import marvaty from '../assets/Slate pNG3-02.png';
