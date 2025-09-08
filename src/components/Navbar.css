@@ -16,13 +16,8 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.navbar.show {
-  transform: translateY(0%);
-}
-
-.navbar.hide {
-  transform: translateY(-100%);
-}
+.navbar.show { transform: translateY(0%); }
+.navbar.hide { transform: translateY(-100%); }
 
 .logo a {
   font-size: 1.5rem;
@@ -30,9 +25,7 @@
   text-decoration: none;
 }
 
-.logo img {
-  max-height: 50px;
-}
+.logo img { max-height: 50px; }
 
 .menu-icon {
   display: block;
@@ -152,8 +145,8 @@
   align-items: center;
   z-index: 10000;
   animation: fadeIn 0.3s ease-in-out;
-  overflow-y: auto; /* ✅ SCROLLABLE ON DESKTOP */
-  -webkit-overflow-scrolling: touch; /* ✅ SMOOTH SCROLLING ON MOBILE */
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 @keyframes fadeIn {
@@ -172,6 +165,10 @@
   position: relative;
   animation: popupEnter 0.4s cubic-bezier(0.175,0.885,0.32,1.275) forwards;
   overflow: hidden;
+
+  /* ✅ Added to make full box show and scroll if needed */
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 @keyframes popupEnter {
@@ -219,7 +216,6 @@
 .popup-header h3 { font-size: 1.8rem; margin-bottom: 0.5rem; color: #fff; font-weight: 600; }
 .popup-header p { color: #CDCCC9; font-size: 1rem; line-height: 1.5; }
 
-/* Contact Methods Grid */
 .contact-methods {
   display: grid;
   grid-template-columns: 1fr;
@@ -276,7 +272,13 @@
 @media (min-width: 768px) {
   .divider { flex-direction: column; margin: 0 1rem; }
   .divider::before,
-  .divider::after { flex: 0; border-bottom: none; border-left: 1px solid rgba(255,255,255,0.1); height: 100%; width: 1px; }
+  .divider::after {
+    flex: 0;
+    border-bottom: none;
+    border-left: 1px solid rgba(255,255,255,0.1);
+    height: 100%;
+    width: 1px;
+  }
 }
 
 .contact-form { display: flex; flex-direction: column; }
@@ -340,7 +342,11 @@
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
-.success-message { text-align: center; padding: 2rem 0; }
+.success-message {
+  text-align: center;
+  padding: 2rem 0;
+}
+
 .success-message h4 { font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff; }
 .success-message p { color: #CDCCC9; margin-bottom: 2rem; }
 
@@ -358,32 +364,45 @@
     margin: 20px;
     width: calc(100% - 40px);
     max-width: none;
-    max-height: 90vh;
-    overflow-y: auto;
   }
 
   .contact-methods { grid-template-columns: 1fr; }
 
   .popup-header h3 { font-size: 1.5rem; }
 
-  .contact-item { flex-direction: column; text-align: center; gap: 0.5rem; }
-  .flag, .contact-icon { margin-right: 0; margin-bottom: 0.5rem; }
-}
-
-@media (max-width: 480px) {
-  .contact-popup-overlay { padding: 10px 0; }
-  .contact-popup {
-    margin: 10px;
-    width: calc(100% - 20px);
-    padding: 1.5rem;
-  }
-  .contact-methods { grid-template-columns: 1fr; }
-  .divider { margin: 1rem 0; }
   .contact-item {
     flex-direction: column;
     text-align: center;
     gap: 0.5rem;
   }
+
+  .flag, .contact-icon {
+    margin-right: 0;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-popup-overlay {
+    padding: 10px 0;
+  }
+
+  .contact-popup {
+    margin: 10px;
+    width: calc(100% - 20px);
+    padding: 1.5rem;
+  }
+
+  .divider {
+    margin: 1rem 0;
+  }
+
+  .contact-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+
   .flag, .contact-icon {
     margin-right: 0;
     margin-bottom: 0.5rem;
