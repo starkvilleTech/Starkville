@@ -10,7 +10,6 @@ const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage 
     }
   };
 
-  
   const headerStyle = backgroundImage
     ? {
         backgroundImage: `url(${backgroundImage})`,

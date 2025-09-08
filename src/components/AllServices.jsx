@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; 
 import './AllServices.css'; 
 import services from "../data/ServicesData";
+import allServicesHeader from '../assets/tired.jpg'; 
+
 
 const AllServices = () => { 
   return ( 
