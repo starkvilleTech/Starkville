@@ -116,83 +116,95 @@ const Navbar = () => {
 
             <div className="popup-header">
               <h3>Contact Us</h3>
-              <p>We’d love to hear from you.</p>
+              <p>We'd love to hear from you. Choose your preferred contact method.</p>
             </div>
 
             {submitStatus === 'success' ? (
               <div className="success-message">
-                <h4> Message Sent!</h4>
-                <p>We’ll get back to you shortly.</p>
+                <h4>Message Sent Successfully!</h4>
+                <p>We'll get back to you within 24 hours.</p>
                 <button className="btn-primary" onClick={closePopup}>Close</button>
               </div>
             ) : (
               <>
                 <div className="contact-methods">
                   <div className="contact-info">
-                    <h4>Call or Email</h4>
+                    <h4>Direct Contact</h4>
                     <div className="contact-item">
                       <span className="flag">🇺🇸</span>
                       <div>
                         <div>+1 346 828 2077</div>
-                        <div className="country">United States</div>
+                        <span className="country">United States</span>
                       </div>
                     </div>
                     <div className="contact-item">
                       <span className="flag">🇬🇧</span>
                       <div>
                         <div>+44 7379 499922</div>
-                        <div className="country">United Kingdom</div>
+                        <span className="country">United Kingdom</span>
                       </div>
                     </div>
                     <div className="contact-item">
                       <span className="flag">🇨🇦</span>
                       <div>
                         <div>+1 506 897 4449</div>
-                        <div className="country">Canada</div>
+                        <span className="country">Canada</span>
                       </div>
                     </div>
                     <div className="contact-item">
-                      <span className="flag">📧</span>
-                      <a href="mailto:admin@starkville.tech" className="email-link">
-                        admin@starkville.tech
-                      </a>
+                      <span className="flag">🇳🇬</span>
+                      <div>
+                        <div>+234 806 697 7213</div>
+                        <span className="country">Nigeria</span>
+                      </div>
+                    </div>
+                    <div className="contact-item">
+                      <span className="contact-icon">✉️</span>
+                      <a href="mailto:admin@starkville.tech" className="email-link">admin@starkville.tech</a>
                     </div>
                   </div>
 
-                  <div className="contact-form">
-                    <h4>Send a Message</h4>
-                    <form onSubmit={handleSubmit}>
-                      <div className="form-group">
-                        <input
-                          type="text"
-                          name="name"
-                          placeholder="Your Name"
-                          value={formData.name}
-                          onChange={handleInputChange}
-                          required
-                        />
-                      </div>
-                      <div className="form-group">
-                        <textarea
-                          name="message"
-                          placeholder="Your Message"
-                          rows="4"
-                          value={formData.message}
-                          onChange={handleInputChange}
-                          required
-                        ></textarea>
-                      </div>
-                      <button type="submit" className="btn-primary" disabled={isSubmitting}>
-                        {isSubmitting ? (
-                          <>
-                            <div className="spinner"></div> Sending...
-                          </>
-                        ) : (
-                          'Send Message'
-                        )}
-                      </button>
-                    </form>
+                  <div className="divider">
+                    <span>Or</span>
                   </div>
+
+                  <form className="contact-form" onSubmit={handleSubmit}>
+                    <h4>Send us a message</h4>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        value={formData.name}
+                        onChange={handleInputChange}
+                        required
+                      />
+                    </div>
+                    <div className="form-group">
+                      <textarea
+                        name="message"
+                        placeholder="Your Message"
+                        rows="4"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                      ></textarea>
+                    </div>
+                    <button 
+                      type="submit" 
+                      className="btn-primary"
+                      disabled={isSubmitting}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <span className="spinner"></span>
+                          Sending...
+                        </>
+                      ) : (
+                        'Send Message'
+                      )}
+                    </button>
+                  </form>
                 </div>
               </>
             )}
