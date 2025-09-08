@@ -16,23 +16,40 @@ const Testimonials = ({ id }) => {
       name: "“Starkville simplified our entire process.”",
       review: "From planning to execution, everything became more efficient. It saved us time and money. — Mike O., Project Manager",
       image: testimonialImage1,
+      rating: 5 
     },
     {
       name: "“The support feels personal.”",
       review: "The team at Starkville is always there when we need them. They understand our needs and provide tailored solutions. — John D., Business Owner",
       image: testimonialImage2,
+      rating: 4 
     },
     {
       name: "“Built for the future.”",
       review: "Starkville's solutions are not just about today, they are designed to grow with us. We feel secure in our investment. — Sarah L., IT Director",
       image: testimonialImage3,
+      rating: 4 
     },
     {
       name: "“Game-changer for productivity.”",
       review: "Starkville's tools have transformed how we work. Our team is more productive and focused on what matters. — Ada T., Operations Manager",
       image: testimonialImage4,
+      rating: 5 
     },
   ];
+
+  // Function to render star ratings
+  const renderStars = (rating) => {
+    const stars = [];
+    for (let i = 1; i <= 5; i++) {
+      stars.push(
+        <span key={i} className={i <= rating ? "star filled" : "star"}>
+          {i <= rating ? "★" : "☆"}
+        </span>
+      );
+    }
+    return <div className="rating-stars">{stars}</div>;
+  };
 
   const nextSlide = useCallback(() => {
     if (currentIndex < testimonials.length - 1) {
@@ -98,6 +115,7 @@ const Testimonials = ({ id }) => {
               </div>
               <p className="user-name">{testimonial.name}</p>
               <p className="user-review">{testimonial.review}</p>
+              {renderStars(testimonial.rating)}
             </div>
           ))}
         </div>
@@ -115,6 +133,7 @@ const Testimonials = ({ id }) => {
             </div>
             <p className="user-name">{testimonial.name}</p>
             <p className="user-review">{testimonial.review}</p>
+            {renderStars(testimonial.rating)}
           </div>
         ))}
       </div>

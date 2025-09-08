@@ -32,7 +32,7 @@
 
 .services-grid {
   display: grid;
-  grid-template-columns: 1fr; /* default mobile */
+  grid-template-columns: 1fr;
   gap: 20px;
 }
 
@@ -139,6 +139,9 @@
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .see-more-btn:hover {
@@ -165,7 +168,18 @@
   animation-fill-mode: both;
 }
 
-/* === Desktop Horizontal Layout === */
+/* === Tablet Layout === */
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .services-title {
+    font-size: 1.8rem;
+  }
+}
+
+/* === Desktop Layout === */
 @media (min-width: 1024px) {
   .services-container {
     padding: 4rem 2rem;
@@ -176,38 +190,24 @@
   }
 
   .services-grid {
-    display: flex;
-    gap: 20px;
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 1rem;
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .services-card {
-    flex: 0 0 23%; /* 4 cards per row */
     min-height: 320px;
     padding: 1.5rem;
   }
 }
 
-/* === Mobile (unchanged) === */
-@media (max-width: 1023px) {
-  .card-title {
-    font-size: 1.3rem;
-  }
-
-  .card-description {
-    font-size: 0.95rem;
-  }
-}
-
+/* === Mobile Adjustments === */
 @media (max-width: 480px) {
+  .services-content {
+    padding: 1rem;
+  }
+  
   .services-card {
     min-height: 240px;
     padding: 1.2rem;
-    position: relative;
-    left: -1%;
   }
 
   .card-title {
@@ -217,26 +217,9 @@
   .card-description {
     font-size: 0.9rem;
   }
-
+  
   .see-more-btn {
-    align-self: center;
-    display: flex;
-    margin-top: 2rem;
-    background-color: transparent;
-    color: #4BC5E0;
-    border: 1px solid #4BC5E0;
-    padding: 0.6rem 1.2rem;
-    border-radius: 6px;
-    font-family: "Cascadia Code", monospace;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    left: 10%;
-  }
-
-  .see-more-btn:hover {
-    background-color: #4BC5E0;
-    color: #18191C;
+    width: 100%;
+    max-width: 250px;
   }
 }

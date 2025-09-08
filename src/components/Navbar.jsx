@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './Navbar.css';
@@ -13,12 +13,54 @@ const Navbar = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
+  const menuRef = useRef(null);
+  const hamburgerRef = useRef(null);
+  
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
-  const toggleMenu = () => setMenuOpen(!menuOpen);
-  const closeMenu = () => setMenuOpen(false);
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (menuOpen && 
+          menuRef.current && 
+          !menuRef.current.contains(event.target) &&
+          hamburgerRef.current &&
+          !hamburgerRef.current.contains(event.target)) {
+        closeMenu();
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [menuOpen]);
+
+  // Close menu when pressing Escape key
+  useEffect(() => {
+    const handleEscKey = (e) => {
+      if (e.keyCode === 27 && menuOpen) {
+        closeMenu();
+      }
+      if (e.keyCode === 27 && showContactPopup) closePopup();
+    };
+    
+    window.addEventListener('keydown', handleEscKey);
+    return () => window.removeEventListener('keydown', handleEscKey);
+  }, [menuOpen, showContactPopup]);
 
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
@@ -64,14 +106,6 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  useEffect(() => {
-    const handleEscKey = (e) => {
-      if (e.keyCode === 27 && showContactPopup) closePopup();
-    };
-    window.addEventListener('keydown', handleEscKey);
-    return () => window.removeEventListener('keydown', handleEscKey);
-  }, [showContactPopup]);
-
   return (
     <>
       <nav className={`navbar ${isScrolledUp ? 'show' : 'hide'} ${menuOpen ? 'menu-open' : ''}`}>
@@ -81,11 +115,14 @@ const Navbar = () => {
           </a>
         </div>
 
-        <div className="menu-icon" onClick={toggleMenu}>
+        <div className="menu-icon" onClick={toggleMenu} ref={hamburgerRef}>
           <span className={`hamburger ${menuOpen ? 'active' : ''}`}></span>
         </div>
 
-        <ul className={`nav-links ${menuOpen ? 'active' : ''}`}>
+        {/* Overlay for mobile menu */}
+        {menuOpen && <div className="menu-overlay" onClick={closeMenu}></div>}
+
+        <ul className={`nav-links ${menuOpen ? 'active' : ''}`} ref={menuRef}>
           <li><a href="/" onClick={closeMenu}>Home</a></li>
           <li>
             {isHome ? (
