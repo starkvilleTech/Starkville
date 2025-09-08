@@ -1,23 +1,46 @@
-/* Base Footer Styles */
+
 .footer-wrapper { 
-  background-color: #18191C; /* outer dark background */
-  padding: 30px 0; 
+  background: linear-gradient(135deg, #0f1013 0%, #18191C 100%);
+  padding: 40px 0 20px; 
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(75, 197, 224, 0.5), transparent);
 }
 
 .footer-container {
-  background-color: #CDCCC9;
+  background: linear-gradient(135deg, rgba(32, 33, 37, 0.7) 0%, rgba(40, 42, 48, 0.7) 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   max-width: 1100px; 
   margin: 0 auto; 
-  padding: 20px 40px; 
+  padding: 30px 40px; 
   display: flex; 
   justify-content: space-between;
   align-items: center; 
-  border-radius: 5px; 
+  border-radius: 16px; 
   font-family: "Cascadia Code", monospace;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .footer-logo img {
   height: 50px;
+  filter: brightness(0) invert(1);
+  transition: all 0.3s ease;
+}
+
+.footer-logo img:hover {
+  transform: scale(1.05);
 }
 
 .footer-links { 
@@ -31,33 +54,55 @@
 
 .footer-links li a { 
   text-decoration: none;   
-  color: #000000; 
+  color: #CDCCC9; 
   font-weight: 500; 
-  transition: color 0.3s ease; 
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 5px 0;
 }
 
 .footer-links li a:hover { 
   color: #4BC5E0;
 }
 
+.footer-links li a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #4BC5E0;
+  transition: width 0.3s ease;
+}
+
+.footer-links li a:hover::after {
+  width: 100%;
+}
+
 .footer-links .faq-button {
-  background-color: #4BC5E0;
+  background: linear-gradient(135deg, #4BC5E0, #3aa5c9);
   color: #18191C; 
-  padding: 6px 12px;
+  padding: 8px 16px;
   border-radius: 8px;
-  font-weight: bold;
-  transition: background-color 0.3s ease;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+  box-shadow: 0 4px 12px rgba(75, 197, 224, 0.3);
 }
 
 .footer-links .faq-button:hover { 
-  background-color:#18191C;
+  background: transparent;
   color: #4BC5E0;
+  box-shadow: 0 0 0 1px #4BC5E0;
+  transform: translateY(-2px);
 }
 
 .footer-bottom {
-  background-color: #18191C; 
-  padding: 10px 0;
+  background: transparent; 
+  padding: 20px 0 10px;
   text-align: center;
+  margin-top: 20px;
 }
 
 .footer-bottom p {
@@ -65,57 +110,299 @@
   font-size: 0.9rem;
   margin: 0;
   font-family: "Cascadia Code", monospace;
+  opacity: 0.8;
 }
 
 /* Social Media Icons Styles */
 .social-media {
-  margin-top: 20px;
+  margin-top: 25px;
   display: flex;
-  gap: 15px;
+  gap: 20px;
   justify-content: center;
 }
 
 .social-icon {
-  color: #fff;
-  font-size: 1.5rem;
-  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #CDCCC9;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .social-icon:hover {
-  color: #4BC5E0; /* Change color on hover */
+  color: #4BC5E0;
+  background: rgba(75, 197, 224, 0.2);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(75, 197, 224, 0.3);
 }
 
-/* Mobile View Adjustments */
+/* Contact Popup Styles (for footer) */
+.contact-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+.contact-popup {
+  background: linear-gradient(135deg, rgba(32, 33, 37, 0.95) 0%, rgba(40, 42, 48, 0.95) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 16px;
+  padding: 30px;
+  width: 90%;
+  max-width: 500px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: slideUp 0.4s ease;
+}
+
+.close-popup {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  color: #CDCCC9;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.close-popup:hover {
+  color: #4BC5E0;
+}
+
+.popup-header {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.popup-header h3 {
+  color: #4BC5E0;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.popup-header p {
+  color: #CDCCC9;
+  opacity: 0.8;
+}
+
+.contact-methods {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-info h4, .contact-form h4 {
+  color: #4BC5E0;
+  margin-bottom: 15px;
+  font-size: 1.2rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #CDCCC9;
+}
+
+.contact-item .flag, .contact-item .contact-icon {
+  font-size: 1.2rem;
+}
+
+.country {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.email-link {
+  color: #4BC5E0;
+  text-decoration: none;
+  transition: opacity 0.3s ease;
+}
+
+.email-link:hover {
+  opacity: 0.8;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #CDCCC9;
+  opacity: 0.7;
+  margin: 10px 0;
+}
+
+.divider::before, .divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.divider span {
+  padding: 0 10px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group input, .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #CDCCC9;
+  font-family: "Cascadia Code", monospace;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus, .form-group textarea:focus {
+  outline: none;
+  border-color: #4BC5E0;
+  box-shadow: 0 0 0 2px rgba(75, 197, 224, 0.2);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4BC5E0, #3aa5c9);
+  color: #202125;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: "Cascadia Code", monospace;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(75, 197, 224, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.success-message {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.success-message h4 {
+  color: #4BC5E0;
+  margin-bottom: 10px;
+}
+
+.success-message p {
+  color: #CDCCC9;
+  margin-bottom: 20px;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
-    padding: 20px 15px;
+    padding: 25px 20px;
+    gap: 20px;
+    text-align: center;
   }
 
   .footer-logo img {
     height: 40px;
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .footer-links {
     flex-direction: column;
     gap: 15px;
-    text-align: center;
   }
 
   .footer-links li a {
-    font-size: 0.9rem;
-    display: block;
-    padding: 5px 0;
+    font-size: 0.95rem;
+    padding: 8px 0;
   }
 
   .footer-links .faq-button {
-    padding: 8px 20px;
-    font-size: 0.9rem;
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    margin-top: 5px;
   }
 
   .social-media {
-    gap: 10px;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .social-icon {
+    width: 35px;
+    height: 35px;
+    font-size: 1.1rem;
   }
 
   .footer-bottom {
@@ -123,32 +410,51 @@
   }
 
   .footer-bottom p {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .contact-popup {
+    padding: 25px 20px;
+    width: 95%;
   }
 }
 
 /* Extra Small Mobile View */
 @media (max-width: 480px) {
-  .footer-container {
-    padding: 15px 10px;
+  .footer-wrapper {
+    padding: 30px 0 15px;
   }
-
-  .footer-links {
-    gap:0.5rem;
+  
+  .footer-container {
+    padding: 20px 15px;
+    border-radius: 12px;
   }
 
   .footer-logo img {
-    height: 30px;
+    height: 35px;
+  }
+
+  .footer-links {
+    gap: 12px;
   }
 
   .footer-links li a {
-    font-size: 0.8rem;
-    font-weight: 600;
+    font-size: 0.9rem;
   }
 
   .footer-links .faq-button {
-    padding: 6px 10px;
-    font-size: 0.85rem;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+  }
+
+  .social-media {
+    gap: 12px;
+  }
+
+  .social-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 
   .footer-bottom {
@@ -156,6 +462,14 @@
   }
 
   .footer-bottom p {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .contact-popup {
+    padding: 20px 15px;
+  }
+
+  .popup-header h3 {
+    font-size: 1.3rem;
   }
 }
