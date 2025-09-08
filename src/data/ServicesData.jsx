@@ -36,7 +36,7 @@ const services = [
       'Operating model, RACI, and KPI pack'
     ],
     cta: 'Book a strategy session →',
-    image: '',
+    image: '/images/itoperations.jpg',
   },
   {
     id: 2,
