@@ -20,8 +20,10 @@ import ServiceDetail from './components/ServiceDetail';
 import AllServices from './components/AllServices';
 
 import services from './data/ServicesData';
-import allServicesHeader from './assets/tired.jpg'; // ✅ your custom header image
 import 'font-awesome/css/font-awesome.min.css';
+
+
+import allServicesHeader from './assets/tired.jpg'; 
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -31,31 +33,21 @@ function ScrollToTop() {
   return null;
 }
 
-// Layout component to handle consistent structure
-function Layout({ children, headerProps = {} }) {
-  return (
-    <>
-      <Header {...headerProps} />
-      {children}
-      <Footer />
-    </>
-  );
-}
-
-// Home page
 function HomePage() {
   return (
     <>
+      <Header />
       <CountUpComponent />
       <About />
       <Logo />
       <Service id="services" services={services} />
       <Testimonials />
+      <Footer />
     </>
   );
 }
 
-// Service detail wrapper
+// Service detail page - UNTOUCHED as requested
 function ServiceDetailPageWrapper() {
   const { serviceId } = useParams();
   const service = services.find((s) => s.id === parseInt(serviceId));
@@ -65,45 +57,44 @@ function ServiceDetailPageWrapper() {
   const backgroundImage = service?.image || '/images/default-service-bg.png';
 
   return (
-    <ServiceDetail 
-      pageTitle={pageTitle}
-      pageDescription={pageDescription}
-      backgroundImage={backgroundImage}
-    />
+    <>
+      <Header
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+        boxedDescription={true}
+        backgroundImage={backgroundImage}
+      />
+      <ServiceDetail />
+      <Footer />
+    </>
   );
 }
 
-// Main App
+
+function AllServicesPage() {
+  return (
+    <>
+      <Header
+        pageTitle="All Services"
+        pageDescription="Explore everything we offer in one place."
+        boxedDescription={true}
+        backgroundImage={allServicesHeader} 
+      />
+      <AllServices services={services} />
+      <Footer />
+    </>
+  );
+}
+
+// Main app
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <Routes>
-        <Route path="/" element={
-          <Layout>
-            <HomePage />
-          </Layout>
-        } />
-
-        <Route path="/service-details/:serviceId" element={
-          <Layout headerProps={{
-            pageTitle: "Service Details",
-            boxedDescription: true
-          }}>
-            <ServiceDetailPageWrapper />
-          </Layout>
-        } />
-
-        <Route path="/services" element={
-          <Layout headerProps={{
-            pageTitle: "All Our Services",
-            pageDescription: "Explore everything we offer in one place.",
-            boxedDescription: true,
-            backgroundImage: allServicesHeader
-          }}>
-            <AllServices services={services} />
-          </Layout>
-        } />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/service-details/:serviceId" element={<ServiceDetailPageWrapper />} />
+        <Route path="/services" element={<AllServicesPage />} />
       </Routes>
     </Router>
   );
