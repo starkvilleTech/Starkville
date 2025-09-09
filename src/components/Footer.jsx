@@ -7,6 +7,7 @@ import 'font-awesome/css/font-awesome.min.css';
 
 const Footer = () => {
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showMessageForm, setShowMessageForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -25,12 +26,18 @@ const Footer = () => {
   const handleContactClick = (e) => {
     e.preventDefault();
     setShowContactPopup(true);
+    setShowMessageForm(false);
   };
 
   const closePopup = () => {
     setShowContactPopup(false);
+    setShowMessageForm(false);
     setSubmitStatus(null);
     setFormData({ name: '', message: '' });
+  };
+
+  const toggleMessageForm = () => {
+    setShowMessageForm(!showMessageForm);
   };
 
   const handleInputChange = (e) => {
@@ -118,12 +125,11 @@ const Footer = () => {
 
       {showContactPopup && (
         <div className="contact-popup-overlay" onClick={closePopup}>
-          <div className="contact-popup" onClick={(e) => e.stopPropagation()}>
+          <div className="contact-popup compact-popup" onClick={(e) => e.stopPropagation()}>
             <button className="close-popup" onClick={closePopup}>×</button>
 
             <div className="popup-header">
               <h3>Contact Us</h3>
-              <p>We'd love to hear from you. Choose your preferred contact method.</p>
             </div>
 
             {submitStatus === 'success' ? (
@@ -133,87 +139,96 @@ const Footer = () => {
                 <button className="btn-primary" onClick={closePopup}>Close</button>
               </div>
             ) : (
-              <>
-                <div className="contact-methods">
-                  <div className="contact-info">
-                    <h4>Direct Contact</h4>
-                    <div className="contact-item">
+              <div className="compact-contact-content">
+                <div className="contact-info-compact">
+                  <h4>Direct Contact</h4>
+                  <div className="compact-contact-grid">
+                    <div className="compact-contact-item">
                       <span className="flag">🇺🇸</span>
                       <div>
                         <div>+1 346 828 2077</div>
                         <span className="country">United States</span>
                       </div>
                     </div>
-                    <div className="contact-item">
+                    <div className="compact-contact-item">
                       <span className="flag">🇬🇧</span>
                       <div>
                         <div>+44 7379 499922</div>
                         <span className="country">United Kingdom</span>
                       </div>
                     </div>
-                    <div className="contact-item">
+                    <div className="compact-contact-item">
                       <span className="flag">🇨🇦</span>
                       <div>
                         <div>+1 506 897 4449</div>
                         <span className="country">Canada</span>
                       </div>
                     </div>
-                    <div className="contact-item">
+                    <div className="compact-contact-item">
                       <span className="flag">🇳🇬</span>
                       <div>
                         <div>+234 806 697 7213</div>
                         <span className="country">Nigeria</span>
                       </div>
                     </div>
-                    <div className="contact-item">
+                    <div className="compact-contact-item email-item">
                       <span className="contact-icon">✉️</span>
                       <a href="mailto:admin@starkville.tech" className="email-link">admin@starkville.tech</a>
                     </div>
                   </div>
-
-                  <div className="divider">
-                    <span>Or</span>
-                  </div>
-
-                  <form className="contact-form" onSubmit={handleSubmit}>
-                    <h4>Send us a message</h4>
-                    <div className="form-group">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                      />
-                    </div>
-                    <div className="form-group">
-                      <textarea
-                        name="message"
-                        placeholder="Your Message"
-                        rows="4"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                      ></textarea>
-                    </div>
-                    <button 
-                      type="submit" 
-                      className="btn-primary"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <span className="spinner"></span>
-                          Sending...
-                        </>
-                      ) : (
-                        'Send Message'
-                      )}
-                    </button>
-                  </form>
                 </div>
-              </>
+
+                <div className="compact-divider" onClick={toggleMessageForm}>
+                  <span className="toggle-form-text">
+                    {showMessageForm ? 'Hide' : 'Or send a message'}
+                  </span>
+                </div>
+
+                {showMessageForm && (
+                  <form className="contact-form compact-form" onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <div className="form-group compact-form-group name-group">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="form-group compact-form-group message-group">
+                        <textarea
+                          name="message"
+                          placeholder="Your Message"
+                          rows="4"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                        ></textarea>
+                      </div>
+                    </div>
+                    
+                    <div className="form-submit-group">
+                      <button 
+                        type="submit" 
+                        className="btn-primary compact-btn"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="spinner"></span>
+                            Sending...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
+                      </button>
+                    </div>
+                  </form>
+                )}
+              </div>
             )}
           </div>
         </div>

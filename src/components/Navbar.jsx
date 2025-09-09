@@ -9,6 +9,7 @@ const Navbar = () => {
   const [isScrolledUp, setIsScrolledUp] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showContactPopup, setShowContactPopup] = useState(false);
+  const [showMessageForm, setShowMessageForm] = useState(false);
   const [formData, setFormData] = useState({ name: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
@@ -73,13 +74,20 @@ const Navbar = () => {
   const handleContactClick = (e) => {
     e.preventDefault();
     setShowContactPopup(true);
+    setShowMessageForm(false);
     closeMenu();
   };
 
   const closePopup = () => {
     setShowContactPopup(false);
+    setShowMessageForm(false);
     setSubmitStatus(null);
     setFormData({ name: '', message: '' });
+  };
+
+  // Define toggleMessageForm function
+  const toggleMessageForm = () => {
+    setShowMessageForm(!showMessageForm);
   };
 
   const handleInputChange = (e) => {
@@ -153,7 +161,6 @@ const Navbar = () => {
 
             <div className="popup-header">
               <h3>Contact Us</h3>
-              <p>We'd love to hear from you.</p>
             </div>
 
             {submitStatus === 'success' ? (
@@ -202,52 +209,56 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                <div className="compact-divider">
-                  <span>Or send a message</span>
+                <div className="compact-divider" onClick={toggleMessageForm}>
+                  <span className="toggle-form-text">
+                    {showMessageForm ? 'Hide' : 'Or send a message'}
+                  </span>
                 </div>
 
-                <form className="contact-form compact-form" onSubmit={handleSubmit}>
-                  <div className="form-row">
-                    <div className="form-group compact-form-group name-group">
-                      <input
-                        type="text"
-                        name="name"
-                        placeholder="Your Name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                      />
+                {showMessageForm && (
+                  <form className="contact-form compact-form" onSubmit={handleSubmit}>
+                    <div className="form-row">
+                      <div className="form-group compact-form-group name-group">
+                        <input
+                          type="text"
+                          name="name"
+                          placeholder="Your Name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                        />
+                      </div>
+                      
+                      <div className="form-group compact-form-group message-group">
+                        <textarea
+                          name="message"
+                          placeholder="Your Message"
+                          rows="4"
+                          value={formData.message}
+                          onChange={handleInputChange}
+                          required
+                        ></textarea>
+                      </div>
                     </div>
                     
-                    <div className="form-group compact-form-group message-group">
-                      <textarea
-                        name="message"
-                        placeholder="Your Message"
-                        rows="4"
-                        value={formData.message}
-                        onChange={handleInputChange}
-                        required
-                      ></textarea>
+                    <div className="form-submit-group">
+                      <button 
+                        type="submit" 
+                        className="btn-primary compact-btn"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? (
+                          <>
+                            <span className="spinner"></span>
+                            Sending...
+                          </>
+                        ) : (
+                          'Send Message'
+                        )}
+                      </button>
                     </div>
-                  </div>
-                  
-                  <div className="form-submit-group">
-                    <button 
-                      type="submit" 
-                      className="btn-primary compact-btn"
-                      disabled={isSubmitting}
-                    >
-                      {isSubmitting ? (
-                        <>
-                          <span className="spinner"></span>
-                          Sending...
-                        </>
-                      ) : (
-                        'Send Message'
-                      )}
-                    </button>
-                  </div>
-                </form>
+                  </form>
+                )}
               </div>
             )}
           </div>
