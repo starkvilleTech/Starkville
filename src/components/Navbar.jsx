@@ -185,7 +185,6 @@ This message was sent from the website contact form.
             {submitStatus === 'success' ? (
               <div className="success-message">
                 <h4>Message Prepared Successfully!</h4>
-                <p>Your email client should open with a pre-filled message. If it doesn't open automatically, please send your message to admin@starkville.tech</p>
                 <button className="btn-primary" onClick={closePopup}>Close</button>
               </div>
             ) : (
