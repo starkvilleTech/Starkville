@@ -10,7 +10,7 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [showMessageForm, setShowMessageForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
@@ -82,7 +82,7 @@ const Navbar = () => {
     setShowContactPopup(false);
     setShowMessageForm(false);
     setSubmitStatus(null);
-    setFormData({ name: '', message: '' });
+    setFormData({ name: '', email: '', message: '' });
   };
 
   // Define toggleMessageForm function
@@ -98,10 +98,29 @@ const Navbar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    
+    // Prepare email content
+    const subject = `New Contact Form Message from ${formData.name}`;
+    const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Message: ${formData.message}
+
+This message was sent from the website contact form.
+    `.trim();
+    
+    // Create mailto link
+    const mailtoLink = `mailto:kaluelizabeth29@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+
+    window.location.href = mailtoLink;
+    
+    
     setTimeout(() => {
       setIsSubmitting(false);
       setSubmitStatus('success');
-    }, 1500);
+      setFormData({ name: '', email: '', message: '' });
+    }, 1000);
   };
 
   useEffect(() => {
@@ -165,8 +184,8 @@ const Navbar = () => {
 
             {submitStatus === 'success' ? (
               <div className="success-message">
-                <h4>Message Sent Successfully!</h4>
-                <p>We'll get back to you within 24 hours.</p>
+                <h4>Message Prepared Successfully!</h4>
+                <p>Your email client should open with a pre-filled message. If it doesn't open automatically, please send your message to admin@starkville.tech</p>
                 <button className="btn-primary" onClick={closePopup}>Close</button>
               </div>
             ) : (
@@ -229,16 +248,27 @@ const Navbar = () => {
                         />
                       </div>
                       
-                      <div className="form-group compact-form-group message-group">
-                        <textarea
-                          name="message"
-                          placeholder="Your Message"
-                          rows="4"
-                          value={formData.message}
+                      <div className="form-group compact-form-group email-group">
+                        <input
+                          type="email"
+                          name="email"
+                          placeholder="Your Email"
+                          value={formData.email}
                           onChange={handleInputChange}
                           required
-                        ></textarea>
+                        />
                       </div>
+                    </div>
+                    
+                    <div className="form-group compact-form-group message-group">
+                      <textarea
+                        name="message"
+                        placeholder="Your Message"
+                        rows="4"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                      ></textarea>
                     </div>
                     
                     <div className="form-submit-group">
@@ -250,7 +280,7 @@ const Navbar = () => {
                         {isSubmitting ? (
                           <>
                             <span className="spinner"></span>
-                            Sending...
+                            Preparing...
                           </>
                         ) : (
                           'Send Message'
