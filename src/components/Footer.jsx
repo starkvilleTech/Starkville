@@ -60,7 +60,18 @@ const Footer = () => {
 
           {/* Navigation Links */}
           <ul className="footer-links">
-            <li><Link to="/">Home</Link></li>
+            <li>
+              {isHome ? (
+                <span
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  style={{ cursor: 'pointer' }}
+                >
+                  Home
+                </span>
+              ) : (
+                <Link to="/">Home</Link>
+              )}
+            </li>
             <li>
               {isHome ? (
                 <ScrollLink to="services" smooth={true} duration={500} offset={-70}>
@@ -80,7 +91,6 @@ const Footer = () => {
               )}
             </li>
             <li><a href="#contact" onClick={handleContactClick}>Contact Us</a></li>
-           
           </ul>
         </div>
 

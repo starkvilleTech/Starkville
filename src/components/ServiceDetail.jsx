@@ -6,12 +6,11 @@ import 'font-awesome/css/font-awesome.min.css';
 const services = [
   {
     id: 1,
+   
     icon: 'fa-cogs',
     subheading: 'Practical, vendor‑neutral advice that turns technology into measurable outcomes.',
-    overview:
-      'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies. From current-state assessments to multi-year roadmaps, we provide decision-ready guidance to help your investments improve performance, reduce risk, and drive growth.',
-    whoWeServe:
-      'Executives and IT leaders in government, regulated industries, and small‑to‑medium businesses who need clarity, prioritization, and a credible plan.',
+    overview: 'At Starkville Tech, we assist leadership teams in translating business goals into clear, actionable technology strategies. From current-state assessments to multi-year roadmaps, we provide decision-ready guidance to help your investments improve performance, reduce risk, and drive growth.',
+    whoWeServe: 'Executives and IT leaders in government, regulated industries, and small‑to‑medium businesses who need clarity, prioritization, and a credible plan.',
     outcomes: [
       'A fit-for-purpose technology roadmap aligned to business objectives and budgets',
       'Rationalized application and vendor portfolios with cost/benefit analysis',
@@ -43,10 +42,10 @@ const services = [
   },
   {
     id: 2,
+    
     icon: 'fa-robot',
     subheading: 'Human‑centered change that delivers measurable, enterprise‑wide impact.',
-    overview:
-      'Transformation succeeds when strategy, process, people, and technology move together. We help you redesign services, streamline processes, and deploy digital platforms—while building the capabilities and culture to sustain change.',
+    overview: 'Transformation succeeds when strategy, process, people, and technology move together. We help you redesign services, streamline processes, and deploy digital platforms—while building the capabilities and culture to sustain change.',
     whoWeServe: 'Organizations seeking modernization through design thinking, process efficiency, and digital enablement.',
     outcomes: [
       '20–40% cycle‑time reductions in priority processes',
@@ -78,10 +77,10 @@ const services = [
   },
   {
     id: 3,
+    
     icon: 'fa-laptop',
     subheading: 'Architecture, migration, and day‑2 operations for major cloud platforms.',
-    overview:
-      'We design, deploy, and operate cloud environments tailored to your security, compliance, performance, and budget requirements—across public, private, and hybrid models.',
+    overview: 'We design, deploy, and operate cloud environments tailored to your security, compliance, performance, and budget requirements—across public, private, and hybrid models.',
     whoWeServe: 'Enterprises adopting cloud and needing strategy, stability, compliance, and cost control.',
     outcomes: [
       'Right‑sized, policy‑compliant landing zones and guardrails',
@@ -110,10 +109,10 @@ const services = [
   },
   {
     id: 4,
+    
     icon: 'fa-shield-alt',
     subheading: 'ITIL‑aligned processes, modern tooling, and a customer‑first service desk.',
-    overview:
-      'We build and run scalable IT operations that keep your organization productive and protected. From service desk to vendor management and observability, we combine process rigor with automation and a strong customer experience focus.',
+    overview: 'We build and run scalable IT operations that keep your organization productive and protected. From service desk to vendor management and observability, we combine process rigor with automation and a strong customer experience focus.',
     whoWeServe: 'Organizations needing reliable IT support, observability, and efficient ITSM practices.',
     outcomes: [
       'Faster incident resolution and fewer recurring problems',
@@ -143,10 +142,10 @@ const services = [
   },
   {
     id: 5,
+    
     icon: 'fa-project-diagram',
     subheading: 'Governance, methods, and leadership to deliver complex initiatives on time and on budget.',
-    overview:
-      'We provide hands‑on delivery leadership across projects and portfolios. Our PMs and program leads combine Agile and traditional methods to manage risk, align stakeholders, and realize benefits.',
+    overview: 'We provide hands‑on delivery leadership across projects and portfolios. Our PMs and program leads combine Agile and traditional methods to manage risk, align stakeholders, and realize benefits.',
     whoWeServe: 'Organizations pursuing multi-project programs, Agile transformations, or delivery maturity and oversight.',
     outcomes: [
       'Transparent plans, budgets, and risks with proactive course correction',
@@ -175,10 +174,10 @@ const services = [
   },
   {
     id: 6,
+    
     icon: 'fa-brain',
     subheading: 'From quick‑win automations to enterprise AI platforms with governance.',
-    overview:
-      'We help organizations automate manual work, improve decisions, and unlock new value with AI—safely and pragmatically. We start with high‑ROI use cases, build secure integrations, and set up governance for responsible AI.',
+    overview: 'We help organizations automate manual work, improve decisions, and unlock new value with AI—safely and pragmatically. We start with high‑ROI use cases, build secure integrations, and set up governance for responsible AI.',
     whoWeServe: 'Enterprises looking to deploy safe, scalable AI and automation with oversight and impact.',
     outcomes: [
       'Intelligent Document Processing, virtual assistants, RPA flows',
@@ -206,10 +205,10 @@ const services = [
   },
   {
     id: 7,
+   
     icon: 'fa-sync-alt',
     subheading: 'Design, testing, and execution to keep critical services running through disruption.',
-    overview:
-      'From cyber incidents to severe weather, disruptions are inevitable. We design and implement business continuity and disaster recovery (BC/DR) capabilities to protect your people, data, and critical services.',
+    overview: 'From cyber incidents to severe weather, disruptions are inevitable. We design and implement business continuity and disaster recovery (BC/DR) capabilities to protect your people, data, and critical services.',
     whoWeServe: 'Organizations requiring operational resilience, RTO/RPO planning, and incident readiness.',
     outcomes: [
       'Defined RTO/RPO targets with documentation',
@@ -245,16 +244,51 @@ const ServiceDetail = () => {
   const navigate = useNavigate();
   const [showForm, setShowForm] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    company: '',
+    email: '',
+    website: '',
+    date: '',
+    address: '',
+    details: '',
+    other: ''
+  });
 
   const service = services.find((s) => s.id === parseInt(serviceId));
 
   useEffect(() => {
-    
     setIsVisible(true);
-    
-    
     window.scrollTo(0, 0);
-  }, []);
+  }, [serviceId]);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here
+    console.log('Form submitted:', formData);
+    alert('Thank you for your consultation request! We will contact you soon.');
+    setShowForm(false);
+    setFormData({
+      firstName: '',
+      lastName: '',
+      company: '',
+      email: '',
+      website: '',
+      date: '',
+      address: '',
+      details: '',
+      other: ''
+    });
+  };
 
   if (!service) return <div className="service-not-found">Service not found!</div>;
 
@@ -350,7 +384,7 @@ const ServiceDetail = () => {
         </button>
 
         {showForm && (
-          <form className="consultation-form slide-in">
+          <form className="consultation-form slide-in" onSubmit={handleSubmit}>
             <h2>
               <i className="fa fa-calendar"></i>
               Schedule a Consultation
@@ -359,47 +393,95 @@ const ServiceDetail = () => {
             <div className="form-grid">
               <div className="form-group">
                 <label>First Name*</label>
-                <input type="text" required />
+                <input 
+                  type="text" 
+                  name="firstName"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>Last Name*</label>
-                <input type="text" required />
+                <input 
+                  type="text" 
+                  name="lastName"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>Company Name</label>
-                <input type="text" />
+                <input 
+                  type="text" 
+                  name="company"
+                  value={formData.company}
+                  onChange={handleInputChange}
+                />
               </div>
               
               <div className="form-group">
                 <label>Company Email*</label>
-                <input type="email" required />
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required 
+                />
               </div>
               
               <div className="form-group">
                 <label>Company Website</label>
-                <input type="url" />
+                <input 
+                  type="url" 
+                  name="website"
+                  value={formData.website}
+                  onChange={handleInputChange}
+                />
               </div>
               
               <div className="form-group">
                 <label>Date Available for Consultation</label>
-                <input type="date" />
+                <input 
+                  type="date" 
+                  name="date"
+                  value={formData.date}
+                  onChange={handleInputChange}
+                />
               </div>
               
               <div className="form-group full-width">
                 <label>Address</label>
-                <input type="text" />
+                <input 
+                  type="text" 
+                  name="address"
+                  value={formData.address}
+                  onChange={handleInputChange}
+                />
               </div>
               
               <div className="form-group full-width">
                 <label>Consultation Details</label>
-                <textarea rows="4" />
+                <textarea 
+                  rows="4" 
+                  name="details"
+                  value={formData.details}
+                  onChange={handleInputChange}
+                />
               </div>
               
               <div className="form-group full-width">
                 <label>Other Details</label>
-                <textarea rows="3" />
+                <textarea 
+                  rows="3" 
+                  name="other"
+                  value={formData.other}
+                  onChange={handleInputChange}
+                />
               </div>
             </div>
             
@@ -419,9 +501,3 @@ const ServiceDetail = () => {
 };
 
 export default ServiceDetail;
-
-
-
-
-
-
