@@ -99,7 +99,7 @@ const Navbar = () => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Prepare email content
+    // email content
     const subject = `New Contact Form Message from ${formData.name}`;
     const body = `
 Name: ${formData.name}
@@ -109,8 +109,8 @@ Message: ${formData.message}
 This message was sent from the website contact form.
     `.trim();
     
-    // Create mailto link
-    const mailtoLink = `mailto:kaluelizabeth29@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    // mailto link
+    const mailtoLink = `mailto:admin@starkville.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     
 
     window.location.href = mailtoLink;
