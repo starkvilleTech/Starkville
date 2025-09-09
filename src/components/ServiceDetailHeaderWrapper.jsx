@@ -22,7 +22,7 @@ function ServiceDetailHeaderWrapper() {
     pageTitle: service.title,
     pageDescription: service.subheading,
     boxedDescription: true,
-    backgroundImage: service.image, // <-- dynamic image from your service data
+    backgroundImage: service.image, 
   };
 
   return (

@@ -6,7 +6,7 @@ import services from "../data/ServicesData";
 const AllServices = () => { 
   return ( 
     <div className="all-services-container"> 
-      <h2 className="all-services-title">Explore Our Offerings</h2> 
+      <h2 className="all-services-title">Explore Our Services</h2> 
 
       <div className="all-services-grid"> 
         {services.map((service) => ( 
