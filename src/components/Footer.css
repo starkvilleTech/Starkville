@@ -59,6 +59,7 @@
   transition: all 0.3s ease;
   position: relative;
   padding: 5px 0;
+  font-family: "Cascadia Code";
 }
 
 .footer-links li a:hover, .footer-links span:hover { 
