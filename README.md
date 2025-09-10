@@ -1,12 +1,25 @@
-# React + Vite
+# Starkville Tech Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive, modern services showcase website built with **React.js**, featuring animated service detail pages, smooth navigation, and a contact form with consultation scheduling.
 
-Currently, two official plugins are available:
+##  Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-  Dynamic homepages with animated scroll
+-  Sticky navbar and clean header UI
+-  7 professional service detail pages
+-  Responsive design for desktop & mobile
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+##  Tech Stack
+
+- React.js
+- React Router DOM
+- Custom CSS (including animations)
+- FontAwesome for icons
+
+##  Project Structure Highlights
+
+- `App.jsx`: Main routing logic for homepage, service pages, and all services page
+- `Header.jsx`: Dynamic hero section with background image support
+- `ServiceDetail.jsx`: Detailed layout for each individual service
+
