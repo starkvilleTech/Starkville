@@ -15,6 +15,10 @@
     font-family: "Cascadia Code"; 
 } 
 
+.header.all-services-header .header-description,
+.header.all-services-header .header-description-boxed {
+    font-size: 0.9rem;
+}
 
 .hero { 
     position: relative; 
@@ -139,12 +143,23 @@
         height: 350px; 
     } 
     
+   
+    .header.all-services-header {
+        height: 250px;
+        min-height: 250px;
+    }
+    
     .hero h1 { 
         font-size: 2.5rem; 
         position: relative;
         top: -10%;
         left: 0;
     } 
+    
+    .header.all-services-header .hero h1 {
+        font-size: 2rem;
+        top: -20%;
+    }
 
     .hero p { 
         font-size: 1.2rem; 
@@ -152,17 +167,27 @@
         margin: 0 auto; 
         word-wrap: break-word; 
     } 
+    
+    .header.all-services-header .hero p {
+        font-size: 1rem;
+    }
 
     @media (min-width: 1024px) { 
         .header { 
             background-image: url('../assets/Mask group.png'); 
             background-size: cover; 
-            height: 70vh; 
+            height: 65vh; 
             position: relative;
             left:-0.9%;
             width:100%; 
             z-index: 1; 
         } 
+        
+        
+        .header.all-services-header {
+            height: 40vh;
+            min-height: 300px;
+        }
 
         .ctas-button {
             position: relative;
@@ -198,6 +223,12 @@
             font-family: 'Cascadia Code'; 
         } 
         
+        .header.all-services-header .hero h1 {
+            font-size: 2.5rem;
+            left: -18%;
+            top: -10%;
+        }
+        
         .hero p {
             font-size: 1.4rem; 
             text-align: left;
@@ -211,6 +242,11 @@
             white-space: normal;
             overflow-wrap: break-word; 
         }
+        
+        .header.all-services-header .hero p {
+            font-size: 1.1rem;
+            top: 5px;
+        }
     } 
 }
 
@@ -223,6 +259,12 @@
         background-position: center;
         left: 0;
         padding: 1rem;
+    }
+    
+    
+    .header.all-services-header {
+        height: 30vh;
+        min-height: 200px;
     }
 
     .hero {
@@ -247,6 +289,11 @@
         left: 0; 
         top: -10%; 
     }
+    
+    .header.all-services-header .hero h1 {
+        font-size: 1.8rem;
+        top: -20%;
+    }
 
     .ctas-button {
         position: static;
@@ -269,6 +316,11 @@
         word-wrap: break-word;
         width: 100%; 
     }
+    
+    .header.all-services-header .hero p {
+        font-size: 0.9rem;
+        top: 0;
+    }
 }
 
 @media (max-width: 480px) {
@@ -281,6 +333,12 @@
         left: 0;
         padding: 1rem;
     }
+    
+    
+    .header.all-services-header {
+        height: 25vh;
+        min-height: 180px;
+    }
 
     .hero {
         font-size: 0.75rem;
@@ -292,6 +350,11 @@
         font-weight: 300;
         top: -30%;
         text-align: center;
+    }
+    
+    .header.all-services-header .hero h1 {
+        font-size: 1.5rem;
+        top: -40%;
     }
 
     .ctas-button {
@@ -309,6 +372,11 @@
         word-wrap: break-word;
         white-space: normal;
     }
+    
+    .header.all-services-header .hero p {
+        font-size: 0.8rem;
+        top: -30%;
+    }
 }
 .header-description-boxed {
   background-color:#18191C;
@@ -323,3 +391,8 @@
   line-height: 1.5;
 }
 
+.header.all-services-header .header-description-boxed {
+  font-size: 0.9rem;
+  padding: 0.8rem 1rem;
+  max-width: 500px;
+}

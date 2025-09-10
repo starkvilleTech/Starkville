@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './Navbar';
 import './Header.css';
 
-const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage }) => {
+const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage, isAllServicesPage }) => {
   const scrollToServices = () => {
     const servicesSection = document.getElementById('services');
     if (servicesSection) {
@@ -20,7 +20,7 @@ const Header = ({ pageTitle, pageDescription, boxedDescription, backgroundImage 
     : {};
 
   return (
-    <header className="header" style={headerStyle}>
+    <header className={`header ${isAllServicesPage ? 'all-services-header' : ''}`} style={headerStyle}>
       <Navbar />
       <div className="hero">
         {pageTitle ? (
