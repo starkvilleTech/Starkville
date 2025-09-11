@@ -730,6 +730,8 @@
   .menu-icon {
     width: 26px;
     height: 26px;
+    position: relative;
+    left: -5%;
   }
   
   .hamburger {
