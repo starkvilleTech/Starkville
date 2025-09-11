@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Link as ScrollLink } from 'react-scroll';
 import './Footer.css';
-import logo from '../assets/SVT PNG-07 1.png';
+import logo from '../assets/SVT PNG-11 1.png'
 import 'font-awesome/css/font-awesome.min.css';
 
 const Footer = () => {

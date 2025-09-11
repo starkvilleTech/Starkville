@@ -427,20 +427,21 @@
   }
   
   .footer-container {
-    padding: 20px 15px;
-    border-radius: 12px;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 15%;
   }
 
   .footer-logo img {
-    height: 35px;
+    height: 50px;
   }
 
   .footer-links {
-    gap: 12px;
+    gap: 15px;
   }
 
   .footer-links li a {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   .footer-links .faq-button {
@@ -449,7 +450,7 @@
   }
 
   .social-media {
-    gap: 12px;
+    gap: 18px;
   }
 
   .social-icon {
