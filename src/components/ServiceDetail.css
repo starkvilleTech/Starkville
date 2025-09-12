@@ -155,6 +155,9 @@
   font-size: 1.1rem;
   line-height: 1.7;
   padding-left: 1.5rem;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .info-section li {
@@ -265,7 +268,14 @@
   font-size: 1.5rem;
 }
 
+/* Fix for IT Operations mobile alignment */
+.info-section p {
+  white-space: normal;
+  line-height: 1.6;
+  letter-spacing: 0.3px;
+}
 
+/* Responsive Design */
 @media (max-width: 1024px) {
   .service-title { font-size: 2.6rem; }
   .service-subheading { font-size: 1.3rem; }
@@ -277,12 +287,11 @@
   .service-detail-wrapper { padding: 1rem; }
   .glass-card { padding: 1.5rem; }
 
-
   .service-top-bar {
     flex-direction: row; 
     justify-content: space-between; 
     align-items: center; 
-    gap: 0; /* remove extra gap */
+    gap: 0;
   }
 
   .service-title { font-size: 2.2rem; }
@@ -294,6 +303,33 @@
   .icon-container {
     margin-top: 0; 
   }
+  
+  /* Mobile text alignment fixes */
+  .info-section {
+    text-align: left;
+    letter-spacing: 0.5px;
+    line-height: 1.6;
+  }
+  
+  .info-section p,
+  .info-section ul,
+  .info-section ol {
+    padding-left: 1rem;
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  .info-section li {
+    margin-bottom: 0.8rem;
+    line-height: 1.5;
+  }
+  
+  /* Specific fix for IT Operations whoWeServe section */
+  .info-section:nth-child(2) p {
+    white-space: normal;
+    word-spacing: normal;
+    line-height: 1.6;
+  }
 }
 
 @media (max-width: 480px) {
@@ -302,53 +338,59 @@
   .cta-button { padding: 1rem 1.5rem; font-size: 1rem; }
   .form-grid { gap: 1rem; }
   .form-group input, .form-group textarea { padding: 0.8rem; font-size: 1rem; }
-  .info-section { padding: 1.5rem;
-  text-align:left;
-letter-spacing:1.5px; }
-.service-top-bar {
-    flex-direction: row; 
-    justify-content: space-between; 
-    align-items: center; 
-    gap: 0; 
-    font-size: 1.8rem;
-}
-    
-.back-button {
-  background: rgba(75, 197, 224, 0.1);
-  color: #4BC5E0;
-  border: 1px solid #4BC5E0;
-  padding: 0.8rem 1.3rem;
-  border-radius: 50px;
-  cursor: pointer;
-  font-family: 'Cascadia Code', monospace;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items:left;
-  position: relative;
-  left: -5%;
-  gap: 0.2rem;
   
-}
-.icon-container {
-  width: 80px;
-  height: 70px;
-  background: rgba(75, 197, 224, 0.1);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border:none;
-  box-shadow: 0 0 20px rgba(75, 197, 224, 0.3);
-  margin-top: 0.5rem; 
-  position: relative;
-  left: 3%;
-}
-.service-icon {
-  font-size: 2.3rem;
-  color: #4BC5E0;
-  position: relative;
-  top: 5%;
-}
+  .info-section { 
+    padding: 1.2rem;
+    text-align: left;
+    letter-spacing: 0.5px;
+    margin: 0.5rem 0;
   }
+  
+  .info-section p,
+  .info-section ul,
+  .info-section ol {
+    padding-left: 0.8rem;
+    font-size: 0.95rem;
+  }
+  
+  
+  .service-top-bar {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .back-button {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    position: relative;
+    left: -4%;
+  }
+  
+  .icon-container {
+    border: none;
+    width: 60px;
+    height: 60px;
+    left: 0;
+    margin-top: 0;
+  }
+  
+  .service-icon {
+    font-size: 2rem;
+    position: relative;
+    top: 15%;
+  }
+}
 
+/*Animation*/
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(75, 197, 224, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(75, 197, 224, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(75, 197, 224, 0);
+  }
+}

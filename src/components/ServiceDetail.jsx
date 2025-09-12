@@ -122,7 +122,7 @@ const services = [
     ],
     coreCapabilities: [
       'Service Desk & Field Services: tooling, staffing, knowledge portals',
-      'ITSM Processes: incident/request/problem/change/asset management, release, service catalog',
+      'ITSM Processes: incident request, problem change, asset management, release, service catalog',
       'Observability & SRE: logging, metrics, tracing, error budgets, on‑call',
       'Endpoint & Platform Management: patching, configuration, compliance',
       'Vendor & Contract Management: sourcing, SLA tracking, governance',

@@ -54,15 +54,37 @@ const Footer = () => {
     }, 1500);
   };
 
+  
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  
+  const handleLogoClick = (e) => {
+    e.preventDefault();
+    if (location.pathname !== '/') {
+      navigate('/');
+      
+      setTimeout(() => {
+        scrollToTop();
+      }, 100);
+    } else {
+      scrollToTop();
+    }
+  };
+
   return (
     <>
       <footer className="footer-wrapper">
         <div className="footer-container">
           {/* Logo */}
           <div className="footer-logo">
-            <Link to="/">
+            <a href="/" onClick={handleLogoClick}>
               <img src={logo} alt="Starkville Tech Logo" />
-            </Link>
+            </a>
           </div>
 
           {/* Navigation Links */}
@@ -70,7 +92,7 @@ const Footer = () => {
             <li>
               {isHome ? (
                 <span
-                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+                  onClick={scrollToTop}
                   style={{ cursor: 'pointer' }}
                 >
                   Home
