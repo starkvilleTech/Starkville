@@ -390,13 +390,13 @@
   }
   
   .service-icon {
-    font-size: 2rem;
+    font-size: 1.55rem;
     position: relative;
     top: 15%;
   }
 }
 
-/*Animation*/
+/*Animations*/
 @keyframes pulse {
   0% {
     box-shadow: 0 0 0 0 rgba(75, 197, 224, 0.4);
