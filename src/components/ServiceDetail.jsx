@@ -263,8 +263,10 @@ const ServiceDetail = () => {
       <div className="glass-card">
         <div className="service-top-bar">
           <button className="back-button" onClick={() => navigate(-1)}>
-            <i className="fa fa-arrow-left"></i> Back to Services
-          </button>
+  <i className="fa fa-arrow-left"></i>
+  <span className="back-text">Back to Services</span>
+  <span className="back-text-mobile">Back</span>
+</button>
           <div className="icon-container">
             <i className={`fa ${service.icon} service-icon`}></i>
           </div>
