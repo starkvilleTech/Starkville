@@ -66,7 +66,7 @@
   justify-content: center;
   border: 2px solid #4BC5E0;
   box-shadow: 0 0 20px rgba(75, 197, 224, 0.3);
-  margin-top: 1rem; /* for stacked layout on mobile */
+  margin-top: 1rem; 
 }
 
 .service-icon {
