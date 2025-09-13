@@ -85,7 +85,6 @@ const Navbar = () => {
     setFormData({ name: '', email: '', message: '' });
   };
 
-  // Define toggleMessageForm function
   const toggleMessageForm = () => {
     setShowMessageForm(!showMessageForm);
   };
@@ -95,32 +94,33 @@ const Navbar = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // email content
-    const subject = `New Contact Form Message from ${formData.name}`;
-    const body = `
-Name: ${formData.name}
-Email: ${formData.email}
-Message: ${formData.message}
-
-This message was sent from the website contact form.
-    `.trim();
-    
-    // mailto link
-    const mailtoLink = `mailto:admin@starkville.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-
-    window.location.href = mailtoLink;
-    
-    
-    setTimeout(() => {
+    try {
+      // Send form data to the backend API
+      const response = await fetch('https://starkville-backend.onrender.com/api/contact', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+  body: JSON.stringify(formData),
+});
+      
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Failed to send message');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
       setIsSubmitting(false);
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
-    }, 1000);
+    }
   };
 
   useEffect(() => {
@@ -184,8 +184,15 @@ This message was sent from the website contact form.
 
             {submitStatus === 'success' ? (
               <div className="success-message">
-                <h4>Message Prepared Successfully!</h4>
+                <h4>Message Sent Successfully!</h4>
+                <p>We'll get back to you within 24 hours.</p>
                 <button className="btn-primary" onClick={closePopup}>Close</button>
+              </div>
+            ) : submitStatus === 'error' ? (
+              <div className="error-message">
+                <h4>Something went wrong</h4>
+                <p>Please try again or contact us directly at admin@starkville.tech</p>
+                <button className="btn-primary" onClick={() => setSubmitStatus(null)}>Try Again</button>
               </div>
             ) : (
               <div className="compact-contact-content">
@@ -279,7 +286,7 @@ This message was sent from the website contact form.
                         {isSubmitting ? (
                           <>
                             <span className="spinner"></span>
-                            Preparing...
+                            Sending...
                           </>
                         ) : (
                           'Send Message'
