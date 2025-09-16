@@ -198,12 +198,27 @@
   box-shadow: 0 5px 15px rgba(75, 197, 224, 0.3);
 }
 
-.cta-button:hover {
+.cta-button:hover,.form-actions button:hover {
   transform: translateY(-3px);
   box-shadow: 0 8px 25px rgba(75, 197, 224, 0.4);
 }
 
-.cta-button.pulse {
+.form-actions button{
+  background: linear-gradient(135deg, #4BC5E0 0%, #3aa5c0 100%);
+  color: #18191C;
+  border: none;
+  padding: 1.0rem 1.8rem;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(75, 197, 224, 0.3);
+}
+
+.cta-button.pulse .form-actions button.pulse{
   animation: pulse 2s infinite;
 }
 
@@ -312,7 +327,7 @@
     margin-top: 0; 
   }
   
-  /* Mobile text alignment fixes */
+  
   .info-section {
     text-align: left;
     letter-spacing: 0.5px;
@@ -332,7 +347,7 @@
     line-height: 1.5;
   }
   
-  /* Specific fix for IT Operations whoWeServe section */
+  
   .info-section:nth-child(2) p {
     white-space: normal;
     word-spacing: normal;
@@ -394,6 +409,20 @@
     position: relative;
     top: 15%;
   }
+  .form-actions button{
+  background: linear-gradient(135deg, #4BC5E0 0%, #3aa5c0 100%);
+  color: #18191C;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(75, 197, 224, 0.3);
+}
 }
 
 /*Animations*/
