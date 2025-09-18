@@ -56,7 +56,7 @@ const Navbar = () => {
     { value: 'Project & Program Management', label: 'Project & Program Management' },
     { value: 'AI & Process Automation', label: 'AI & Process Automation' },
     { value: 'Business Continuity', label: 'Business Continuity' },
-    { value: 'Talent Management', label: 'Talent Management' },
+    { value: 'Talent Acquisition', label: 'Talent Acquisitions' },
     { value: 'other', label: 'Other' },
   ];
 

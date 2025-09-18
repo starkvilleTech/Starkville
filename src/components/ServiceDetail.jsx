@@ -237,6 +237,42 @@ const services = [
       'Resilience dashboard with RTO/RPO tracking'
     ],
     cta: 'Schedule a continuity and DR readiness review →',
+  },
+
+  {
+    id: 8,
+    icon: 'fa-sync-alt',
+    subheading: 'Unifying Process, People, and Technology to Unlock Talent.',
+    overview:
+      'Transformation in hiring succeeds when strategy, process, people, and technology move together. We help you redesign recruiting services, streamline end-to-end hiring processes, and deploy modern talent platforms—while building the capabilities and culture to sustain change.',
+    whoWeServe: 'Organizations seeking to modernize Talent Acquisition through design thinking, process efficiency, and digital enablement.',
+    outcomes: [
+      '20–40% cycle-time reductions in priority processes (e.g., time-to-screen, time-to-offer)',
+      'Improved candidate and hiring-manager satisfaction (CSAT, NPS)',
+      'Digitized end-to-end recruiting journeys with fewer handoffs and errors',
+      'Change adoption with training and communications that stick',
+    ],
+    coreCapabilities: [
+'Service & Experience Design: map candidate and hiring-manager journeys, recruiting blueprints, accessible-by-design application flows',
+'Process Re-engineering: Lean/Six Sigma for requisition-to-offer, policy simplification, automation scoping (scheduling, screening, approvals)',
+ 'Platform Enablement: low-code extensions, ATS/CRM & Case management, HRIS/ERP, career site/CMS, integration design across background check, assessments, and onboarding',
+'Change & Adoption: stakeholder mapping (TA, HR, line leaders), impact analysis, recruiter & manager training, playbooks',
+'Data-Driven Decisioning: KPI frameworks (time-to-fill, quality-of-hire, source effectiveness), dashboards, continuous improvement cadences',
+'Governance & Controls: security, privacy, and AI/EEO guardrails; bias monitoring; compliant data retention'
+    ],
+    approach: [
+   'Discover & Prioritize — define value cases (e.g., reduce time-to-offer, boost offer-acceptance), align metrics and baselines',
+  'Design & Pilot — co-create digital journeys (candidate, recruiter, hiring manager), stand up a rapid pilot in a critical job family',
+  'Scale & Embed — establish a transformation office for TA, standardize playbooks, integrations, and KPIs across regions/business units',
+  'Sustain — hand off with embedded change capability, coaching, and a continuous-improvement operating rhythm',
+    ],
+    deliverables: [
+    'Transformation roadmap and quantified benefits case',
+    'Target operating model (TOM) for Talent Acquisition and change plan',
+    'Experience blueprints and process maps (req-to-offer-to-onboard)',
+     'KPI dashboard and operational runbook',
+    ],
+    cta: 'Schedule a meeting with us today →',
   }
 ];
 
