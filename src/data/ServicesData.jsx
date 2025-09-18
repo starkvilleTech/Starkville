@@ -282,6 +282,7 @@ const services = [
      'KPI dashboard and operational runbook',
     ],
     cta: 'Schedule a meetingn with us today →',
+    image: '/images/Talent.jpeg',
   }
 ];
 

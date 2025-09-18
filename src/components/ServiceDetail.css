@@ -153,6 +153,7 @@
 .info-section p,
 .info-section ul,
 .info-section ol {
+  list-style-type:circle;
   color: #CDCCC9;
   font-size: 1.1rem;
   line-height: 1.7;
@@ -163,6 +164,7 @@
 }
 
 .info-section li {
+  list-style-type:circle;
   margin-bottom: 0.8rem;
   line-height: 1.6;
   position: relative;
@@ -178,9 +180,12 @@
 }
 
 .info-section ol li::before {
+  content: "•";
   color: #4BC5E0;
   font-weight: bold;
-  margin-right: 0.5rem;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
 }
 
 .cta-button {
