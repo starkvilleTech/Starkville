@@ -38,7 +38,7 @@ const Testimonials = ({ id }) => {
     },
   ];
 
-  // Function to render star ratings
+  // star ratings function 
   const renderStars = (rating) => {
     const stars = [];
     for (let i = 1; i <= 5; i++) {
@@ -63,7 +63,6 @@ const Testimonials = ({ id }) => {
     }
   }, [currentIndex]);
 
-  // swipe handlers
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
