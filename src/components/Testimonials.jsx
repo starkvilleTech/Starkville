@@ -14,25 +14,25 @@ const Testimonials = ({ id }) => {
   const testimonials = [
     {
       name: "“Starkville simplified our entire process.”",
-      review: "From planning to execution, everything became more efficient. It saved us time and money. — Mike O., Project Manager",
+      review: "“Starkville Tech helped us align our IT roadmap with our business strategy. Their vendor-neutral advice saved us time and reduced costs significantly.” — CIO, Government Agency",
       image: testimonialImage1,
       rating: 5 
     },
     {
       name: "“The support feels personal.”",
-      review: "The team at Starkville is always there when we need them. They understand our needs and provide tailored solutions. — John D., Business Owner",
+      review: "“Our operations are more efficient than ever. Cycle times dropped by nearly 30%, and customer satisfaction scores improved within months.” — Director of Operations, Healthcare Firm",
       image: testimonialImage2,
       rating: 4 
     },
     {
       name: "“Built for the future.”",
-      review: "Starkville's solutions are not just about today, they are designed to grow with us. We feel secure in our investment. — Sarah L., IT Director",
+      review: "“The team designed a secure cloud environment for us and optimized costs. Their expertise in compliance gave us peace of mind. — CTO, Financial Services Company",
       image: testimonialImage3,
       rating: 4 
     },
     {
       name: "“Game-changer for productivity.”",
-      review: "Starkville's tools have transformed how we work. Our team is more productive and focused on what matters. — Ada T., Operations Manager",
+      review: "“Service desk response times improved drastically. The automation and monitoring they set up keep our systems running smoothly every day.” — IT Manager, Mid-Sized Enterprise",
       image: testimonialImage4,
       rating: 5 
     },
@@ -63,7 +63,7 @@ const Testimonials = ({ id }) => {
     }
   }, [currentIndex]);
 
-  // Touch swipe handlers
+  // swipe handlers
   const handleTouchStart = (e) => {
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -84,7 +84,7 @@ const Testimonials = ({ id }) => {
       prevSlide();
     }
     
-    // Reset touch positions
+    
     setTouchStart(0);
     setTouchEnd(0);
   };
