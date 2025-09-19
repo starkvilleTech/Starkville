@@ -88,37 +88,69 @@
 }
 
 
+.all-services-grid > .all-service-box:nth-last-child(-n+2) {
+  grid-column: 1 / -1;
+  justify-self: center;
+  max-width: 280px;
+}
+
+
 @media (min-width: 1024px) and (max-width: 1399px) {
   .all-services-grid {
     grid-template-columns: repeat(3, 1fr);
   }
   
-  .all-services-grid > .all-service-box:nth-child(7) {
-    grid-column: 2 / span 1;
+  .all-services-grid > .all-service-box:nth-last-child(-n+2) {
+    grid-column: span 2;
+    max-width: 400px;
+  }
+  
+  .all-services-grid > .all-service-box:nth-last-child(2) {
+    grid-column: 1 / span 2;
+  }
+  
+  .all-services-grid > .all-service-box:last-child {
+    grid-column: 2 / span 2;
   }
 }
 
-/* For ultra-wide screens */
+
 @media (min-width: 1400px) {
   .all-services-grid {
     grid-template-columns: repeat(4, 1fr);
   }
   
-  .all-services-grid > .all-service-box:nth-child(7) {
-    grid-column: auto; 
+  .all-services-grid > .all-service-box:nth-last-child(-n+2) {
+    grid-column: span 2;
+    max-width: 400px;
+  }
+  
+  .all-services-grid > .all-service-box:nth-last-child(2) {
+    grid-column: 2 / span 2;
+  }
+  
+  .all-services-grid > .all-service-box:last-child {
+    grid-column: 3 / span 2;
   }
 }
 
-/* Tablet responsiveness */
+
 @media (min-width: 769px) and (max-width: 1023px) {
   .all-services-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .all-services-grid > .all-service-box:nth-child(7) {
-    grid-column: 1 / span 2; 
-    justify-self: center;
-    max-width: 280px; 
+  .all-services-grid > .all-service-box:nth-last-child(-n+2) {
+    grid-column: span 1;
+    max-width: 280px;
+  }
+  
+  .all-services-grid > .all-service-box:nth-last-child(2) {
+    grid-column: 1;
+  }
+  
+  .all-services-grid > .all-service-box:last-child {
+    grid-column: 2;
   }
 }
 
@@ -151,9 +183,10 @@
     font-size: 0.95rem;
   }
   
-  
-  .all-services-grid > .all-service-box:nth-child(7) {
+  /* For mobile, all boxes are already centered in single column */
+  .all-services-grid > .all-service-box:nth-last-child(-n+2) {
     grid-column: auto;
+    max-width: 100%;
   }
 }
 
