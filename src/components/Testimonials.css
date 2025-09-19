@@ -139,7 +139,7 @@ h2 {
   cursor: not-allowed;
 }
 
-/* Star rating styles */
+
 .rating-stars {
   margin: 10px 0;
   display: flex;
@@ -205,7 +205,7 @@ h2 {
   }
 }
 
-/* Mobile Styles - Transform-based sliding */
+
 @media (max-width: 767px) {
   .testimonials {
     padding: 20px 0;
@@ -246,7 +246,7 @@ h2 {
   }
 }
 
-/* Extra small devices */
+
 @media (max-width: 480px) {
   .testimonial-card {
     width: calc(100vw - 30px);
@@ -275,7 +275,7 @@ h2 {
     right: -10px;
   }
   
-  /* Responsive adjustments for stars */
+  
   .rating-stars {
     margin: 8px 0;
   }

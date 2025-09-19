@@ -250,7 +250,7 @@ const services = [
   {
   id: 8,
     title: 'Talent Acquisition',
-    icon: 'fa-sync-alt',
+    icon: 'fa-solid fa-person',
     subheading: 'Unifying Process, People, and Technology to Unlock Talent.',
     overview:
       'Transformation in hiring succeeds when strategy, process, people, and technology move together. We help you redesign recruiting services, streamline end-to-end hiring processes, and deploy modern talent platforms—while building the capabilities and culture to sustain change.',

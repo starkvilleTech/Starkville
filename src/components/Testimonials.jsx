@@ -41,13 +41,13 @@ const Testimonials = ({ id }) => {
     },
     {
       name: "“Efficient and scalable.”",
-      review: "“From cloud infrastructure to day-to-day IT support, Starkville delivers consistently. We're scaling with confidence.” — Head of IT, Retail Company",
+      review: "“Their project leadership ensured we delivered on time and within budget. The governance framework they implemented has improved transparency company-wide.” — Program Lead, Public Sector",
       image: testimonialImage5,
       rating: 5 
     },
     {
       name: "“Top-tier cybersecurity.”",
-      review: "“They implemented security protocols that passed our toughest audits. We now sleep better.” — CISO, Legal Firm",
+      review: "“With Starkville Tech’s help, we automated several manual processes in HR and finance. The productivity gains were immediate and measurable.” — Head of HR, Retail Organization",
       image: testimonialImage6,
       rating: 4 
     }
@@ -112,7 +112,7 @@ const Testimonials = ({ id }) => {
     <section id={id} className="testimonials">
       <h2>What Users Say About Us</h2>
       
-      {/* Mobile Slider with touch events - Shows all 6 testimonials */}
+      
       <div className="testimonial-container mobile-slider">
         <div 
           ref={sliderRef}
@@ -140,7 +140,7 @@ const Testimonials = ({ id }) => {
         </div>
       </div>
       
-      {/* Desktop Grid - Shows 4 by default, 6 when "View more" is clicked */}
+      
       <div className="testimonial-container desktop-grid">
         {displayedTestimonials.map((testimonial, index) => (
           <div 
