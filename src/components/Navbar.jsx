@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { Link as ScrollLink } from 'react-scroll';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './Navbar.css';
 import logo from '../assets/SVT PNG-11 1.png';
 
@@ -10,26 +9,18 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [showMessageForm, setShowMessageForm] = useState(false);
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    email: '', 
-    phone: '',
-    location: '',
-    service: '',
-    message: '' 
-  });
+  const [formData, setFormData] = useState({ name: '', email: '', phone: '', location: '', service: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
   const formRef = useRef(null);
-  
+
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
-  
   const countryOptions = [
     { value: '', label: 'Select your country', flag: '' },
     { value: 'US', label: 'United States', flag: '🇺🇸' },
@@ -47,7 +38,7 @@ const Navbar = () => {
     { value: 'other', label: 'Other', flag: '🌐' },
   ];
 
-    const serviceOptions = [
+  const serviceOptions = [
     { value: '', label: 'Select a service' },
     { value: 'IT Consulting', label: 'IT Consulting' },
     { value: 'Digital & Business Transformation', label: 'Digital & Business Transformation' },
@@ -60,55 +51,35 @@ const Navbar = () => {
     { value: 'other', label: 'Other' },
   ];
 
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-  };
+  const toggleMenu = () => setMenuOpen(!menuOpen);
+  const closeMenu = () => setMenuOpen(false);
 
-  const closeMenu = () => {
-    setMenuOpen(false);
-  };
-
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuOpen && 
-          menuRef.current && 
-          !menuRef.current.contains(event.target) &&
-          hamburgerRef.current &&
-          !hamburgerRef.current.contains(event.target)) {
+      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target) && hamburgerRef.current && !hamburgerRef.current.contains(event.target)) {
         closeMenu();
       }
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     document.addEventListener('touchstart', handleClickOutside);
-    
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
       document.removeEventListener('touchstart', handleClickOutside);
     };
   }, [menuOpen]);
 
-  
   useEffect(() => {
     const handleEscKey = (e) => {
-      if (e.keyCode === 27 && menuOpen) {
-        closeMenu();
+      if (e.keyCode === 27) {
+        if (menuOpen) closeMenu();
+        if (showContactPopup) closePopup();
       }
-      if (e.keyCode === 27 && showContactPopup) closePopup();
     };
-    
+
     window.addEventListener('keydown', handleEscKey);
     return () => window.removeEventListener('keydown', handleEscKey);
   }, [menuOpen, showContactPopup]);
-
-  const handleNavClick = (e, sectionId) => {
-    e.preventDefault();
-    closeMenu();
-    if (!isHome) {
-      navigate(`/#${sectionId}`);
-    }
-  };
 
   const handleContactClick = (e) => {
     e.preventDefault();
@@ -126,7 +97,6 @@ const Navbar = () => {
 
   const toggleMessageForm = () => {
     setShowMessageForm(!showMessageForm);
-    
     if (!showMessageForm && formRef.current) {
       setTimeout(() => {
         formRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -142,17 +112,14 @@ const Navbar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      // Send form data to the backend API
       const response = await fetch('https://starkville-backend.onrender.com/api/contact', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      
+
       if (response.ok) {
         setSubmitStatus('success');
         setFormData({ name: '', email: '', phone: '', location: '', service: '', message: '' });
@@ -182,42 +149,26 @@ const Navbar = () => {
     <>
       <nav className={`navbar ${isScrolledUp ? 'show' : 'hide'} ${menuOpen ? 'menu-open' : ''}`}>
         <div className="logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} alt="Logo" />
-          </a>
+          </Link>
         </div>
 
         <div className="menu-icon" onClick={toggleMenu} ref={hamburgerRef}>
           <span className={`hamburger ${menuOpen ? 'active' : ''}`}></span>
         </div>
 
-        
         {menuOpen && <div className="menu-overlay" onClick={closeMenu}></div>}
 
         <ul className={`nav-links ${menuOpen ? 'active' : ''}`} ref={menuRef}>
-          <li><a href="/" onClick={closeMenu}>Home</a></li>
-          <li>
-            {isHome ? (
-              <ScrollLink to="services" smooth={true} duration={500} offset={-70} onClick={closeMenu}>
-                Services
-              </ScrollLink>
-            ) : (
-              <a href="/#services" onClick={(e) => handleNavClick(e, 'services')}>Services</a>
-            )}
-          </li>
-          <li>
-            {isHome ? (
-              <ScrollLink to="about" smooth={true} duration={500} offset={-70} onClick={closeMenu}>
-                About
-              </ScrollLink>
-            ) : (
-              <a href="/#about" onClick={(e) => handleNavClick(e, 'about')}>About</a>
-            )}
-          </li>
+          <li><Link to="/" onClick={closeMenu}>Home</Link></li>
+          <li><Link to="/services" onClick={closeMenu}>Services</Link></li>
+          <li><Link to="/#about" onClick={closeMenu}>About</Link></li>
           <li><a href="#contact" onClick={handleContactClick}>Contact Us</a></li>
         </ul>
       </nav>
 
+      
       {showContactPopup && (
         <div className="contact-popup-overlay" onClick={closePopup}>
           <div className="contact-popup compact-popup" onClick={(e) => e.stopPropagation()}>

@@ -2,10 +2,10 @@ import React, { useState, useRef, useCallback } from 'react';
 import './Testimonials.css';
 import testimonialImage1 from '../assets/man.jpg';
 import testimonialImage2 from '../assets/Image_fx (39).jpg';
-import testimonialImage3 from '../assets/woman.jpg';
-import testimonialImage4 from '../assets/Image_fx (37).jpg';
+import testimonialImage3 from '../assets/RAVi.jpg';
+import testimonialImage4 from '../assets/Woman2.jpg';
 import testimonialImage5 from '../assets/colored.jpg';
-import testimonialImage6 from '../assets/man0.jpg';
+import testimonialImage6 from '../assets/man1.jpg';
 
 const Testimonials = ({ id }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
