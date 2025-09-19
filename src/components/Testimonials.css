@@ -80,7 +80,7 @@ h2 {
   font-weight: 300;
 }
 
-/* Add these styles to your existing Testimonials.css */
+
 
 .testimonial-container.desktop-grid {
   display: grid;
@@ -123,7 +123,6 @@ h2 {
   border: initial;
 }
 
-/* Animation for the expanding cards */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -139,7 +138,7 @@ h2 {
   animation: fadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-/* View More Button animation */
+
 .view-more {
   background-color: transparent;
   color: #fff;
@@ -182,7 +181,7 @@ h2 {
     display: none;
   }
   
-  /* Keep mobile slider styles intact */
+  
   .testimonial-container.mobile-slider {
     display: block;
   }
