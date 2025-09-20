@@ -112,10 +112,11 @@
     grid-column: 2 / span 2;
     position: relative;
     bottom: 120%;
+    left: -10%;
   }
 }
 
-/* For 4-column layout (ultra-wide screens) */
+
 @media (min-width: 1400px) {
   .all-services-grid {
     grid-template-columns: repeat(4, 1fr);

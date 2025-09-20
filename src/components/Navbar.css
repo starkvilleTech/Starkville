@@ -791,7 +791,7 @@
     max-height: 45vh;
   }
   
-  /* Adjust dropdown padding for mobile */
+  
   .location-group select {
     padding-left: 2.8rem;
   }
