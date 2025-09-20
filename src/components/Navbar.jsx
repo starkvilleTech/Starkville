@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Country } from 'react-country-state-city';
 import './Navbar.css';
 import logo from '../assets/SVT PNG-11 1.png';
 
@@ -12,6 +13,8 @@ const Navbar = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', location: '', service: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [countries, setCountries] = useState([]);
+  const [loadingCountries, setLoadingCountries] = useState(true);
 
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -21,22 +24,52 @@ const Navbar = () => {
   const navigate = useNavigate();
   const isHome = location.pathname === '/';
 
-  const countryOptions = [
-    { value: '', label: 'Select your country', flag: '' },
-    { value: 'US', label: 'United States', flag: '🇺🇸' },
-    { value: 'GB', label: 'United Kingdom', flag: '🇬🇧' },
-    { value: 'CA', label: 'Canada', flag: '🇨🇦' },
-    { value: 'NG', label: 'Nigeria', flag: '🇳🇬' },
-    { value: 'AU', label: 'Australia', flag: '🇦🇺' },
-    { value: 'DE', label: 'Germany', flag: '🇩🇪' },
-    { value: 'FR', label: 'France', flag: '🇫🇷' },
-    { value: 'IN', label: 'India', flag: '🇮🇳' },
-    { value: 'BR', label: 'Brazil', flag: '🇧🇷' },
-    { value: 'ZA', label: 'South Africa', flag: '🇿🇦' },
-    { value: 'KE', label: 'Kenya', flag: '🇰🇪' },
-    { value: 'GH', label: 'Ghana', flag: '🇬🇭' },
-    { value: 'other', label: 'Other', flag: '🌐' },
-  ];
+  
+  useEffect(() => {
+    const fetchCountries = async () => {
+      try {
+        setLoadingCountries(true);
+        
+        const countryData = await Country.getAllCountries();
+        
+        const formattedCountries = countryData.map(country => ({
+          value: country.isoCode,
+          label: country.name,
+          flag: country.flag 
+        }));
+        
+        
+        formattedCountries.sort((a, b) => a.label.localeCompare(b.label));
+        
+        formattedCountries.unshift({ value: '', label: 'Select your country', flag: '' });
+        
+        setCountries(formattedCountries);
+      } catch (error) {
+        console.error('Error fetching countries from API:', error);
+        // Fallback to basic countries if API fails
+        setCountries([
+          { value: '', label: 'Select your country', flag: '' },
+          { value: 'US', label: 'United States', flag: '🇺🇸' },
+          { value: 'GB', label: 'United Kingdom', flag: '🇬🇧' },
+          { value: 'CA', label: 'Canada', flag: '🇨🇦' },
+          { value: 'NG', label: 'Nigeria', flag: '🇳🇬' },
+          { value: 'AU', label: 'Australia', flag: '🇦🇺' },
+          { value: 'DE', label: 'Germany', flag: '🇩🇪' },
+          { value: 'FR', label: 'France', flag: '🇫🇷' },
+          { value: 'IN', label: 'India', flag: '🇮🇳' },
+          { value: 'BR', label: 'Brazil', flag: '🇧🇷' },
+          { value: 'ZA', label: 'South Africa', flag: '🇿🇦' },
+          { value: 'KE', label: 'Kenya', flag: '🇰🇪' },
+          { value: 'GH', label: 'Ghana', flag: '🇬🇭' },
+          { value: 'other', label: 'Other', flag: '🌐' },
+        ]);
+      } finally {
+        setLoadingCountries(false);
+      }
+    };
+
+    fetchCountries();
+  }, []);
 
   const serviceOptions = [
     { value: '', label: 'Select a service' },
@@ -167,7 +200,6 @@ const Navbar = () => {
           <li><a href="#contact" onClick={handleContactClick}>Contact Us</a></li>
         </ul>
       </nav>
-
       
       {showContactPopup && (
         <div className="contact-popup-overlay" onClick={closePopup}>
@@ -276,18 +308,35 @@ const Navbar = () => {
                         </div>
                         
                         <div className="form-group compact-form-group location-group">
-                          <select
-                            name="location"
-                            value={formData.location}
-                            onChange={handleInputChange}
-                            required
-                          >
-                            {countryOptions.map(option => (
-                              <option key={option.value} value={option.value}>
-                                {option.flag} {option.label}
-                              </option>
-                            ))}
-                          </select>
+                          <div className="select-container">
+                            {formData.location && countries.find(c => c.value === formData.location)?.flag && (
+                              <span className="country-flag-indicator">
+                                {countries.find(c => c.value === formData.location)?.flag}
+                              </span>
+                            )}
+                            <select
+                              name="location"
+                              value={formData.location}
+                              onChange={handleInputChange}
+                              required
+                              style={{ 
+                                paddingLeft: formData.location ? '2.5rem' : '1rem',
+                                backgroundImage: formData.location ? 'none' : undefined
+                              }}
+                              disabled={loadingCountries}
+                            >
+                              {loadingCountries ? (
+                                <option value="">Loading countries...</option>
+                              ) : (
+                                countries.map(option => (
+                                  <option key={option.value} value={option.value}>
+                                    {option.flag} {option.label}
+                                  </option>
+                                ))
+                              )}
+                            </select>
+                            <span className="dropdown-arrow">▼</span>
+                          </div>
                         </div>
                       </div>
 
@@ -320,7 +369,7 @@ const Navbar = () => {
                         <button 
                           type="submit" 
                           className="btn-primary compact-btn"
-                          disabled={isSubmitting}
+                          disabled={isSubmitting || loadingCountries}
                         >
                           {isSubmitting ? (
                             <>
