@@ -125,18 +125,18 @@ const Footer = () => {
 
         {/* Social Media */}
         <div className="social-media">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+         {/*<a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-facebook"></i>
-          </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          </a>*/}
+         {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-twitter"></i>
-          </a>
+          </a>*/}
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-linkedin"></i>
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          {/*<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-instagram"></i>
-          </a>
+          </a>*/}
         </div>
 
         {/* Footer Bottom */}
