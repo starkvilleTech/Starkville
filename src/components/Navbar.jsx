@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Country } from 'react-country-state-city';
 import './Navbar.css';
 import logo from '../assets/SVT PNG-11 1.png';
 
@@ -10,11 +9,16 @@ const Navbar = () => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [showContactPopup, setShowContactPopup] = useState(false);
   const [showMessageForm, setShowMessageForm] = useState(false);
-  const [formData, setFormData] = useState({ name: '', email: '', phone: '', location: '', service: '', message: '' });
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    location: '',
+    service: '',
+    message: '',
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
-  const [countries, setCountries] = useState([]);
-  const [loadingCountries, setLoadingCountries] = useState(true);
 
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -22,74 +26,19 @@ const Navbar = () => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  const isHome = location.pathname === '/';
-
-  
-  useEffect(() => {
-    const fetchCountries = async () => {
-      try {
-        setLoadingCountries(true);
-        
-        const countryData = await Country.getAllCountries();
-        
-        const formattedCountries = countryData.map(country => ({
-          value: country.isoCode,
-          label: country.name,
-          flag: country.flag 
-        }));
-        
-        
-        formattedCountries.sort((a, b) => a.label.localeCompare(b.label));
-        
-        formattedCountries.unshift({ value: '', label: 'Select your country', flag: '' });
-        
-        setCountries(formattedCountries);
-      } catch (error) {
-        console.error('Error fetching countries from API:', error);
-        // Fallback to basic countries if API fails
-        setCountries([
-          { value: '', label: 'Select your country', flag: '' },
-          { value: 'US', label: 'United States', flag: '🇺🇸' },
-          { value: 'GB', label: 'United Kingdom', flag: '🇬🇧' },
-          { value: 'CA', label: 'Canada', flag: '🇨🇦' },
-          { value: 'NG', label: 'Nigeria', flag: '🇳🇬' },
-          { value: 'AU', label: 'Australia', flag: '🇦🇺' },
-          { value: 'DE', label: 'Germany', flag: '🇩🇪' },
-          { value: 'FR', label: 'France', flag: '🇫🇷' },
-          { value: 'IN', label: 'India', flag: '🇮🇳' },
-          { value: 'BR', label: 'Brazil', flag: '🇧🇷' },
-          { value: 'ZA', label: 'South Africa', flag: '🇿🇦' },
-          { value: 'KE', label: 'Kenya', flag: '🇰🇪' },
-          { value: 'GH', label: 'Ghana', flag: '🇬🇭' },
-          { value: 'other', label: 'Other', flag: '🌐' },
-        ]);
-      } finally {
-        setLoadingCountries(false);
-      }
-    };
-
-    fetchCountries();
-  }, []);
-
-  const serviceOptions = [
-    { value: '', label: 'Select a service' },
-    { value: 'IT Consulting', label: 'IT Consulting' },
-    { value: 'Digital & Business Transformation', label: 'Digital & Business Transformation' },
-    { value: 'Cloud Management', label: 'Cloud Management' },
-    { value: 'IT operations', label: 'IT operations' },
-    { value: 'Project & Program Management', label: 'Project & Program Management' },
-    { value: 'AI & Process Automation', label: 'AI & Process Automation' },
-    { value: 'Business Continuity', label: 'Business Continuity' },
-    { value: 'Talent Acquisition', label: 'Talent Acquisitions' },
-    { value: 'other', label: 'Other' },
-  ];
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuOpen && menuRef.current && !menuRef.current.contains(event.target) && hamburgerRef.current && !hamburgerRef.current.contains(event.target)) {
+      if (
+        menuOpen &&
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        hamburgerRef.current &&
+        !hamburgerRef.current.contains(event.target)
+      ) {
         closeMenu();
       }
     };
@@ -147,15 +96,28 @@ const Navbar = () => {
     setIsSubmitting(true);
 
     try {
+      const [flag, countryCode] = formData.location.split('|');
+      const processedFormData = {
+        ...formData,
+        location: countryCode,
+      };
+
       const response = await fetch('https://starkville-backend.onrender.com/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(processedFormData),
       });
 
       if (response.ok) {
         setSubmitStatus('success');
-        setFormData({ name: '', email: '', phone: '', location: '', service: '', message: '' });
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          location: '',
+          service: '',
+          message: '',
+        });
       } else {
         const errorData = await response.json();
         throw new Error(errorData.error || 'Failed to send message');
@@ -177,6 +139,19 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  const serviceOptions = [
+    { value: '', label: 'Select a service' },
+    { value: 'IT Consulting', label: 'IT Consulting' },
+    { value: 'Digital & Business Transformation', label: 'Digital & Business Transformation' },
+    { value: 'Cloud Management', label: 'Cloud Management' },
+    { value: 'IT operations', label: 'IT operations' },
+    { value: 'Project & Program Management', label: 'Project & Program Management' },
+    { value: 'AI & Process Automation', label: 'AI & Process Automation' },
+    { value: 'Business Continuity', label: 'Business Continuity' },
+    { value: 'Talent Acquisition', label: 'Talent Acquisitions' },
+    { value: 'other', label: 'Other' },
+  ];
 
   return (
     <>
@@ -200,7 +175,7 @@ const Navbar = () => {
           <li><a href="#contact" onClick={handleContactClick}>Contact Us</a></li>
         </ul>
       </nav>
-      
+
       {showContactPopup && (
         <div className="contact-popup-overlay" onClick={closePopup}>
           <div className="contact-popup compact-popup" onClick={(e) => e.stopPropagation()}>
@@ -224,161 +199,81 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="compact-contact-content">
+                {/* Phone/Email */}
                 <div className="contact-info-compact">
                   <h4>Direct Contact</h4>
                   <div className="compact-contact-grid">
-                    <div className="compact-contact-item">
-                      <span className="flag">🇺🇸</span>
-                      <div>
-                        <div>+1 346 828 2077</div>
-                        <span className="country">United States</span>
-                      </div>
-                    </div>
-                    <div className="compact-contact-item">
-                      <span className="flag">🇬🇧</span>
-                      <div>
-                        <div>+44 7379 499922</div>
-                        <span className="country">United Kingdom</span>
-                      </div>
-                    </div>
-                    <div className="compact-contact-item">
-                      <span className="flag">🇨🇦</span>
-                      <div>
-                        <div>+1 506 897 4449</div>
-                        <span className="country">Canada</span>
-                      </div>
-                    </div>
-                    <div className="compact-contact-item">
-                      <span className="flag">🇳🇬</span>
-                      <div>
-                        <div>+234 806 697 7213</div>
-                        <span className="country">Nigeria</span>
-                      </div>
-                    </div>
-                    <div className="compact-contact-item email-item">
-                      <span className="contact-icon">✉️</span>
-                      <a href="mailto:admin@starkville.tech" className="email-link">admin@starkville.tech</a>
-                    </div>
+                    <div className="compact-contact-item"><span className="flag">🇺🇸</span><div><div>+1 346 828 2077</div><span className="country">United States</span></div></div>
+                    <div className="compact-contact-item"><span className="flag">🇬🇧</span><div><div>+44 7379 499922</div><span className="country">United Kingdom</span></div></div>
+                    <div className="compact-contact-item"><span className="flag">🇨🇦</span><div><div>+1 506 897 4449</div><span className="country">Canada</span></div></div>
+                    <div className="compact-contact-item"><span className="flag">🇳🇬</span><div><div>+234 806 697 7213</div><span className="country">Nigeria</span></div></div>
+                    <div className="compact-contact-item email-item"><span className="contact-icon">✉️</span><a href="mailto:admin@starkville.tech" className="email-link">admin@starkville.tech</a></div>
                   </div>
                 </div>
 
+                {/* Toggle form */}
                 <div className="compact-divider" onClick={toggleMessageForm}>
                   <span className="toggle-form-text">
                     {showMessageForm ? 'Hide' : 'Or send us a message'}
                   </span>
                 </div>
 
+                {/* Form */}
                 {showMessageForm && (
                   <div className="form-container" ref={formRef}>
                     <form className="contact-form compact-form" onSubmit={handleSubmit}>
                       <div className="form-row">
                         <div className="form-group compact-form-group name-group">
-                          <input
-                            type="text"
-                            name="name"
-                            placeholder="Your Name"
-                            value={formData.name}
-                            onChange={handleInputChange}
-                            required
-                          />
+                          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
                         </div>
-                        
                         <div className="form-group compact-form-group email-group">
-                          <input
-                            type="email"
-                            name="email"
-                            placeholder="Your Email"
-                            value={formData.email}
-                            onChange={handleInputChange}
-                            required
-                          />
+                          <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} required />
                         </div>
                       </div>
 
                       <div className="form-row">
                         <div className="form-group compact-form-group phone-group">
-                          <input
-                            type="tel"
-                            name="phone"
-                            placeholder="Phone Number"
-                            value={formData.phone}
-                            onChange={handleInputChange}
-                            required
-                          />
+                          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
                         </div>
-                        
+
                         <div className="form-group compact-form-group location-group">
                           <div className="select-container">
-                            {formData.location && countries.find(c => c.value === formData.location)?.flag && (
-                              <span className="country-flag-indicator">
-                                {countries.find(c => c.value === formData.location)?.flag}
-                              </span>
-                            )}
-                            <select
-                              name="location"
-                              value={formData.location}
-                              onChange={handleInputChange}
-                              required
-                              style={{ 
-                                paddingLeft: formData.location ? '2.5rem' : '1rem',
-                                backgroundImage: formData.location ? 'none' : undefined
-                              }}
-                              disabled={loadingCountries}
-                            >
-                              {loadingCountries ? (
-                                <option value="">Loading countries...</option>
-                              ) : (
-                                countries.map(option => (
-                                  <option key={option.value} value={option.value}>
-                                    {option.flag} {option.label}
-                                  </option>
-                                ))
-                              )}
+                            <span className="country-flag-indicator">
+                              {formData.location ? formData.location.split('|')[0] : '🌍'}
+                            </span>
+                            <select name="location" value={formData.location} onChange={handleInputChange} required style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}>
+                              <option value="">Select country</option>
+                              <option value="🇺🇸|US">🇺🇸 United States</option>
+                              <option value="🇬🇧|GB">🇬🇧 United Kingdom</option>
+                              <option value="🇨🇦|CA">🇨🇦 Canada</option>
+                              <option value="🇳🇬|NG">🇳🇬 Nigeria</option>
+                              <option value="🇬🇭|GH">🇬🇭 Ghana</option>
+                              <option value="🇰🇪|KE">🇰🇪 Kenya</option>
+                              <option value="🇿🇦|ZA">🇿🇦 South Africa</option>
+                              <option value="🇹🇿|TZ">🇹🇿 Tanzania</option>
+                              <option value="🇪🇹|ET">🇪🇹 Ethiopia</option>
+                              <option value="🌐|other">🌐 Other</option>
                             </select>
-                            <span className="dropdown-arrow">▼</span>
+                            <span className="dropdown-arrow"></span>
                           </div>
                         </div>
                       </div>
 
                       <div className="form-group compact-form-group service-group">
-                        <select
-                          name="service"
-                          value={formData.service}
-                          onChange={handleInputChange}
-                          required
-                        >
+                        <select name="service" value={formData.service} onChange={handleInputChange} required>
                           {serviceOptions.map(option => (
-                            <option key={option.value} value={option.value}>
-                              {option.label}
-                            </option>
+                            <option key={option.value} value={option.value}>{option.label}</option>
                           ))}
                         </select>
                       </div>
-                      
+
                       <div className="form-group compact-form-group message-group">
-                        <textarea
-                          name="message"
-                          placeholder="Your Message"
-                          rows="4"
-                          value={formData.message}
-                          onChange={handleInputChange}
-                        ></textarea>
+                        <textarea name="message" placeholder="Your Message" rows="4" value={formData.message} onChange={handleInputChange}></textarea>
                       </div>
-                      
+
                       <div className="form-submit-group">
-                        <button 
-                          type="submit" 
-                          className="btn-primary compact-btn"
-                          disabled={isSubmitting || loadingCountries}
-                        >
-                          {isSubmitting ? (
-                            <>
-                              <span className="spinner"></span>
-                              Sending...
-                            </>
-                          ) : (
-                            'Send Message'
-                          )}
+                        <button type="submit" className="btn-primary compact-btn" disabled={isSubmitting}>
+                          {isSubmitting ? <><span className="spinner"></span>Sending...</> : 'Send Message'}
                         </button>
                       </div>
                     </form>
