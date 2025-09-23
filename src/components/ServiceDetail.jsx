@@ -244,33 +244,33 @@ const services = [
     icon: 'fa-solid fa-person',
     subheading: 'Unifying Process, People, and Technology to Unlock Talent.',
     overview:
-      'Transformation in hiring succeeds when strategy, process, people, and technology move together. We help you redesign recruiting services, streamline end-to-end hiring processes, and deploy modern talent platforms—while building the capabilities and culture to sustain change.',
-    whoWeServe: 'Organizations seeking to modernize Talent Acquisition through design thinking, process efficiency, and digital enablement.',
-    outcomes: [
-      '20–40% cycle-time reductions in priority processes (e.g., time-to-screen, time-to-offer)',
-      'Improved candidate and hiring-manager satisfaction (CSAT, NPS)',
-      'Digitized end-to-end recruiting journeys with fewer handoffs and errors',
-      'Change adoption with training and communications that stick',
+      'Success in hiring starts with people. We help organizations attract, source, and onboard the right IT talent—professionals who not only bring skills but also align with company culture and long-term goals. Our recruitment services streamline the end-to-end process, ensuring a positive experience for both candidates and hiring managers.',
+    whoWeServe: 'Organizations looking to hire IT professionals across different roles and levels, Businesses seeking recruitment support to scale their teams, and Clients needing full-cycle staffing from job posting to onboarding',
+
+     outcomes: [ 'Reduced time-to-hire through efficient recruitment processes',
+      'Stronger candidate engagement and improved acceptance rates',
+       'Higher quality of hire with better role and culture alignment',
+        'Smooth onboarding experiences that support retention',
     ],
     coreCapabilities: [
-'Service & Experience Design: map candidate and hiring-manager journeys, recruiting blueprints, accessible-by-design application flows',
-'Process Re-engineering: Lean/Six Sigma for requisition-to-offer, policy simplification, automation scoping (scheduling, screening, approvals)',
- 'Platform Enablement: low-code extensions, ATS/CRM & Case management, HRIS/ERP, career site/CMS, integration design across background check, assessments, and onboarding',
-'Change & Adoption: stakeholder mapping (TA, HR, line leaders), impact analysis, recruiter & manager training, playbooks',
-'Data-Driven Decisioning: KPI frameworks (time-to-fill, quality-of-hire, source effectiveness), dashboards, continuous improvement cadences',
-'Governance & Controls: security, privacy, and AI/EEO guardrails; bias monitoring; compliant data retention'
+'IT Talent Sourcing: Access to a diverse pool of qualified candidates.',
+'Recruitment & Selection: Screening, interviewing, and shortlisting candidates for the right fit.',
+ 'Hiring & Onboarding Support: Coordinated processes to ensure smooth integration of new hires.',
+ 'Candidate Experience Design: Clear communication, feedback, and engagement throughout the journey.',
+ 'Data-Driven Insights: Metrics and reporting to track time-to-hire, quality-of-hire, and candidate satisfaction.',
+  'Governance & Fairness: Recruitment practices aligned with inclusivity and compliance standards.',
     ],
     approach: [
-   'Discover & Prioritize — define value cases (e.g., reduce time-to-offer, boost offer-acceptance), align metrics and baselines',
-  'Design & Pilot — co-create digital journeys (candidate, recruiter, hiring manager), stand up a rapid pilot in a critical job family',
-  'Scale & Embed — establish a transformation office for TA, standardize playbooks, integrations, and KPIs across regions/business units',
-  'Sustain — hand off with embedded change capability, coaching, and a continuous-improvement operating rhythm',
+   'Discover & Align: Understand client needs, role requirements, and team dynamics.',
+    'Source & Select: Identify, engage, and evaluate top candidates.',
+    'Hire & Onboard: Support offer management, acceptance, and onboarding for a seamless transition.',
+     'Sustain: Build long-term recruitment strategies and ongoing talent pipelines.'
     ],
     deliverables: [
-    'Transformation roadmap and quantified benefits case',
-    'Target operating model (TOM) for Talent Acquisition and change plan',
-    'Experience blueprints and process maps (req-to-offer-to-onboard)',
-     'KPI dashboard and operational runbook',
+    'Customized recruitment and staffing plan',
+    'Candidate shortlists and hiring recommendations',
+     'Onboarding support materials and guides',
+      'Recruitment dashboards and reporting'
     ],
     cta: 'Schedule a meeting with us today →',
   }
