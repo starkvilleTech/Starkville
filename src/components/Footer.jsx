@@ -131,7 +131,7 @@ const Footer = () => {
          {/* <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-twitter"></i>
           </a>*/}
-          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="social-icon">
+          <a href="https://www.linkedin.com/company/starkville-tech/" target="_blank" rel="noopener noreferrer" className="social-icon">
             <i className="fa fa-linkedin"></i>
           </a>
           {/*<a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="social-icon">
