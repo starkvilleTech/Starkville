@@ -723,6 +723,9 @@
 }
 
 @media (max-width: 768px) {
+   .contact-info-compact.hide-on-mobile {
+    display: none;
+  }
   .navbar {
     padding: 0.8rem;
     height: 65px;

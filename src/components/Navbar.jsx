@@ -104,7 +104,7 @@ const Navbar = () => {
     try {
       console.log('🔄 Submitting form data:', formData);
 
-      
+      // Process location data
       let processedLocation = formData.location;
       if (formData.location && formData.location.includes('|')) {
         const [flag, countryCode] = formData.location.split('|');
@@ -228,7 +228,7 @@ const Navbar = () => {
             ) : (
               <div className="compact-contact-content">
                 {/* Phone/Email */}
-                <div className="contact-info-compact">
+                <div className={`contact-info-compact ${showMessageForm ? 'hide-on-mobile' : ''}`}>
                   <h4>Direct Contact</h4>
                   <div className="compact-contact-grid">
                     <div className="compact-contact-item"><span className="flag">🇺🇸</span><div><div>+1 346 828 2077</div><span className="country">United States</span></div></div>
