@@ -20,13 +20,17 @@ const Navbar = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [errorMessage, setErrorMessage] = useState('');
+  const [hideContactInfo, setHideContactInfo] = useState(false);
 
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
   const formRef = useRef(null);
+  const contactInfoRef = useRef(null);
+  const formContainerRef = useRef(null);
 
   const location = useLocation();
   const navigate = useNavigate();
+
 
   const API_URL = 'https://starkville-backend.onrender.com/api/contact';
 
@@ -83,12 +87,43 @@ const Navbar = () => {
 
   const toggleMessageForm = () => {
     setShowMessageForm(!showMessageForm);
-    if (!showMessageForm && formRef.current) {
-      setTimeout(() => {
-        formRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-      }, 100);
+    if (!showMessageForm) {
+      // When opening form, hide contact info on mobile
+      setHideContactInfo(true);
+      
+      if (formRef.current) {
+        setTimeout(() => {
+          formRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    } else {
+      // When closing form, show contact info again
+      setHideContactInfo(false);
     }
   };
+
+  // Handle scroll within the popup to show/hide contact info on mobile
+  useEffect(() => {
+    const handlePopupScroll = (e) => {
+      if (window.innerWidth <= 768 && showMessageForm) {
+        const scrollTop = e.target.scrollTop;
+        
+        // If user scrolls up near the top (within 50px), show contact info
+        if (scrollTop < 50) {
+          setHideContactInfo(false);
+        } else if (scrollTop > 100) {
+          // If scrolled down, hide contact info
+          setHideContactInfo(true);
+        }
+      }
+    };
+
+    const popupContent = document.querySelector('.compact-contact-content');
+    if (popupContent) {
+      popupContent.addEventListener('scroll', handlePopupScroll);
+      return () => popupContent.removeEventListener('scroll', handlePopupScroll);
+    }
+  }, [showMessageForm]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -228,7 +263,10 @@ const Navbar = () => {
             ) : (
               <div className="compact-contact-content">
                 {/* Phone/Email */}
-                <div className={`contact-info-compact ${showMessageForm ? 'hide-on-mobile' : ''}`}>
+                <div 
+                  ref={contactInfoRef}
+                  className={`contact-info-compact ${hideContactInfo ? 'hide-on-mobile' : ''}`}
+                >
                   <h4>Direct Contact</h4>
                   <div className="compact-contact-grid">
                     <div className="compact-contact-item"><span className="flag">🇺🇸</span><div><div>+1 346 828 2077</div><span className="country">United States</span></div></div>
@@ -248,7 +286,7 @@ const Navbar = () => {
 
                 {/* Form */}
                 {showMessageForm && (
-                  <div className="form-container" ref={formRef}>
+                  <div className="form-container" ref={formContainerRef}>
                     <form className="contact-form compact-form" onSubmit={handleSubmit}>
                       <div className="form-row">
                         <div className="form-group compact-form-group name-group">

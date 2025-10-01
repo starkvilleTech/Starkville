@@ -723,8 +723,27 @@
 }
 
 @media (max-width: 768px) {
-   .contact-info-compact.hide-on-mobile {
+  .compact-contact-content {
+  overflow-y: auto;
+  max-height: calc(90vh - 200px);
+}
+.contact-info-compact {
+  transition: all 0.3s ease-in-out;
+}
+   /*.contact-info-compact.hide-on-mobile {
     display: none;
+  }*/
+  .contact-info-compact.hide-on-mobile {
+    opacity: 0;
+    transform: translateY(-20px);
+    max-height: 0;
+    overflow: hidden;
+    margin-bottom: 0;
+    pointer-events: none;
+  }
+  
+  .compact-contact-content {
+    max-height: calc(80vh - 150px);
   }
   .navbar {
     padding: 0.8rem;
