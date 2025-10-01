@@ -28,6 +28,8 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+  const API_URL = 'https://starkville-backend.onrender.com/api/contact';
+
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
 
@@ -102,7 +104,7 @@ const Navbar = () => {
     try {
       console.log('🔄 Submitting form data:', formData);
 
-      // Process location data
+      
       let processedLocation = formData.location;
       if (formData.location && formData.location.includes('|')) {
         const [flag, countryCode] = formData.location.split('|');
@@ -115,8 +117,9 @@ const Navbar = () => {
       };
 
       console.log('📤 Sending to backend:', processedFormData);
+      console.log('🌐 API URL:', API_URL);
 
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
@@ -369,6 +372,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-
-
