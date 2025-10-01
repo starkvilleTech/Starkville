@@ -88,7 +88,7 @@ const Navbar = () => {
   const toggleMessageForm = () => {
     setShowMessageForm(!showMessageForm);
     if (!showMessageForm) {
-      // When opening form, hide contact info on mobile
+      
       setHideContactInfo(true);
       
       if (formRef.current) {
@@ -97,22 +97,17 @@ const Navbar = () => {
         }, 100);
       }
     } else {
-      // When closing form, show contact info again
       setHideContactInfo(false);
     }
   };
-
-  // Handle scroll within the popup to show/hide contact info on mobile
   useEffect(() => {
     const handlePopupScroll = (e) => {
       if (window.innerWidth <= 768 && showMessageForm) {
         const scrollTop = e.target.scrollTop;
         
-        // If user scrolls up near the top (within 50px), show contact info
         if (scrollTop < 50) {
           setHideContactInfo(false);
         } else if (scrollTop > 100) {
-          // If scrolled down, hide contact info
           setHideContactInfo(true);
         }
       }
@@ -142,7 +137,7 @@ const Navbar = () => {
       // Process location data
       let processedLocation = formData.location;
       if (formData.location && formData.location.includes('|')) {
-        const [flag, countryCode] = formData.location.split('|');
+        const [flags, countryCode] = formData.location.split('|');
         processedLocation = countryCode;
       }
 
@@ -340,16 +335,16 @@ const Navbar = () => {
                               style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}
                             >
                               <option value="">Select country</option>
-                              <option value="🇺🇸|US">🇺🇸 United States</option>
-                              <option value="🇬🇧|GB">🇬🇧 United Kingdom</option>
-                              <option value="🇨🇦|CA">🇨🇦 Canada</option>
-                              <option value="🇳🇬|NG">🇳🇬 Nigeria</option>
-                              <option value="🇬🇭|GH">🇬🇭 Ghana</option>
-                              <option value="🇰🇪|KE">🇰🇪 Kenya</option>
-                              <option value="🇿🇦|ZA">🇿🇦 South Africa</option>
-                              <option value="🇹🇿|TZ">🇹🇿 Tanzania</option>
-                              <option value="🇪🇹|ET">🇪🇹 Ethiopia</option>
-                              <option value="🌐|other">🌐 Other</option>
+                              <option value="🇺🇸"> United States</option>
+                              <option value="🇬🇧">🇬🇧 United Kingdom</option>
+                              <option value="🇨🇦">🇨🇦 Canada</option>
+                              <option value="🇳🇬">🇳🇬 Nigeria</option>
+                              <option value="🇬🇭">🇬🇭 Ghana</option>
+                              <option value="🇰🇪">🇰🇪 Kenya</option>
+                              <option value="🇿🇦">🇿🇦 South Africa</option>
+                              <option value="🇹🇿">🇹🇿 Tanzania</option>
+                              <option value="🇪🇹">🇪🇹 Ethiopia</option>
+                              <option value="other">🌐 Other</option>
                             </select>
                             <span className="dropdown-arrow"></span>
                           </div>
