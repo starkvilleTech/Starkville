@@ -334,16 +334,16 @@ const Navbar = () => {
                               disabled={isSubmitting}
                               style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}
                             >
-                              <option value="">Select country</option>
-                              <option value="">🇺🇸 United States</option>
-                              <option value="">🇬🇧 United Kingdom</option>
-                              <option value="🇨🇦">🇨🇦 Canada</option>
-                              <option value="🇳🇬">🇳🇬 Nigeria</option>
-                              <option value="🇬🇭">🇬🇭 Ghana</option>
-                              <option value="🇰🇪">🇰🇪 Kenya</option>
-                              <option value="🇿🇦">🇿🇦 South Africa</option>
-                              <option value="🇹🇿">🇹🇿 Tanzania</option>
-                              <option value="🇪🇹">🇪🇹 Ethiopia</option>
+                              <option value="🌐">Select country</option>
+                              <option value="🇺🇸">United States</option>
+                              <option value="🇬🇧">United Kingdom</option>
+                              <option value="🇨🇦">Canada</option>
+                              <option value="🇳🇬">Nigeria</option>
+                              <option value="🇬🇭">Ghana</option>
+                              <option value="🇰🇪">Kenya</option>
+                              <option value="🇿🇦">South Africa</option>
+                              <option value="🇹🇿">Tanzania</option>
+                              <option value="🇪🇹">Ethiopia</option>
                               <option value="other">🌐 Other</option>
                             </select>
                             <span className="dropdown-arrow"></span>
