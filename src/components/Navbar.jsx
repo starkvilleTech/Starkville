@@ -19,6 +19,7 @@ const Navbar = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const menuRef = useRef(null);
   const hamburgerRef = useRef(null);
@@ -74,6 +75,7 @@ const Navbar = () => {
     setShowContactPopup(false);
     setShowMessageForm(false);
     setSubmitStatus(null);
+    setErrorMessage('');
     setFormData({ name: '', email: '', phone: '', location: '', service: '', message: '' });
   };
 
@@ -94,19 +96,39 @@ const Navbar = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    setSubmitStatus(null);
+    setErrorMessage('');
 
     try {
-      const [flag, countryCode] = formData.location.split('|');
+      console.log('🔄 Submitting form data:', formData);
+
+      // Process location data
+      let processedLocation = formData.location;
+      if (formData.location && formData.location.includes('|')) {
+        const [flag, countryCode] = formData.location.split('|');
+        processedLocation = countryCode;
+      }
+
       const processedFormData = {
         ...formData,
-        location: countryCode,
+        location: processedLocation,
       };
 
-      const response = await fetch('https://starkville-backend.onrender.com/api/contact', {
+      console.log('📤 Sending to backend:', processedFormData);
+
+      const response = await fetch('http://localhost:5000/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
         body: JSON.stringify(processedFormData),
       });
+
+      console.log('📥 Response status:', response.status);
+
+      const responseData = await response.json();
+      console.log('📥 Response data:', responseData);
 
       if (response.ok) {
         setSubmitStatus('success');
@@ -119,12 +141,12 @@ const Navbar = () => {
           message: '',
         });
       } else {
-        const errorData = await response.json();
-        throw new Error(errorData.error || 'Failed to send message');
+        throw new Error(responseData.error || responseData.details || `Server error: ${response.status}`);
       }
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error('❌ Error submitting form:', error);
       setSubmitStatus('error');
+      setErrorMessage(error.message || 'Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
@@ -194,8 +216,11 @@ const Navbar = () => {
             ) : submitStatus === 'error' ? (
               <div className="error-message">
                 <h4>Something went wrong</h4>
-                <p>Please try again or contact us directly at admin@starkville.tech</p>
-                <button className="btn-primary" onClick={() => setSubmitStatus(null)}>Try Again</button>
+                <p>{errorMessage || 'Please try again or contact us directly at admin@starkville.tech'}</p>
+                <div className="error-actions">
+                  <button className="btn-primary" onClick={() => setSubmitStatus(null)}>Try Again</button>
+                  <button className="btn-secondary" onClick={closePopup}>Close</button>
+                </div>
               </div>
             ) : (
               <div className="compact-contact-content">
@@ -224,16 +249,40 @@ const Navbar = () => {
                     <form className="contact-form compact-form" onSubmit={handleSubmit}>
                       <div className="form-row">
                         <div className="form-group compact-form-group name-group">
-                          <input type="text" name="name" placeholder="Your Name" value={formData.name} onChange={handleInputChange} required />
+                          <input 
+                            type="text" 
+                            name="name" 
+                            placeholder="Your Name" 
+                            value={formData.name} 
+                            onChange={handleInputChange} 
+                            required 
+                            disabled={isSubmitting}
+                          />
                         </div>
                         <div className="form-group compact-form-group email-group">
-                          <input type="email" name="email" placeholder="Your Email" value={formData.email} onChange={handleInputChange} required />
+                          <input 
+                            type="email" 
+                            name="email" 
+                            placeholder="Your Email" 
+                            value={formData.email} 
+                            onChange={handleInputChange} 
+                            required 
+                            disabled={isSubmitting}
+                          />
                         </div>
                       </div>
 
                       <div className="form-row">
                         <div className="form-group compact-form-group phone-group">
-                          <input type="tel" name="phone" placeholder="Phone Number" value={formData.phone} onChange={handleInputChange} required />
+                          <input 
+                            type="tel" 
+                            name="phone" 
+                            placeholder="Phone Number" 
+                            value={formData.phone} 
+                            onChange={handleInputChange} 
+                            required 
+                            disabled={isSubmitting}
+                          />
                         </div>
 
                         <div className="form-group compact-form-group location-group">
@@ -241,7 +290,14 @@ const Navbar = () => {
                             <span className="country-flag-indicator">
                               {formData.location ? formData.location.split('|')[0] : '🌍'}
                             </span>
-                            <select name="location" value={formData.location} onChange={handleInputChange} required style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}>
+                            <select 
+                              name="location" 
+                              value={formData.location} 
+                              onChange={handleInputChange} 
+                              required 
+                              disabled={isSubmitting}
+                              style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}
+                            >
                               <option value="">Select country</option>
                               <option value="🇺🇸|US">🇺🇸 United States</option>
                               <option value="🇬🇧|GB">🇬🇧 United Kingdom</option>
@@ -260,7 +316,13 @@ const Navbar = () => {
                       </div>
 
                       <div className="form-group compact-form-group service-group">
-                        <select name="service" value={formData.service} onChange={handleInputChange} required>
+                        <select 
+                          name="service" 
+                          value={formData.service} 
+                          onChange={handleInputChange} 
+                          required 
+                          disabled={isSubmitting}
+                        >
                           {serviceOptions.map(option => (
                             <option key={option.value} value={option.value}>{option.label}</option>
                           ))}
@@ -268,12 +330,30 @@ const Navbar = () => {
                       </div>
 
                       <div className="form-group compact-form-group message-group">
-                        <textarea name="message" placeholder="Your Message" rows="4" value={formData.message} onChange={handleInputChange}></textarea>
+                        <textarea 
+                          name="message" 
+                          placeholder="Your Message" 
+                          rows="4" 
+                          value={formData.message} 
+                          onChange={handleInputChange}
+                          disabled={isSubmitting}
+                        ></textarea>
                       </div>
 
                       <div className="form-submit-group">
-                        <button type="submit" className="btn-primary compact-btn" disabled={isSubmitting}>
-                          {isSubmitting ? <><span className="spinner"></span>Sending...</> : 'Send Message'}
+                        <button 
+                          type="submit" 
+                          className="btn-primary compact-btn" 
+                          disabled={isSubmitting}
+                        >
+                          {isSubmitting ? (
+                            <>
+                              <span className="spinner"></span>
+                              Sending...
+                            </>
+                          ) : (
+                            'Send Message'
+                          )}
                         </button>
                       </div>
                     </form>
@@ -289,3 +369,6 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
