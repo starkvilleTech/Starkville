@@ -31,8 +31,19 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-
   const API_URL = 'https://starkville-backend.onrender.com/api/contact';
+
+  const countryPhoneCodes = {
+    '🇺🇸': '+1',
+    '🇬🇧': '+44',
+    '🇨🇦': '+1',
+    '🇳🇬': '+234',
+    '🇬🇭': '+233',
+    '🇰🇪': '+254',
+    '🇿🇦': '+27',
+    '🇹🇿': '+255',
+    '🇪🇹': '+251',
+  };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   const closeMenu = () => setMenuOpen(false);
@@ -88,9 +99,7 @@ const Navbar = () => {
   const toggleMessageForm = () => {
     setShowMessageForm(!showMessageForm);
     if (!showMessageForm) {
-      
       setHideContactInfo(true);
-      
       if (formRef.current) {
         setTimeout(() => {
           formRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -100,11 +109,11 @@ const Navbar = () => {
       setHideContactInfo(false);
     }
   };
+
   useEffect(() => {
     const handlePopupScroll = (e) => {
       if (window.innerWidth <= 768 && showMessageForm) {
         const scrollTop = e.target.scrollTop;
-        
         if (scrollTop < 50) {
           setHideContactInfo(false);
         } else if (scrollTop > 100) {
@@ -122,7 +131,21 @@ const Navbar = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
+    
+    if (name === 'location') {
+      const countryCode = countryPhoneCodes[value];
+      if (countryCode) {
+        setFormData((prev) => ({ 
+          ...prev, 
+          [name]: value,
+          phone: countryCode + ' '
+        }));
+      } else {
+        setFormData((prev) => ({ ...prev, [name]: value }));
+      }
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -134,7 +157,6 @@ const Navbar = () => {
     try {
       console.log('🔄 Submitting form data:', formData);
 
-      // Process location data
       let processedLocation = formData.location;
       if (formData.location && formData.location.includes('|')) {
         const [flags, countryCode] = formData.location.split('|');
@@ -257,7 +279,6 @@ const Navbar = () => {
               </div>
             ) : (
               <div className="compact-contact-content">
-                {/* Phone/Email */}
                 <div 
                   ref={contactInfoRef}
                   className={`contact-info-compact ${hideContactInfo ? 'hide-on-mobile' : ''}`}
@@ -272,14 +293,12 @@ const Navbar = () => {
                   </div>
                 </div>
 
-                {/* Toggle form */}
                 <div className="compact-divider" onClick={toggleMessageForm}>
                   <span className="toggle-form-text">
                     {showMessageForm ? 'Hide' : 'Or send us a message'}
                   </span>
                 </div>
 
-                {/* Form */}
                 {showMessageForm && (
                   <div className="form-container" ref={formContainerRef}>
                     <form className="contact-form compact-form" onSubmit={handleSubmit}>
@@ -334,7 +353,7 @@ const Navbar = () => {
                               disabled={isSubmitting}
                               style={{ paddingLeft: '2.5rem', backgroundImage: 'none' }}
                             >
-                              <option value="🌐">Select country</option>
+                              <option value="">Select country</option>
                               <option value="🇺🇸">United States</option>
                               <option value="🇬🇧">United Kingdom</option>
                               <option value="🇨🇦">Canada</option>
