@@ -518,11 +518,12 @@
   grid-column: 2;
 }
 
-.phone-group {
+/* Updated grid positioning for country and phone */
+.location-group {
   grid-column: 1;
 }
 
-.location-group {
+.phone-group {
   grid-column: 2;
 }
 
@@ -678,7 +679,7 @@
 }
 
 @keyframes spin { 
-  to { transform: rotate(360極端なdeg); } 
+  to { transform: rotate(360deg); } 
 }
 
 .success-message {
@@ -780,8 +781,8 @@
   
   .name-group,
   .email-group,
-  .phone-group,
   .location-group,
+  .phone-group,
   .service-group,
   .message-group,
   .form-submit-group {

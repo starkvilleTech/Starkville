@@ -43,6 +43,20 @@ const Footer = () => {
     '🇪🇹': '+251',
   };
 
+  // Maximum character limits by country
+  const phoneMaxLengths = {
+    '🇺🇸': 15, 
+    '🇬🇧': 15, 
+    '🇨🇦': 15, 
+    '🇳🇬': 15, 
+    '🇬🇭': 14,
+    '🇰🇪': 13, 
+    '🇿🇦': 12, 
+    '🇹🇿': 12, 
+    '🇪🇹': 12, 
+    'other': 20 
+  };
+
   const handleNavClick = (e, sectionId) => {
     e.preventDefault();
     if (!isHome) {
@@ -122,6 +136,16 @@ const Footer = () => {
       } else {
         setFormData((prev) => ({ ...prev, [name]: value }));
       }
+    } else if (name === 'phone') {
+      const cleanedValue = value.replace(/[^\d+\s-]/g, '');
+      
+      // Get max length for current country
+      const maxLength = phoneMaxLengths[formData.location] || phoneMaxLengths['other'];
+      
+      // Limit the input to max length
+      const limitedValue = cleanedValue.slice(0, maxLength);
+      
+      setFormData((prev) => ({ ...prev, [name]: limitedValue }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -343,18 +367,6 @@ const Footer = () => {
                       </div>
 
                       <div className="form-row">
-                        <div className="form-group compact-form-group phone-group">
-                          <input 
-                            type="tel" 
-                            name="phone" 
-                            placeholder="Phone Number" 
-                            value={formData.phone} 
-                            onChange={handleInputChange} 
-                            required 
-                            disabled={isSubmitting}
-                          />
-                        </div>
-
                         <div className="form-group compact-form-group location-group">
                           <div className="select-container">
                             <span className="country-flag-indicator">
@@ -382,6 +394,18 @@ const Footer = () => {
                             </select>
                             <span className="dropdown-arrow"></span>
                           </div>
+                        </div>
+                        <div className="form-group compact-form-group phone-group">
+                          <input 
+                            type="tel" 
+                            name="phone" 
+                            placeholder="Phone Number" 
+                            value={formData.phone} 
+                            onChange={handleInputChange} 
+                            required 
+                            disabled={isSubmitting}
+                            maxLength={phoneMaxLengths[formData.location] || phoneMaxLengths['other']}
+                          />
                         </div>
                       </div>
 
