@@ -47,16 +47,16 @@ const Navbar = () => {
 
   // Maximum character limits by country
   const phoneMaxLengths = {
-    '🇺🇸': 15, 
-    '🇬🇧': 15, 
-    '🇨🇦': 15, 
+    '🇺🇸': 12, 
+    '🇬🇧': 13, 
+    '🇨🇦': 12, 
     '🇳🇬': 15, 
     '🇬🇭': 14, 
     '🇰🇪': 13, 
     '🇿🇦': 12, 
     '🇹🇿': 12, 
     '🇪🇹': 12, 
-    'other': 20 
+    'other': 15 
   };
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
